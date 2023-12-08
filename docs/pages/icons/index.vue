@@ -226,7 +226,7 @@
 <style lang="scss" scoped>
 
   // hack to simulate bad behavior
-  /deep/ .wrong-colors svg {
+  ::v-deep .wrong-colors svg {
     fill: blue !important;
   }
 
