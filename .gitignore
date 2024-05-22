@@ -21,4 +21,10 @@ docs/jsdocs.js
 # IDE
 .idea
 kolibri-design-system.iml
+
+# dev playground
 docs/pages/playground.vue
+
+# env
+.envrc
+.python-version
