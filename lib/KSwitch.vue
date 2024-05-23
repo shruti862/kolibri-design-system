@@ -236,6 +236,7 @@
         cursor: default;
       }
     }
+
     &.is-rtl {
       direction: rtl;
     }
@@ -276,6 +277,7 @@
     transition-duration: 0.2s;
     transition-property: background-color, transform;
   }
+
   .k-switch-label-text {
     margin-left: 16px;
     font-size: 15px;
@@ -301,6 +303,7 @@
       .k-switch-track {
         background-color: #b4c3fb;
       }
+
       .k-switch-thumb {
         background-color: #4368f5;
       }
