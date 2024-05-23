@@ -330,6 +330,9 @@
          * Emitted when the image fails to load. The DOM event  is available in the payload.
          */
         if (this.$listeners && this.$listeners.error) {
+          /**
+           * Emitted when the image fails to load or a misconfiguration error occurs. Expect either an `Event` or `Error`
+           */
           this.$emit('error', event);
         } else {
           // eslint-disable-next-line no-console
