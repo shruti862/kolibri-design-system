@@ -175,19 +175,36 @@
         const popoverIsOpen = popover.clientWidth > 0 && popover.clientHeight > 0;
         // set current element and its siblings
         let focusedElement = document.activeElement;
-        let sibling = focusedElement.nextElementSibling;
-        let prevSibling = focusedElement.previousElementSibling;
+        // let sibling = focusedElement.nextElementSibling;
+        // let prevSibling = focusedElement.previousElementSibling;
+
+        //function to check if the sibling is divider
+        const isDivider = element => {
+          return element && element.classList.contains('is-divider');
+        };
 
         // manage rotating through the options using arrow keys
         // UP arrow: .keyCode is depricated and should used only as a fallback
         if ((event.key == 'ArrowUp' || event.keyCode == 38) && popoverIsOpen) {
           event.preventDefault();
+
+          // Checking if previous sibling is divider and if yes then skip it
+          let prevSibling = focusedElement.previousElementSibling;
+          while (prevSibling && isDivider(prevSibling)) {
+            prevSibling = prevSibling.previousElementSibling;
+          }
           prevSibling
             ? this.$nextTick(() => prevSibling.focus())
             : this.$nextTick(() => lastChild.focus());
           // DOWN arrow
         } else if ((event.key == 'ArrowDown' || event.keyCode == 40) && popoverIsOpen) {
           event.preventDefault();
+
+          //Chekcing if next sibling is divider and skipping it
+          let sibling = focusedElement.nextElementSibling;
+          while (sibling && isDivider(sibling)) {
+            sibling = sibling.nextElementSibling;
+          }
           sibling ? this.$nextTick(() => sibling.focus()) : this.$nextTick(() => this.setFocus());
           // if a TAB key, not an arrow key, close the popover and advance to next item in the tab index
         } else if ((event.key == 'Tab' || event.keyCode == 9) && popoverIsOpen) {
