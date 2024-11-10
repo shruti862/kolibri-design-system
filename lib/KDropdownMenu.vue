@@ -179,9 +179,7 @@
         // let prevSibling = focusedElement.previousElementSibling;
 
         //function to check if the sibling is divider
-        const isDivider = element => {
-          return element && element.classList.contains('is-divider');
-        };
+        const isFocusable = element => element && element.tabIndex >= 0;
 
         // manage rotating through the options using arrow keys
         // UP arrow: .keyCode is depricated and should used only as a fallback
@@ -190,7 +188,7 @@
 
           // Checking if previous sibling is divider and if yes then skip it
           let prevSibling = focusedElement.previousElementSibling;
-          while (prevSibling && isDivider(prevSibling)) {
+          while (prevSibling && !isFocusable(prevSibling)) {
             prevSibling = prevSibling.previousElementSibling;
           }
           prevSibling
@@ -202,7 +200,7 @@
 
           //Chekcing if next sibling is divider and skipping it
           let sibling = focusedElement.nextElementSibling;
-          while (sibling && isDivider(sibling)) {
+          while (sibling && !isFocusable(sibling)) {
             sibling = sibling.nextElementSibling;
           }
           sibling ? this.$nextTick(() => sibling.focus()) : this.$nextTick(() => this.setFocus());
