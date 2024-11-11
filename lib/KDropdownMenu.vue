@@ -117,6 +117,7 @@
     data() {
       return {
         trigger: null,
+        lastFocusElement: null,
       };
     },
     watch: {
@@ -147,6 +148,7 @@
       handleOpen() {
         this.$nextTick(() => this.$nextTick(() => this.setFocus()));
         window.addEventListener('keydown', this.handleOpenMenuNavigation, true);
+        this.lastFocusElement = document.activeElement;
       },
       setFocus() {
         this.$refs.menu.$el.querySelector('li').focus();
@@ -162,6 +164,11 @@
         ) {
           this.focusOnButton();
         }
+
+        if (this.lastFocusElement) {
+          this.lastFocusElement.focus();
+        }
+
         window.removeEventListener('keyup', this.handleKeyUp, true);
       },
       handleOpenMenuNavigation(event) {
