@@ -32,6 +32,7 @@
 <script>
 
   import { computed } from '@vue/composition-api';
+  // import { get } from 'lodash';
   import UiMenu from './keen/UiMenu';
   import UiPopover from './keen/UiPopover';
   import useKContextMenu from './composables/_useKContextMenu';
@@ -171,6 +172,24 @@
 
         window.removeEventListener('keyup', this.handleKeyUp, true);
       },
+      getNextFocusableSibling(focusedElement) {
+        let sibling = focusedElement.nextElementSibling;
+        while (sibling && !this.isFocusable(sibling)) {
+          sibling = sibling.nextElementSibling;
+        }
+        return sibling;
+      },
+      getPreviousFocusableSibling(focusedElement) {
+        let sibling = focusedElement.previousElementSibling;
+        while (sibling && !this.isFocusable(sibling)) {
+          sibling = sibling.previousElementSibling;
+        }
+        return sibling;
+      },
+      isFocusable(element) {
+        return element && element.tabIndex >= 0;
+      },
+
       handleOpenMenuNavigation(event) {
         // identify the menu state and length
         if (!this.$refs.popover && !this.$refs.popover.$el) {
@@ -186,7 +205,7 @@
         // let prevSibling = focusedElement.previousElementSibling;
 
         //function to check if the sibling is divider
-        const isFocusable = element => element && element.tabIndex >= 0;
+        // const isFocusable = element => element && element.tabIndex >= 0;
 
         // manage rotating through the options using arrow keys
         // UP arrow: .keyCode is depricated and should used only as a fallback
@@ -194,22 +213,15 @@
           event.preventDefault();
 
           // Checking if previous sibling is divider and if yes then skip it
-          let prevSibling = focusedElement.previousElementSibling;
-          while (prevSibling && !isFocusable(prevSibling)) {
-            prevSibling = prevSibling.previousElementSibling;
-          }
+          let prevSibling = this.getPreviousFocusableSibling(focusedElement);
           prevSibling
             ? this.$nextTick(() => prevSibling.focus())
             : this.$nextTick(() => lastChild.focus());
           // DOWN arrow
         } else if ((event.key == 'ArrowDown' || event.keyCode == 40) && popoverIsOpen) {
           event.preventDefault();
-
           //Chekcing if next sibling is divider and skipping it
-          let sibling = focusedElement.nextElementSibling;
-          while (sibling && !isFocusable(sibling)) {
-            sibling = sibling.nextElementSibling;
-          }
+          let sibling = this.getNextFocusableSibling(focusedElement);
           sibling ? this.$nextTick(() => sibling.focus()) : this.$nextTick(() => this.setFocus());
           // if a TAB key, not an arrow key, close the popover and advance to next item in the tab index
         } else if ((event.key == 'Tab' || event.keyCode == 9) && popoverIsOpen) {
