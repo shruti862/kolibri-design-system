@@ -232,11 +232,6 @@
         this.$emit('close');
         this.$refs.popover.close();
       },
-      focusOnButton() {
-        if (this.$refs.button) {
-          this.$refs.button.$el.focus();
-        }
-      },
     },
   };
 
