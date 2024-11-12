@@ -43,6 +43,7 @@
           :class="labelClasses"
           :style="activeColorStyle"
         >
+          <!-- @slot Displays the label -->
           <slot>{{ label }}</slot>
         </div>
 
@@ -51,6 +52,7 @@
             class="ui-select-display-value"
             :class="{ 'is-placeholder': !hasDisplayText }"
           >
+            <!-- @slot Displays the selected value else placeholder -->
             <slot name="display">
               {{ hasDisplayText ? displayText : (
                 hasFloatingLabel && isLabelInline) ? null : placeholder }}
@@ -106,6 +108,7 @@
 
                 @mouseover.native.stop="onMouseover(option)"
               >
+                <!-- @slot Highlights the selected value -->
                 <slot
                   name="option"
 
@@ -117,6 +120,7 @@
               </KSelectOption>
 
               <div v-show="hasNoResults" class="ui-select-no-results">
+                <!-- @slot Text displayed if no results found -->
                 <slot name="no-results">
                   {{ noResultsText }}
                 </slot>
@@ -128,12 +132,14 @@
 
       <div v-if="hasFeedback" class="ui-select-feedback">
         <div v-if="showError" class="ui-select-feedback-text">
+          <!-- @slot Displays error text -->
           <slot name="error">
             {{ invalidText }}
           </slot>
         </div>
 
         <div v-else-if="showHelp" class="ui-select-feedback-text">
+          <!-- @slot Displays help text -->
           <slot name="help">
             {{ help }}
           </slot>
@@ -214,14 +220,14 @@
         },
       },
       /**
-       * Placeholder
+       * Sets the placeholder value
        */
       placeholder: {
         type: String,
         default: '',
       },
       /**
-       * Label
+       * Set default label
        */
       label: {
         type: String,
@@ -255,6 +261,9 @@
         type: String,
         default: '',
       },
+      /**
+       * key attribute to identify individual elements within a list rendered
+       */
       keys: {
         type: Object,
         default() {
@@ -297,6 +306,10 @@
         type: Boolean,
         default: false,
       },
+      /**
+       * If provided, shows a KIconButton with the given text
+       * 
+      */
       clearText: {
         type: String,
         default: '',
@@ -500,14 +513,23 @@
       showDropdown() {
         if (this.showDropdown) {
           this.onOpen();
+          /**
+           * Emit on opening dropdown
+           */
           this.$emit('dropdown-open');
         } else {
           this.onClose();
+          /**
+           * Emit on closing dropdown
+           */
           this.$emit('dropdown-close');
         }
       },
 
       query() {
+        /**
+         * Emit on change query
+        */
         this.$emit('query-change', this.query);
       },
 
@@ -575,7 +597,10 @@
       setValue(value) {
         value = value ? value : this.multiple ? [] : '';
         this.selection = value;
-
+          /**
+           * Emitted when the value is selected or
+           * Emitted when reset method is called.
+           */
         this.$emit('input', value);
       },
 
@@ -863,7 +888,8 @@
       },
 
       /**
-       * @public
+       * Resets the selected values of dropdown
+       * @public This is a public method
        */
       reset() {
         this.setValue(JSON.parse(this.initialValue));
