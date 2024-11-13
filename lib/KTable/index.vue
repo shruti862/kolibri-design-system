@@ -112,18 +112,28 @@
     setup(props, { emit }) {
       const headers = ref(props.headers);
       const rows = ref(props.rows);
-      const useLocalSorting = ref(props.sortable && !props.disableDefaultSorting);
+      const useDefaultSorting = ref(
+        props.defaultSort === {}
+          ? {
+              index: -1,
+            }
+          : {
+              index: props.headers.map(h => h.columnId).indexOf(props.defaultSort.columnId),
+              direction: props.defaultSort.direction,
+            }
+      );
+
       const {
         sortKey,
         sortOrder,
         sortedRows,
         handleSort: localHandleSort,
         getAriaSort,
-      } = useSorting(headers, rows, useLocalSorting);
+      } = useSorting(headers, rows, useDefaultSorting);
 
       const finalRows = computed(() => {
         if (props.sortable) {
-          return useLocalSorting.value ? sortedRows.value : rows.value;
+          return sortedRows.value;
         } else {
           return rows.value;
         }
@@ -142,7 +152,7 @@
         if (headers.value[index].dataType === DATA_TYPE_OTHERS) {
           return;
         }
-        if (useLocalSorting.value) {
+        if (props.sortable) {
           localHandleSort(index);
         } else {
           emit(

@@ -33,9 +33,9 @@
     data() {
       return {
         headers: [
-          { label: 'Name', dataType: 'string' },
-          { label: 'Age', dataType: 'number' },
-          { label: 'City', dataType: 'string' },
+          { label: 'Name', dataType: 'string', columnId: 'name' },
+          { label: 'Age', dataType: 'number', columnId: 'age' },
+          { label: 'City', dataType: 'string', columnId: 'city' },
         ],
         rows: [
           ['John Doe', 28, 'New York'],
@@ -58,9 +58,9 @@
       </DocsShow>
 
       <!-- Frontend Sorting Example-->
-      <h3>Table with Default Sorting</h3>
+      <h3>Table with Sorting</h3>
       <p>
-        The <code>KTable</code> can be used with default sorting functionality, allowing you to sort data on the client side without the need for server requests. There are 4 permissible data types - <code>string</code>,<code>number</code>,<code>date</code> and <code>undefined</code>. Columns declared with <code>undefined</code> data type are not sortable. This example demonstrates a table with default sorting enabled.
+        The <code>KTable</code> can be used with sorting functionality, allowing you to sort data on the client side without the need for server requests. There are 4 permissible data types - <code>string</code>,<code>number</code>,<code>date</code> and <code>undefined</code>. Columns declared with <code>undefined</code> data type are not sortable. This example demonstrates a table with sorting enabled.
       </p>
 
       <DocsShowCode language="html">
@@ -77,9 +77,9 @@
     data() {
       return {
         headers: [
-          { label: 'Name', dataType: 'string' },
-          { label: 'Age', dataType: 'number' },
-          { label: 'City', dataType: 'string' },
+          { label: 'Name', dataType: 'string', columnId: 'name' },
+          { label: 'Age', dataType: 'number', columnId: 'age' },
+          { label: 'City', dataType: 'string', columnId: 'city' },
         ],
         rows: [
           ['John Doe', 28, 'New York'],
@@ -130,11 +130,11 @@
     data() {
       return {
         slotHeaders: [
-          { label: 'Name', dataType: 'string' },
-          { label: 'Age', dataType: 'number' },
-          { label: 'City', dataType: 'string' },
-          { label: 'Joined', dataType: 'date' },
-          { label: 'Misc', dataType: 'undefined' },
+          { label: 'Name', dataType: 'string', columnId: 'name' },
+          { label: 'Age', dataType: 'number', columnId: 'age' },
+          { label: 'City', dataType: 'string', columnId: 'city' },
+          { label: 'Joined', dataType: 'date', columnId: 'joined' },
+          { label: 'Misc', dataType: 'undefined', columnId: 'misc' },
         ],
         slotRows: [
           ['John Doe', 28, 'New York', '2022-01-15T00:00:00Z', 'N/A'],
@@ -184,11 +184,23 @@
     data() {
       return {
         headersWithCustomWidths: [
-          { label: 'Name', dataType: 'string', minWidth: '20px', width: '2%' },
-          { label: 'Age', dataType: 'number', minWidth: '100px', width: '33%' },
-          { label: 'City', dataType: 'string', minWidth: '200px', width: '25%' },
-          { label: 'Joined', dataType: 'date', minWidth: '150px', width: '20%' },
-          { label: 'Misc', dataType: 'undefined', minWidth: '100px', width: '20%' },
+          { label: 'Name', dataType: 'string', minWidth: '20px', width: '2%', columnId: 'name' },
+          { label: 'Age', dataType: 'number', minWidth: '100px', width: '33%', columnId: 'age' },
+          { label: 'City', dataType: 'string', minWidth: '200px', width: '25%', columnId: 'city' },
+          {
+            label: 'Joined',
+            dataType: 'date',
+            minWidth: '150px',
+            width: '20%',
+            columnId: 'joined',
+          },
+          {
+            label: 'Misc',
+            dataType: 'undefined',
+            minWidth: '100px',
+            width: '20%',
+            columnId: 'misc',
+          },
         ],
         customRows: [
           ['John Doe', 28, 'New York', '2022-01-15T00:00:00Z', 'N/A'],
@@ -225,9 +237,9 @@
     data() {
       return {
         headers: [
-          { label: 'Name', dataType: 'string' },
-          { label: 'Age', dataType: 'number' },
-          { label: 'City', dataType: 'string' },
+          { label: 'Name', dataType: 'string', columnId: 'name' },
+          { label: 'Age', dataType: 'number', columnId: 'age' },
+          { label: 'City', dataType: 'string', columnId: 'city' },
         ],
         rows: [
           ['John Doe', 28, 'New York'],
@@ -238,11 +250,11 @@
           ['Emily Davis', 27, 'Philadelphia'],
         ],
         slotHeaders: [
-          { label: 'Name', dataType: 'string' },
-          { label: 'Age', dataType: 'number' },
-          { label: 'City', dataType: 'string' },
-          { label: 'Joined', dataType: 'date' },
-          { label: 'Misc', dataType: 'undefined' },
+          { label: 'Name', dataType: 'string', columnId: 'name' },
+          { label: 'Age', dataType: 'number', columnId: 'age' },
+          { label: 'City', dataType: 'string', columnId: 'city' },
+          { label: 'Joined', dataType: 'date', columnId: 'joined' },
+          { label: 'Misc', dataType: 'undefined', columnId: 'misc' },
         ],
         slotRows: [
           ['John Doe', 28, 'New York', '2022-01-15T00:00:00Z', 'N/A'],
@@ -251,11 +263,23 @@
           ['Alice Johnson', 30, 'Houston', '2020-07-18T00:00:00Z', 'N/A'],
         ],
         headersWithCustomWidths: [
-          { label: 'Name', dataType: 'string', minWidth: '20px', width: '2%' },
-          { label: 'Age', dataType: 'number', minWidth: '100px', width: '33%' },
-          { label: 'City', dataType: 'string', minWidth: '200px', width: '25%' },
-          { label: 'Joined', dataType: 'date', minWidth: '150px', width: '20%' },
-          { label: 'Misc', dataType: 'undefined', minWidth: '100px', width: '20%' },
+          { label: 'Name', dataType: 'string', minWidth: '20px', width: '2%', columnId: 'name' },
+          { label: 'Age', dataType: 'number', minWidth: '100px', width: '33%', columnId: 'age' },
+          { label: 'City', dataType: 'string', minWidth: '200px', width: '25%', columnId: 'city' },
+          {
+            label: 'Joined',
+            dataType: 'date',
+            minWidth: '150px',
+            width: '20%',
+            columnId: 'joined',
+          },
+          {
+            label: 'Misc',
+            dataType: 'undefined',
+            minWidth: '100px',
+            width: '20%',
+            columnId: 'misc',
+          },
         ],
         customRows: [
           ['John Doe', 28, 'New York', '2022-01-15T00:00:00Z', 'N/A'],
