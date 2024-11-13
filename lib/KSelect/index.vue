@@ -308,8 +308,8 @@
       },
       /**
        * If provided, shows a KIconButton with the given text
-       * 
-      */
+       *
+       */
       clearText: {
         type: String,
         default: '',
@@ -529,7 +529,7 @@
       query() {
         /**
          * Emit on change query
-        */
+         */
         this.$emit('query-change', this.query);
       },
 
@@ -597,10 +597,10 @@
       setValue(value) {
         value = value ? value : this.multiple ? [] : '';
         this.selection = value;
-          /**
-           * Emitted when the value is selected or
-           * Emitted when reset method is called.
-           */
+        /**
+         * Emitted when the value is selected or
+         * Emitted when reset method is called.
+         */
         this.$emit('input', value);
       },
 
