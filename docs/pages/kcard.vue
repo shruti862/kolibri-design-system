@@ -48,7 +48,7 @@
           { text: 'KCard and KCardGrid', href: '#k-card-and-grid' },
           { text: 'Title', href: '#title' },
           { text: 'Accessibility', href: '#a11y' },
-          { text: 'Navigation', href: '#navigation' },
+          { text: 'Click event and navigation', href: '#click-navigation' },
           { text: 'Layout', href: '#layout' },
           { text: 'Responsiveness', href: '#responsiveness' },
           { text: 'Content slots', href: '#content-slots' },
@@ -214,28 +214,56 @@
       <p><em>Always test semantics, accessibility, and right-to-left of the final cards.</em></p>
 
       <h3>
-        Navigation
-        <DocsAnchorTarget anchor="#navigation" />
+        Click event and navigation
+        <DocsAnchorTarget anchor="#click-navigation" />
       </h3>
 
-      <p><code>KCard</code>'s entire area is clickable, navigating to a target provided via the <code>to</code> prop as a regular Vue route object. <DocsToggleButton contentId="more-navigation" /></p>
+      <p><code>KCard</code>'s entire area is clickable.</p>
 
-      <DocsToggleContent id="more-navigation">
-        <!-- eslint-disable -->
-        <DocsShowCode language="html">
-          <KCardGrid ...>
-            <KCard
-              :to="{ name: 'NamedRoute' }"
-              ...
-            />
-            <KCard
-              :to="{ path: '/kcard' }"
-              ...
-            />
-          </KCardGrid>
-        </DocsShowCode>
-        <!-- eslint-enable -->
-      </DocsToggleContent>
+      <p>You can use the <code>to</code> prop to navigate to a URL when the card is clicked.</p>
+
+      <DocsShowCode language="html">
+        <KCardGrid ...>
+          <KCard
+            ...
+            :to="{ name: 'NamedRoute' }"
+          />
+          <KCard
+            ...
+            :to="{ path: '/kcard' }"
+          />
+        </KCardGrid>
+      </DocsShowCode>
+
+      <p>Listen to the <code>click</code> event to perform a custom action (whether or not the <code>to</code> prop is used).</p>
+
+      <DocsShowCode language="html">
+        <KCardGrid ...>
+          <KCard
+            ...
+            @click="onClick"
+          />
+          <KCard
+            ...
+            :to="{ path: '/kcard' }"
+            @click="onClick"
+          />
+        </KCardGrid>
+      </DocsShowCode>
+
+      <!-- eslint-disable -->
+      <DocsShowCode language="javascript">
+        export default {
+          methods() {
+            onClick() {
+              console.log('Card clicked');
+            }
+          },
+        };
+      </DocsShowCode>
+      <!-- eslint-enable -->
+
+      <p>Note that long clicks are ignored to allow for text selection.</p>
 
       <p>See <DocsInternalLink text="Interactive elements" href="#interactive-elements" /> to learn how to disable card navigation in favor of a custom handler when elements like buttons are rendered within a card.</p>
 
@@ -563,7 +591,7 @@
         <DocsAnchorTarget anchor="#interactive-elements" />
       </h3>
 
-      <p>When adding interactive elements like buttons to a card via slots, apply the <code>.stop</code> event modifier to their <code>@click</code> event to prevent the card from navigating away when clicked.</p>
+      <p>When adding interactive elements like buttons to a card via slots, apply the <code>.stop</code> event modifier to their <code>@click</code> event to prevent the card <DocsInternalLink text="click event and navigation" href="#click-navigation" />.</p>
 
       <p><em>This applies to all slot content, but considering accessibility is especially important with interactive elements.</em> For instance, <code>ariaLabel</code> is applied to the bookmark icon button in the following example so that screenreaders can communicate its purpose. In production, more work would be needed to indicate the bookmark's toggled state. Always assess on a case-by-case basis.</p>
 

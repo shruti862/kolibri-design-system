@@ -5,7 +5,6 @@
     Their logic is disabled in skeleton mode.
   -->
   <KCard
-    :to="{ path: null }"
     :headingLevel="2"
     isSkeleton
     aria-hidden="true"

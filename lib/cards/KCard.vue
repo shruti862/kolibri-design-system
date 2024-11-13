@@ -36,12 +36,13 @@
                   selecting card's content in `onClick`)
         -->
         <router-link
+          v-if="to"
           event=""
           :to="to"
           draggable="false"
-          class="link"
-          @focus.native="onLinkFocus"
-          @blur.native="onLinkBlur"
+          class="title"
+          @focus.native="onTitleFocus"
+          @blur.native="onTitleBlur"
         >
           <!-- @slot Optional slot section containing the title contents, should not contain a heading element. -->
           <slot 
@@ -54,6 +55,40 @@
             :maxLines="titleMaxLines"
           />
         </router-link>
+        <!--
+          Set tabindex to 0 to make title focusable so we
+          can use the same focus ring logic like when title
+          is a router-link. Relatedly set data-focus so that
+          the trackInputModality can set modality to keyboard
+          to make the focus ring display correctly.
+
+          `aria-label` is needed in this mode otherwise some
+          screenreaders don't announce the text in KTextTruncator,
+          for mysterious reasons (likely some internal screenreader logic)
+          -->
+        <span
+          v-else
+          tabindex="0"
+          data-focus="true"
+          class="title"
+          :aria-label="title"
+          @focus="onTitleFocus"
+          @blur="onTitleBlur"
+        >
+          <!-- since we're using `aria-label`, hide all unnecessary elements -->
+          <span aria-hidden="true">
+            <!-- @slot Optional slot section containing the title contents, should not contain a heading element. -->
+            <slot 
+              v-if="$slots.title"
+              name="title"
+            ></slot>
+            <KTextTruncator
+              v-else
+              :text="title"
+              :maxLines="titleMaxLines"
+            />
+          </span>
+        </span>
       </component>
 
       <div
@@ -172,14 +207,6 @@
     },
     props: {
       /**
-       * A Vue route object that defines
-       * where the card click should navigate.
-       */
-      to: {
-        type: Object,
-        required: true,
-      },
-      /**
        * HTML heading level in range (h2 - h6) for the title
        */
       headingLevel: {
@@ -193,6 +220,15 @@
             return false;
           }
         },
+      },
+      /**
+       * A Vue route object. If provided, card click
+       * will navigate to the target.
+       */
+      to: {
+        type: Object,
+        required: false,
+        default: null,
       },
       /**
        * Card title
@@ -293,13 +329,13 @@
       return {
         mouseDownTime: 0,
         ThumbnailDisplays,
-        isLinkFocused: false,
+        isTitleFocused: false,
         thumbnailError: false,
       };
     },
     computed: {
       focusStyle() {
-        return this.isLinkFocused ? this.$coreOutline : {};
+        return this.isTitleFocused ? this.$coreOutline : {};
       },
       hasAboveTitleArea() {
         return this.$slots.aboveTitle || this.preserveAboveTitle;
@@ -436,23 +472,26 @@
       }
     },
     methods: {
-      onLinkFocus() {
+      onTitleFocus() {
         if (this.isSkeleton) {
           return;
         }
-        this.isLinkFocused = true;
+        this.isTitleFocused = true;
       },
-      onLinkBlur() {
-        this.isLinkFocused = false;
+      onTitleBlur() {
+        this.isTitleFocused = false;
       },
       onThumbnailError() {
         this.thumbnailError = true;
       },
-      navigate() {
-        if (this.isSkeleton) {
-          return;
+      clickHandler() {
+        /**
+         * Emitted when a card is clicked
+         */
+        this.$emit('click');
+        if (this.to) {
+          this.$router.push(this.to);
         }
-        this.$router.push(this.to);
       },
       onFocus(e) {
         /**
@@ -467,7 +506,7 @@
         this.$emit('hover', e);
       },
       onEnter() {
-        this.navigate();
+        this.clickHandler();
       },
       onMouseDown() {
         this.mouseDownTime = new Date().getTime();
@@ -482,10 +521,10 @@
         // Calculate the time difference between the mouse button press and release.
         // If the time difference is greater than or equal to 200 milliseconds,
         // it means that the mouse button was pressed and held for a longer time,
-        // which is not typically interpreted as a click event. Do not navigate
-        // in such case.
+        // which is not typically interpreted as a click event so do not run
+        // the click handler.
         if (mouseUpTime - this.mouseDownTime < 200) {
-          this.navigate();
+          this.clickHandler();
         } else {
           return;
         }
@@ -581,7 +620,7 @@
     height: 100%;
   }
 
-  .link {
+  .title {
     display: inline-block; // allows title placeholder in the skeleton card
     width: 100%; // allows title placeholder in the skeleton card
     color: inherit;
