@@ -112,16 +112,11 @@
     setup(props) {
       const headers = ref(props.headers);
       const rows = ref(props.rows);
-      const useDefaultSorting = ref(
-        props.defaultSort === {}
-          ? {
-              index: -1,
-            }
-          : {
-              index: props.headers.map(h => h.columnId).indexOf(props.defaultSort.columnId),
-              direction: props.defaultSort.direction,
-            }
-      );
+
+      const useDefaultSorting = computed(() => ({
+        index: props.headers.findIndex(h => h.columnId === props.defaultSort.columnId),
+        direction: props.defaultSort.direction,
+      }));
 
       const { sortKey, sortOrder, sortedRows, handleSort, getAriaSort } = useSorting(
         headers,
@@ -297,7 +292,7 @@
       $props: {
         immediate: true,
         handler() {
-          if (this.defaultSort != {}) {
+          if (this.defaultSort.columnId) {
             const allHeaderColumnIds = this.headers.map(h => h.columnId);
             if (!allHeaderColumnIds.includes(this.defaultSort.columnId)) {
               console.error(

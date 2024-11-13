@@ -180,47 +180,65 @@
 
       </DocsShowCode>
 
-  <DocsShowCode language="javascript">
-    data() {
-      return {
-        headersWithCustomWidths: [
-          { label: 'Name', dataType: 'string', minWidth: '20px', width: '2%', columnId: 'name' },
-          { label: 'Age', dataType: 'number', minWidth: '100px', width: '33%', columnId: 'age' },
-          { label: 'City', dataType: 'string', minWidth: '200px', width: '25%', columnId: 'city' },
-          {
-            label: 'Joined',
-            dataType: 'date',
-            minWidth: '150px',
-            width: '20%',
-            columnId: 'joined',
-          },
-          {
-            label: 'Misc',
-            dataType: 'undefined',
-            minWidth: '100px',
-            width: '20%',
-            columnId: 'misc',
-          },
-        ],
-        customRows: [
-          ['John Doe', 28, 'New York', '2022-01-15T00:00:00Z', 'N/A'],
-          ['Jane Smith', 34, 'Los Angeles', '2021-12-22T00:00:00Z', 'N/A'],
-          ['Samuel Green', 22, 'Chicago', '2023-03-10T00:00:00Z', 'N/A'],
-          ['Alice Johnson', 30, 'Houston', '2020-07-18T00:00:00Z', 'N/A'],
-        ],
-      };
-    },
+      <!--Table with Default Sort-->
+      <h3>Table with Default Sort</h3>
+      <p>
+        This is an example to show how <code>KTable</code> can be used with the <code>defaultSort</code> attribute to sort the table based on a particular column. This is useful if you are getting unsorted data from an API and want to display it in a sorted manner. The <code>defaultSort</code> attribute can be used irrespective of the <code>sortable</code> attribute.
+      </p>
+
+      <DocsShowCode language="html">
+        <KTable
+          :headers="headers"
+          :rows="rows"
+          caption="Sortable Table with Rows Sorted by 'Age' Column"
+          sortable
+          :defaultSort="{ columnId: 'age', direction: 'asc' }"
+        />
+
+        <KTable 
+          :headers="headers"
+          :rows="rows"
+          caption="Unsortable Table with Rows Sorted by 'Age' Column"
+          :defaultSort="{ columnId: 'age', direction: 'asc' }"
+        />
+
+      </DocsShowCode>
+
+      <DocsShowCode language="javascript">
+        data() {
+          return {
+            headers: [
+              { label: 'Name', dataType: 'string', columnId: 'name' },
+              { label: 'Age', dataType: 'number', columnId: 'age' },
+              { label: 'City', dataType: 'string', columnId: 'city' },
+            ],
+            rows: [
+              ['John Doe', 28, 'New York'],
+              ['Jane Smith', 34, 'Los Angeles'],
+              ['Samuel Green', 22, 'Chicago'],
+              ['Alice Johnson', 30, 'Houston'],
+              ['Michael Brown', 45, 'Phoenix'],
+              ['Emily Davis', 27, 'Philadelphia'],
+            ]
+          };
+        },
       </DocsShowCode>
 
       <DocsShow block>
         <KTable
-          :headers="headersWithCustomWidths"
-          :rows="customRows"
-          caption="Table showing columns with custom widths"
+          :headers="headers"
+          :rows="rows"
+          caption="Sortable Table with Rows Sorted by 'Age' Column"
           sortable
+          :defaultSort="{ columnId: 'age', direction: 'asc' }"
+        />
+        <KTable
+          :headers="headers"
+          :rows="rows"
+          caption="Unsortable Table with Rows Sorted by 'Age' Column"
+          :defaultSort="{ columnId: 'age', direction: 'asc' }"
         />
       </DocsShow>
-      <!-- eslint-enable -->
 
     </DocsPageSection>
 
