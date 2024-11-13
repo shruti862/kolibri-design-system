@@ -109,7 +109,7 @@
     components: {
       KTableGridItem,
     },
-    setup(props, { emit }) {
+    setup(props) {
       const headers = ref(props.headers);
       const rows = ref(props.rows);
       const useDefaultSorting = ref(
@@ -123,13 +123,11 @@
             }
       );
 
-      const {
-        sortKey,
-        sortOrder,
-        sortedRows,
-        handleSort: localHandleSort,
-        getAriaSort,
-      } = useSorting(headers, rows, useDefaultSorting);
+      const { sortKey, sortOrder, sortedRows, handleSort, getAriaSort } = useSorting(
+        headers,
+        rows,
+        useDefaultSorting
+      );
 
       const finalRows = computed(() => {
         if (props.sortable) {
@@ -147,21 +145,6 @@
           rows.value = newRows;
         }
       );
-
-      const handleSort = index => {
-        if (headers.value[index].dataType === DATA_TYPE_OTHERS) {
-          return;
-        }
-        if (props.sortable) {
-          localHandleSort(index);
-        } else {
-          emit(
-            'changeSort',
-            index,
-            sortOrder.value === SORT_ORDER_ASC ? SORT_ORDER_DESC : SORT_ORDER_ASC
-          );
-        }
-      };
 
       const getHeaderStyle = header => {
         const style = {};
@@ -246,17 +229,14 @@
         type: Object,
         required: false,
         default: () => ({}),
-        validator: {
-          columnId: {
-            required: true,
-            validator: value => value !== null && ['string', 'number'].includes(typeof value),
-          },
-          direction: {
-            type: String,
-            required: false,
-            default: 'asc',
-            validator: value => ['asc', 'desc'].includes(value),
-          },
+        validator: function(value) {
+          if (value === {}) return true;
+
+          return (
+            ['columnId', 'direction'].every(key => key in value) &&
+            ['asc', 'desc'].includes(value.direction) &&
+            ['string', 'number'].includes(typeof value.columnId)
+          );
         },
       },
     },
