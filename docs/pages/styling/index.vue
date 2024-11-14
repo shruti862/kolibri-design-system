@@ -69,7 +69,7 @@
       <p>
         Kolibri products use a system of elevation based roughly on Google's <DocsExternalLink href="https://material.io/archive/guidelines/material-design/elevation-shadows.html" text="Material Design" />. Material introduces the idea that  UI container elements (menus, modals, side-bars, etc) exist on a particular "elevation" on the page, which defines which one is visible when they overlap.
       </p>
-      
+    
       <h3>Drop shadows</h3>
       <p>
         In the real world, the shadow an object casts is often a physical manifestation of its elevation.
@@ -130,7 +130,7 @@
         Note that it is <em>not</em> encouraged to set a <code>z-index</code> on every element. There are many reliable ways in CSS to show one item over another and <code>z-index</code> is often used a last resort.
       </p>
 
-       <p>
+      <p>
         The diagram below (with credit to Google) shows the conventional elevations:
       </p>
       <DocsShow>
@@ -139,7 +139,7 @@
       <p>
         Applying these conventions consistently helps build components that look and interact with each other in predictable ways.
       </p>
-      
+    
     </DocsPageSection>
 
     <DocsPageSection title="Easing and timing" anchor="#easing">
