@@ -8971,7 +8971,7 @@ known-css-properties@^0.11.0:
   resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.11.0.tgz#0da784f115ea77c76b81536d7052e90ee6c86a8a"
   integrity sha512-bEZlJzXo5V/ApNNa5z375mJC6Nrz4vG43UgcSCrg2OHC+yuB6j0iDSrY7RQ/+PRofFB03wNIIt9iXIVLr4wc7w==
 
-kolibri-tools@^0.15.4:
+kolibri-tools@0.15.4:
   version "0.15.4"
   resolved "https://registry.yarnpkg.com/kolibri-tools/-/kolibri-tools-0.15.4.tgz#703745c36f08bf03c3fc6225691f52c64c1153fa"
   integrity sha512-7WHHJ0QN845mTsC/cDU1NyxonGYc2MYokCAQHNrjOkF9CSUxqHX5lnSxNgaAq1ADRk0iKPt0gYhUq1XCAAdOsw==
