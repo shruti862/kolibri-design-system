@@ -484,11 +484,12 @@
       onThumbnailError() {
         this.thumbnailError = true;
       },
-      clickHandler() {
+      clickHandler(event) {
         /**
-         * Emitted when a card is clicked
+         * Emitted when a card is clicked or pressed with enter.
+         * Contains the DOM event in the payload.
          */
-        this.$emit('click');
+        this.$emit('click', event);
         if (this.to) {
           this.$router.push(this.to);
         }
@@ -505,13 +506,13 @@
          */
         this.$emit('hover', e);
       },
-      onEnter() {
-        this.clickHandler();
+      onEnter(event) {
+        this.clickHandler(event);
       },
       onMouseDown() {
         this.mouseDownTime = new Date().getTime();
       },
-      onClick() {
+      onClick(event) {
         if (this.isSkeleton) {
           return;
         }
@@ -524,7 +525,7 @@
         // which is not typically interpreted as a click event so do not run
         // the click handler.
         if (mouseUpTime - this.mouseDownTime < 200) {
-          this.clickHandler();
+          this.clickHandler(event);
         } else {
           return;
         }
