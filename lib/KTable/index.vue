@@ -95,7 +95,7 @@
 
 <script>
 
-  import { ref, computed, watch, emit } from '@vue/composition-api';
+  import { ref, computed, watch } from '@vue/composition-api';
   import useSorting, {
     SORT_ORDER_ASC,
     SORT_ORDER_DESC,
@@ -109,15 +109,15 @@
     components: {
       KTableGridItem,
     },
-    setup(props) {
+    setup(props, { emit }) {
       const headers = ref(props.headers);
       const rows = ref(props.rows);
+      const disableBuiltinSorting = ref(props.disableBuiltinSorting);
 
       const defaultSort = ref({
         index: props.headers.findIndex(h => h.columnId === props.defaultSort.columnId),
         direction: props.defaultSort.direction,
       });
-      const useLocalSorting = ref(props.sortable && !props.disableBuiltinSorting);
 
       const {
         sortKey,
@@ -125,7 +125,7 @@
         sortedRows,
         handleSort: localHandleSort,
         getAriaSort,
-      } = useSorting(headers, rows, defaultSort, useLocalSorting);
+      } = useSorting(headers, rows, defaultSort, disableBuiltinSorting);
 
       const isTableEmpty = computed(() => sortedRows.value.length === 0);
 
@@ -141,17 +141,14 @@
           return;
         }
 
-        // If we are using local sorting, then we need to sort the rows locally
-        if (useLocalSorting.value) {
-          localHandleSort(index);
-        } else {
+        if (props.disableBuiltinSorting && props.sortable) {
           // Emit the event to the parent component to provide the sorting logic
           emit(
             'changeSort',
             index,
             sortOrder.value === SORT_ORDER_ASC ? SORT_ORDER_DESC : SORT_ORDER_ASC
           );
-        }
+        } else localHandleSort(index);
       };
 
       const getHeaderStyle = header => {
@@ -186,7 +183,7 @@
           const uniqueColumnIds = new Set(value.map(h => h.columnId));
 
           return (
-            uniqueColumnIds.length == value.length &&
+            uniqueColumnIds.size == value.length &&
             value.every(
               header =>
                 ['label', 'dataType', 'columnId'].every(key => key in header) &&
@@ -239,7 +236,9 @@
         required: false,
         default: () => ({}),
         validator: function(value) {
-          if (value === {}) return true;
+          if (Object.keys(value).length === 0) {
+            return true;
+          }
 
           return (
             ['columnId', 'direction'].every(key => key in value) &&
@@ -248,8 +247,8 @@
           );
         },
       },
-      /*
-       * Disables all the sorting functionality provided by the component. This is useful when you want to define you own sorting logic. Refer to the documentation for more details.
+      /**
+       * Disables all the sorting functionality provided by the component. This is useful when you want to define you own sorting logic. Refer to the examples above for more details.
        */
       disableBuiltinSorting: {
         type: Boolean,
