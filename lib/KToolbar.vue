@@ -48,8 +48,8 @@
 
 <script>
 
-  import UiIconButton from './UiIconButton.vue';
-  import UiProgressLinear from './UiProgressLinear.vue';
+  import UiIconButton from './keen/UiIconButton.vue';
+  import UiProgressLinear from './keen/UiProgressLinear.vue';
 
   export default {
     name: 'UiToolbar',
@@ -125,8 +125,8 @@
 </script>
 
 <style lang="scss">
-  @import '../styles/definitions';
-  @import './styles/imports';
+  @import './styles/definitions';
+  @import './keen/styles/imports';
 
   $ui-toolbar-font-size: rem(18px) !default;
   $ui-toolbar-height: rem(56px) !default;
@@ -138,7 +138,7 @@
     align-items: center;
     justify-content: space-between;
     height: $ui-toolbar-height;
-    padding-left: rem(16px);
+    padding: 0 16px;
     max-width: 100%;
     font-family: inherit;
     font-size: $ui-toolbar-font-size;
@@ -158,7 +158,9 @@
   }
 
   .ui-toolbar__left {
-    display: inline-flex;
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
   }
 
   .ui-toolbar__nav-icon {
@@ -175,7 +177,7 @@
   }
 
   .ui-toolbar__brand {
-    min-width: rem(160px);
+    min-width: inherit;
   }
 
   .ui-toolbar__brand-text {
@@ -202,6 +204,11 @@
     bottom: 0;
     left: 0;
     height: rem(3px);
+  }
+
+  .ui-toolbar__title {
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   // ================================================
