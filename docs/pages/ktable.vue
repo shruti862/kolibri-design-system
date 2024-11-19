@@ -320,7 +320,7 @@
       <DocsShowCode language="html">
         <KTable
           :headers="headers"
-          :rows="changeSortRows"
+          :rows="rows"
           caption="Disable Builtin Sorting Example"
           sortable
           disableDefaultSorting
@@ -337,7 +337,7 @@
               { label: 'Age', dataType: 'number', columnId: 'age' },
               { label: 'City', dataType: 'string', columnId: 'city' },
             ],
-            changeSortRows: [
+            rows: [
               ['John Doe', 28, 'New York'],
               ['Jane Smith', 34, 'Los Angeles'],
               ['Samuel Green', 22, 'Chicago'],
@@ -358,7 +358,7 @@
       <DocsShow block>
         <KTable
           :headers="headers"
-          :rows="changeSortRows"
+          :rows="rows"
           caption="Disable Builtin Sorting Example"
           sortable
           disableBuiltinSorting
@@ -429,13 +429,6 @@
           ['Jane Smith', 34, 'Los Angeles', '2021-12-22T00:00:00Z', 'N/A'],
           ['Samuel Green', 22, 'Chicago', '2023-03-10T00:00:00Z', 'N/A'],
           ['Alice Johnson', 30, 'Houston', '2020-07-18T00:00:00Z', 'N/A'],
-        ],
-        changeSortRows: [
-          ['John Doe', 28, 'New York'],
-          ['Jane Smith', 34, 'Los Angeles'],
-          ['Samuel Green', 22, 'Chicago'],
-          ['Alice Johnson', 30, 'Houston'],
-          ['Michael Brown', 45, 'Phoenix'],
         ],
       };
     },
