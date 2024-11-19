@@ -248,7 +248,7 @@
         },
       },
       /**
-       * Disables all the sorting functionality provided by the component. This is useful when you want to define you own sorting logic. Refer to the examples above for more details.
+       * Disables all the sorting functionality provided by the component. This is useful when you want to define your own sorting logic. Refer to the examples above for more details.
        */
       disableBuiltinSorting: {
         type: Boolean,
