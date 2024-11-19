@@ -95,7 +95,7 @@
 
 <script>
 
-  import { ref, computed, watch } from '@vue/composition-api';
+  import { ref, computed, watch, emit } from '@vue/composition-api';
   import useSorting, {
     SORT_ORDER_ASC,
     SORT_ORDER_DESC,
@@ -113,26 +113,21 @@
       const headers = ref(props.headers);
       const rows = ref(props.rows);
 
-      const useDefaultSorting = computed(() => ({
+      const defaultSort = ref({
         index: props.headers.findIndex(h => h.columnId === props.defaultSort.columnId),
         direction: props.defaultSort.direction,
-      }));
-
-      const { sortKey, sortOrder, sortedRows, handleSort, getAriaSort } = useSorting(
-        headers,
-        rows,
-        useDefaultSorting
-      );
-
-      const finalRows = computed(() => {
-        if (props.sortable) {
-          return sortedRows.value;
-        } else {
-          return rows.value;
-        }
       });
+      const useLocalSorting = ref(props.sortable && !props.disableBuiltinSorting);
 
-      const isTableEmpty = computed(() => finalRows.value.length === 0);
+      const {
+        sortKey,
+        sortOrder,
+        sortedRows,
+        handleSort: localHandleSort,
+        getAriaSort,
+      } = useSorting(headers, rows, defaultSort, useLocalSorting);
+
+      const isTableEmpty = computed(() => sortedRows.value.length === 0);
 
       watch(
         () => props.rows,
@@ -141,16 +136,35 @@
         }
       );
 
+      const handleSort = index => {
+        if (headers.value[index].dataType === DATA_TYPE_OTHERS) {
+          return;
+        }
+
+        // If we are using local sorting, then we need to sort the rows locally
+        if (useLocalSorting.value) {
+          localHandleSort(index);
+        } else {
+          // Emit the event to the parent component to provide the sorting logic
+          emit(
+            'changeSort',
+            index,
+            sortOrder.value === SORT_ORDER_ASC ? SORT_ORDER_DESC : SORT_ORDER_ASC
+          );
+        }
+      };
+
       const getHeaderStyle = header => {
         const style = {};
         if (header.minWidth) style.minWidth = header.minWidth;
         if (header.width) style.width = header.width;
         return style;
       };
+
       return {
         sortKey,
         sortOrder,
-        finalRows,
+        finalRows: sortedRows,
         handleSort,
         getAriaSort,
         SORT_ORDER_ASC,
@@ -233,6 +247,14 @@
             ['string', 'number'].includes(typeof value.columnId)
           );
         },
+      },
+      /*
+       * Disables all the sorting functionality provided by the component. This is useful when you want to define you own sorting logic. Refer to the documentation for more details.
+       */
+      disableBuiltinSorting: {
+        type: Boolean,
+        default: false,
+        required: false,
       },
     },
     data() {

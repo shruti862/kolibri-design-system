@@ -187,6 +187,7 @@
       </p>
 
       <DocsShowCode language="html">
+        <h3>Sortable Table with Rows Sorted by 'Age' Column</h3>
         <KTable
           :headers="headers"
           :rows="rows"
@@ -194,7 +195,8 @@
           sortable
           :defaultSort="{ columnId: 'age', direction: 'asc' }"
         />
-
+    
+        <h3>Unsortable Table with Rows Sorted by 'Age' Column</h3>
         <KTable 
           :headers="headers"
           :rows="rows"
@@ -225,6 +227,7 @@
       </DocsShowCode>
 
       <DocsShow block>
+        <h3>Sortable Table with Rows Sorted by 'Age' Column</h3>
         <KTable
           :headers="headers"
           :rows="rows"
@@ -232,6 +235,8 @@
           sortable
           :defaultSort="{ columnId: 'age', direction: 'asc' }"
         />
+
+        <h3>Unsortable Table with Rows Sorted by 'Age' Column</h3>
         <KTable
           :headers="headers"
           :rows="rows"
