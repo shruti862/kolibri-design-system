@@ -263,8 +263,8 @@
         default: false,
         required: false,
       },
-      /*
-       * A function that is called when the user sorts the table. The function recieves the current rows, the column index and the current sort order as arguments. This function is called only when `disableBuiltinSorting` is set to `true` and the table is sortable.
+      /**
+       * Thus function is called when the user clicks on the headers of a sortable table with inbuilt sorting disabled. The function recieves the current rows, the column index and the current sort order as arguments.
        */
       customSort: {
         type: Function,

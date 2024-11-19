@@ -310,21 +310,21 @@
       <!-- Disable Builtin Sorting -->
       <h3>Disable Builtin Sorting & Custom Sorting Logic</h3>
       <p>
-        You can make use of the <code>disableBuiltinSorting</code> attribute to disable all sorting functionality in the table. This is useful when you want to display the data in a particular order or want to define a custom sorting mechanism. 
+        You can make use of the <code>disableBuiltinSorting</code> attribute to disable all sorting functionality by the table component. This is useful when you want to display the data in a particular order or you want to define a custom sorting function. 
       </p>
 
       <p>
-        You should not use this attribute if the <code>sortable</code> attribute is set to <code>false</code>, as in that case the table headers for sorting will not be displayed at all. If the same is set to <code>true</code>, then table emits a <code>changeSort</code> event with column index of the header clicked and the sort order to notify the parent component to handle the sorting logic. 
+        You should not use this attribute if <code>sortable</code> is set to <code>false</code>. If <code>sortable</code> is set to <code>true</code>, then the table component will emit a <code>changeSort</code> event with column index of the header clicked and the sort order to notify the parent component to handle the sorting logic. 
       </p>
 
       <p>
-        You can also define a custom sorting logic using the <code>customSort</code> attribute. The <code>customSort</code> attribute takes a function that accepts the rows, column index and the current sort order as arguments. The function should return an object with the following properties:
+        You can also define custom sorting logic in such a scenario using the <code>customSort</code> attribute. The <code>customSort</code> attribute takes a function that accepts the current rows, column index of the click, and the current sort order as arguments. The function should return an object with the following properties:
         <ul>
           <li><code>rows</code>: The sorted rows</li>
           <li><code>sortOrder</code>: The sort order of the column</li>
           <li><code>sortKey</code>: The column index based on which the sorting was done</li>
         </ul>
-        These values are then used by the component to update the state of the table data and the headers. You can set the <code>sortOrder</code> to one of <code>['asc', 'desc', null]</code> to convey the sort order to the table. The <code>sortKey</code> is the column index based on which the sorting was done, and can be set to <code>null</code> as well to convey that no sorting was done.
+        These values are used by the <code>KTable</code> component to update the table rows and headers. You can set the <code>sortOrder</code> to one of <code>['asc', 'desc', null]</code> to convey the sort order. The <code>sortKey</code> is the column index based on which the sorting was done, and can be set to <code>null</code> as well to convey the default no-sorting state.
       </p>
 
       <DocsShowCode language="html">
