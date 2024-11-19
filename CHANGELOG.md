@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#818]
+  - **Description:** keyboard navigation on KDropdownMenu
+  - **Products impact:** bugfix.
+  - **Addresses:**Issues with keyboard navigation on KDropdownMenu #588.
+  - **Components:** kDropdownMenu.vue
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#818]: https://github.com/learningequality/kolibri-design-system/pull/818
+
+
+
 - [#827]
   - **Description:** Ensure visibility of focus-ring on the KDS website in Firefox
   - **Products impact:** -
