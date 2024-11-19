@@ -168,14 +168,14 @@
           :headingLevel="3"
           orientation="horizontal"
           :thumbnailSrc="require('../../assets/hummingbird-large-cc-by-sa-4.jpg')"
-          title="First card when link"
+          title="First card"
         />
         <KCard
           :to="{ path: '#link-target' }"
           :headingLevel="3"
           orientation="horizontal"
           :thumbnailSrc="require('../../assets/hummingbird-large-cc-by-sa-4.jpg')"
-          title="Second card when link"
+          title="Second card"
         />
       </KCardGrid>
     </section>
@@ -187,13 +187,13 @@
           :headingLevel="3"
           orientation="horizontal"
           :thumbnailSrc="require('../../assets/hummingbird-large-cc-by-sa-4.jpg')"
-          title="First card when not link"
+          title="First card"
         />
         <KCard
           :headingLevel="3"
           orientation="horizontal"
           :thumbnailSrc="require('../../assets/hummingbird-large-cc-by-sa-4.jpg')"
-          title="Second card when not link"
+          title="Second card"
         />
       </KCardGrid>
     </section>
