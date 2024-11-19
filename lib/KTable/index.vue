@@ -143,18 +143,14 @@
 
         if (props.disableBuiltinSorting && props.sortable) {
           // Emit the event to the parent to notify that the sorting has been requested
-          emit(
-            'changeSort',
-            index,
-            sortOrder.value === SORT_ORDER_ASC ? SORT_ORDER_DESC : SORT_ORDER_ASC
-          );
+          emit('changeSort', index, sortOrder.value);
 
           if (props.customSort) {
-            const { sortedRows: newSortedRows, sortOrder: newSortOrder, sortKey: newSortKey } = props.customSort(
-              rows.value,
-              index,
-              sortOrder.value
-            );
+            const {
+              sortedRows: newSortedRows,
+              sortOrder: newSortOrder,
+              sortKey: newSortKey,
+            } = props.customSort(rows.value, index, sortOrder.value);
 
             rows.value = newSortedRows;
             sortOrder.value = newSortOrder;
@@ -268,13 +264,13 @@
         required: false,
       },
       /*
-      * A function that is called when the user sorts the table. The function recieves the current rows, the column index and the current sort order as arguments. This function is called only when `disableBuiltinSorting` is set to `true` and the table is sortable. 
-      */
+       * A function that is called when the user sorts the table. The function recieves the current rows, the column index and the current sort order as arguments. This function is called only when `disableBuiltinSorting` is set to `true` and the table is sortable.
+       */
       customSort: {
         type: Function,
         required: false,
         default: undefined,
-      }
+      },
     },
     data() {
       return {

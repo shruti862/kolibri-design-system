@@ -13,14 +13,14 @@
         </ul>
       </p>
     </DocsPageSection>
-  
+
     <DocsPageSection title="Usage" anchor="#usage">
       <!--Non-Sortable Table-->
       <h3>Table without sorting functionality</h3>
       <p>
         This is an example to show how <code>KTable</code> can be used without any sorting functionality, as a simple table. 
       </p>
-  
+
       <DocsShowCode language="html">
         <KTable
           :headers="headers"
@@ -154,7 +154,7 @@
           };
         },
       </DocsShowCode>
-  
+
       <DocsShow block>
         <KTable
           :headers="slotHeaders"
@@ -471,9 +471,9 @@
         const newRows = rows.reverse();
         return {
           rows: newRows,
-          sortOrder: currentSortOrder === "asc" ? "desc" : "asc",
+          sortOrder: currentSortOrder === 'asc' ? 'desc' : 'asc',
           sortKey: columnIndex,
-        }
+        };
       },
     },
   };
