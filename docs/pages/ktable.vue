@@ -235,7 +235,7 @@
       <!--Table with Default Sort-->
       <h3>Table with Default Sort</h3>
       <p>
-        This is an example to show how <code>KTable</code> can be used with the <code>defaultSort</code> attribute to sort the table based on a particular column. This is useful if you are getting unsorted data from the backend and want to display it in a sorted manner on load. The <code>defaultSort</code> attribute can be used irrespective of the <code>sortable</code> attribute (as <code>sortable</code> is used to configure whether the client has sorting capabilities or not). 
+        This is an example to show how <code>KTable</code> can be used with the <code>defaultSort</code> attribute to sort the table based on a particular column. This is useful if the table needs to be sorted based on any column from the beginning itself (by default). The <code>defaultSort</code> attribute can be used irrespective of the <code>sortable</code> attribute (as <code>sortable</code> is used to configure whether the client has sorting capabilities or not). 
       </p>
 
       <p>
@@ -243,7 +243,7 @@
       </p>
 
       <p>
-        To make use of <code>defaultSort</code>, please ensure that the <code>disableBuiltinSorting</code> attribute is not set to <code>true</code> as it will disable all sorting functionality.
+        To make use of <code>defaultSort</code>, please ensure that the <code>disableBuiltinSorting</code> attribute is not set to <code>true</code>.
       </p>
 
       <DocsShowCode language="html">
@@ -314,7 +314,17 @@
       </p>
 
       <p>
-        You should not use this attribute if the <code>sortable</code> attribute is set to <code>false</code>, as in that case the table headers for sorting will not be displayed at all. If the same is set to <code>true</code>, then table emits a <code>changeSort</code> event (whose implementation can be defined by the user) which needs to return a <code>sortOrder</code> value for the UI headers to toggle.
+        You should not use this attribute if the <code>sortable</code> attribute is set to <code>false</code>, as in that case the table headers for sorting will not be displayed at all. If the same is set to <code>true</code>, then table emits a <code>changeSort</code> event with column index of the header clicked and the sort order to notify the parent component to handle the sorting logic. 
+      </p>
+
+      <p>
+        You can also define a custom sorting logic using the <code>customSort</code> attribute. The <code>customSort</code> attribute takes a function that accepts the rows, column index and the current sort order as arguments. The function should return an object with the following properties:
+        <ul>
+          <li><code>rows</code>: The sorted rows</li>
+          <li><code>sortOrder</code>: The sort order of the column</li>
+          <li><code>sortKey</code>: The column index based on which the sorting was done</li>
+        </ul>
+        These values are then used by the component to update the state of the table data and the headers. You can set the <code>sortOrder</code> to one of <code>['asc', 'desc', null]</code> to convey the sort order to the table. The <code>sortKey</code> is the column index based on which the sorting was done, and can be set to <code>null</code> as well to convey that no sorting was done.
       </p>
 
       <DocsShowCode language="html">
@@ -324,6 +334,7 @@
           caption="Disable Builtin Sorting Example"
           sortable
           disableDefaultSorting
+          :customSort="customSort"
           @changeSort="changeSortHandler"
         />
       </DocsShowCode>
@@ -349,12 +360,19 @@
         },
         methods: {
           changeSortHandler(index, sortOrder) {
-            // Demo Implementation: Reverse the order of the rows and return the opposite sort order
-            console.log('Index:', index, 'Sort Order:', sortOrder);
-            this.changeSortRows = [...this.changeSortRows.reverse()];
-            return sortOrder === 'asc' ? 'desc' : 'asc';
-          }
-        }
+            console.log(`changeSort event emitted with index: ${index} and sortOrder: ${sortOrder}`);
+          },
+          customSort(rows, columnIndex, currentSortOrder) {
+            // Demo Implementation: Reverse the order of the rows irrespective of the current sort order
+            console.log(`Custom sorting logic applied for column index: ${columnIndex}`);
+            const newRows = rows.reverse();
+            return {
+              rows: newRows,
+              sortOrder: currentSortOrder === "asc" ? "desc" : "asc",
+              sortKey: columnIndex,
+            }
+          },
+        },
       </DocsShowCode>
       <!-- eslint-enable -->
 
@@ -365,6 +383,7 @@
           caption="Disable Builtin Sorting Example"
           sortable
           disableBuiltinSorting
+          :customSort="customSort"
           @changeSort="changeSortHandler"
         />
       </DocsShow>
@@ -444,10 +463,17 @@
     },
     methods: {
       changeSortHandler(index, sortOrder) {
-        // Demo Implementation: Reverse the order of the rows and return the opposite sort order
-        console.log('Index:', index, 'Sort Order:', sortOrder);
-        this.changeSortRows = [...this.changeSortRows.reverse()];
-        return sortOrder === 'asc' ? 'desc' : 'asc';
+        console.log(`changeSort event emitted with index: ${index} and sortOrder: ${sortOrder}`);
+      },
+      customSort(rows, columnIndex, currentSortOrder) {
+        // Demo Implementation: Reverse the order of the rows irrespective of the current sort order
+        console.log(`Custom sorting logic applied for column index: ${columnIndex}`);
+        const newRows = rows.reverse();
+        return {
+          rows: newRows,
+          sortOrder: currentSortOrder === "asc" ? "desc" : "asc",
+          sortKey: columnIndex,
+        }
       },
     },
   };
