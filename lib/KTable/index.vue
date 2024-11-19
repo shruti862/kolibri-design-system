@@ -144,18 +144,6 @@
         if (props.disableBuiltinSorting && props.sortable) {
           // Emit the event to the parent to notify that the sorting has been requested
           emit('changeSort', index, sortOrder.value);
-
-          if (props.customSort) {
-            const {
-              sortedRows: newSortedRows,
-              sortOrder: newSortOrder,
-              sortKey: newSortKey,
-            } = props.customSort(rows.value, index, sortOrder.value);
-
-            rows.value = newSortedRows;
-            sortOrder.value = newSortOrder;
-            sortKey.value = newSortKey;
-          }
         } else localHandleSort(index);
       };
 
@@ -262,14 +250,6 @@
         type: Boolean,
         default: false,
         required: false,
-      },
-      /**
-       * Thus function is called when the user clicks on the headers of a sortable table with inbuilt sorting disabled. The function recieves the current rows, the column index and the current sort order as arguments.
-       */
-      customSort: {
-        type: Function,
-        required: false,
-        default: undefined,
       },
     },
     data() {
