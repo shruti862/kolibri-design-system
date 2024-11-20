@@ -9,6 +9,7 @@
     isSkeleton
     aria-hidden="true"
     class="skeleton-card"
+    title="_"
     :style="{ height: height }"
     :orientation="orientation"
     :thumbnailDisplay="thumbnailDisplay"

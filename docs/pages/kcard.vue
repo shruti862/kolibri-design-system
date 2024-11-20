@@ -17,7 +17,7 @@
             :orientation="windowBreakpoint > 2 ? 'horizontal' : 'vertical'"
             thumbnailDisplay="large"
             thumbnailAlign="right"
-            prependTitle="(2)"
+            prependTitle="(1)"
             showProgressInFooter
           />
         </KCardGrid>
@@ -33,6 +33,7 @@
         </li>
         <li>Set a correct heading level (<DocsInternalLink text="Title" href="#title" />)</li>
         <li>Ensure each card title is unique within a card grid (<DocsInternalLink text="Title" href="#title" />)</li>
+        <li>Do not use a heading element within the <code>title</code> slot</li>
         <li>Ensure content provided via slots is accessible (<DocsInternalLink text="Accessibility" href="#a11y" />)</li>
         <li>Even if a thumbnail image is available, provide a placeholder element (<DocsInternalLink text="Placeholder" href="#thumbnail-placeholder" />)</li>
         <li>If using selection controls, use pre-defined labels (<DocsInternalLink text="Selection controls" href="#selection-controls" />)</li>
@@ -148,7 +149,7 @@
         <DocsAnchorTarget anchor="#title" />
       </h3>
 
-      <p><em>Use the <code>title</code> prop to assign an unique title to each card in a grid, and the <code>headingLevel</code> prop to set the heading level on it. The level needs to correspond to the surrounding context.</em> <DocsToggleButton contentId="more-heading-level" /></p>
+      <p><em>Always use the <code>title</code> prop to assign an unique title to each card in a grid, and the <code>headingLevel</code> prop to set the heading level on it. The level needs to correspond to the surrounding context.</em> <DocsToggleButton contentId="more-heading-level" /></p>
 
       <DocsToggleContent id="more-heading-level">
         <p>Examples:</p>
@@ -159,40 +160,79 @@
         </ul>
       </DocsToggleContent>
 
-      <p>The <code>titleMaxLines</code> prop can be used to truncate the title to a set number of lines.</p>
+      <p>The scoped <code>title</code> slot with its <code>titleText</code> attribute can be used to customize the title.</p>
 
-      <p>For more customization, the <code>title</code> slot can be used. Provide only a title text to the slot without wrapping it in a heading element to avoid duplicate headings in the markup output. <DocsToggleButton contentId="more-title-slot" /></p>
+      <DocsShow block :style="{ maxWidth: '600px' }">
+        <KCardGrid
+          layout="1-1-1"
+          :skeletonsConfig="skeletonsConfig9"
+          :loading="loading"  
+        >
+          <DocsKCard
+            :headingLevel="3"
+            orientation="horizontal"
+            thumbnailDisplay="small"
+            thumbnailAlign="right"
+            prependTitle="(1)"
+            hideFooter
+          >
+            <template #title="{ titleText }">
+              <KLabeledIcon icon="readSolid">
+                <KTextTruncator
+                  :text="titleText"
+                  :maxLines="1"
+                />
+              </KLabeledIcon>
+            </template>
+          </DocsKCard>
+        </KCardGrid>
+      </DocsShow>
+
+      <!-- eslint-disable -->
+      <DocsShowCode language="html">
+        <template>
+          <KCardGrid>
+            <KCard
+              :headingLevel="3"
+              title="(1) Learn everything about hummingbirds: their habitats, feeding patterns, and stunning flight abilities"
+              ...
+            >
+              <template #title="{ titleText }">
+                <KLabeledIcon icon="readSolid">
+                  <KTextTruncator
+                    :text="titleText"
+                    :maxLines="1"
+                  />
+                </KLabeledIcon>
+              </template>
+            </KCard>
+          </KCardGrid>
+        </template>
+      </DocsShowCode>
+      <!-- eslint-enable -->
+
+      <p><em>Do not use a heading element within the <code>title</code> slot to avoid duplicate headings in the markup output.</em><code>KCard</code> already handles a heading element internally.<DocsToggleButton contentId="more-title-slot" /></p>
 
       <DocsToggleContent id="more-title-slot">
         <DocsDoNot>
-          <template #do>
-            <!-- eslint-disable -->
-            <DocsShowCode language="html">
-              <template>
-                <KCardGrid>
-                  <KCard
-                    :headingLevel="3"
-                    ...
-                  >
-                    <template #title>
-                      Card title
-                    </template>
-                  </KCard>
-                </KCardGrid>
-              </template>
-            </DocsShowCode>
-            <!-- eslint-enable -->
-          </template>
           <template #not>
             <DocsShowCode language="html">
               <template>
                 <KCardGrid>
                   <KCard
                     :headingLevel="3"
+                    title="(1) Learn everything about hummingbirds"
                     ...
                   >
-                    <template #title>
-                      <h3>Card title</h3>
+                    <template #title="{ titleText }">
+                      <h3>
+                        <KLabeledIcon icon="readSolid">
+                          <KTextTruncator
+                            :text="titleText"
+                            :maxLines="2"
+                          />
+                        </KLabeledIcon>
+                      </h3>
                     </template>
                   </KCard>
                 </KCardGrid>
@@ -201,6 +241,8 @@
           </template>
         </DocsDoNot>
       </DocsToggleContent>
+
+      <p>The <code>titleMaxLines</code> prop can be used to truncate the title to a set number of lines.</p>
 
       <h3>
         Accessibility
@@ -887,6 +929,15 @@
             orientation: 'horizontal',
             thumbnailAlign: 'right',
             height: '180px',
+          },
+        ],
+        skeletonsConfig9: [
+          {
+            breakpoints: [0, 1, 2, 3, 4, 5, 6, 7],
+            orientation: 'horizontal',
+            thumbnailDisplay: 'small',
+            thumbnailAlign: 'right',
+            height: '130px',
           },
         ],
       };

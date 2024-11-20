@@ -17,9 +17,19 @@
       :class="['card-area', ...cardAreaClasses ]"
       :style="{ backgroundColor: $themeTokens.surface }"
     >
+      <!--
+        Utilizing `visuallyhidden`, `aria-labelledby`,
+        and `aria-hidden` to ensure:
+        - More reliable output for some screen readers
+          in both link and non-link cards
+        - Prevents undesired screen reader announcements
+          when title is customized via the `title` slot
+      -->
+      <span :id="`card-title-${_uid}`" class="visuallyhidden">
+        {{ title }}
+      </span>
       <component
         :is="headingElement"
-        v-if="title || $slots.title"
         class="heading"
         :style="{ color: $themeTokens.text }"
       >
@@ -41,46 +51,46 @@
           :to="to"
           draggable="false"
           class="title"
+          :aria-labelledby="`card-title-${_uid}`"
           @focus.native="onTitleFocus"
           @blur.native="onTitleBlur"
         >
-          <!-- @slot Optional slot section containing the title contents, should not contain a heading element. -->
-          <slot 
-            v-if="$slots.title"
-            name="title"
-          ></slot>
-          <KTextTruncator
-            v-else
-            :text="title"
-            :maxLines="titleMaxLines"
-          />
+          <span aria-hidden="true">
+            <!-- @slot A scoped slot via which the `title` can be customized. Provides the `titleText` attribute.-->
+            <slot 
+              v-if="$scopedSlots.title"
+              name="title"
+              :titleText="title"
+            ></slot>
+            <KTextTruncator
+              v-else
+              :text="title"
+              :maxLines="titleMaxLines"
+            />
+          </span>
         </router-link>
         <!--
           Set tabindex to 0 to make title focusable so we
           can use the same focus ring logic like when title
           is a router-link. Relatedly set data-focus so that
           the trackInputModality can set modality to keyboard
-          to make the focus ring display correctly.
-
-          `aria-label` is needed in this mode otherwise some
-          screenreaders don't announce the text in KTextTruncator,
-          for mysterious reasons (likely some internal screenreader logic)
+          to make the focus ring display correctly
           -->
         <span
           v-else
           tabindex="0"
           data-focus="true"
           class="title"
-          :aria-label="title"
+          :aria-labelledby="`card-title-${_uid}`"
           @focus="onTitleFocus"
           @blur="onTitleBlur"
         >
-          <!-- since we're using `aria-label`, hide all unnecessary elements -->
           <span aria-hidden="true">
-            <!-- @slot Optional slot section containing the title contents, should not contain a heading element. -->
+            <!-- @slot A scoped slot via which the `title` can be customized. Provides the `titleText` attribute. -->
             <slot 
-              v-if="$slots.title"
+              v-if="$scopedSlots.title"
               name="title"
+              :titleText="title"
             ></slot>
             <KTextTruncator
               v-else
@@ -235,7 +245,7 @@
        */
       title: {
         type: String,
-        required: false,
+        required: true,
         default: null,
       },
       /**
@@ -465,11 +475,6 @@
 
         return {};
       },
-    },
-    mounted() {
-      if (!this.$slots.title && !this.title) {
-        console.error(`[KCard] provide title via 'title' slot or prop`);
-      }
     },
     methods: {
       onTitleFocus() {
