@@ -17,9 +17,19 @@
       :class="['card-area', ...cardAreaClasses ]"
       :style="{ backgroundColor: $themeTokens.surface }"
     >
+      <!--
+        Utilizing `visuallyhidden`, `aria-labelledby`,
+        and `aria-hidden` to ensure:
+        - More reliable output for some screen readers
+          in both link and non-link cards
+        - Prevents undesired screen reader announcements
+          when title is customized via the `title` slot
+      -->
+      <span :id="`card-title-${_uid}`" class="visuallyhidden">
+        {{ title }}
+      </span>
       <component
         :is="headingElement"
-        v-if="title || $slots.title"
         class="heading"
         :style="{ color: $themeTokens.text }"
       >
@@ -36,24 +46,59 @@
                   selecting card's content in `onClick`)
         -->
         <router-link
+          v-if="to"
           event=""
           :to="to"
           draggable="false"
-          class="link"
-          @focus.native="onLinkFocus"
-          @blur.native="onLinkBlur"
+          class="title"
+          :aria-labelledby="`card-title-${_uid}`"
+          @focus.native="onTitleFocus"
+          @blur.native="onTitleBlur"
         >
-          <!-- @slot Optional slot section containing the title contents, should not contain a heading element. -->
-          <slot 
-            v-if="$slots.title"
-            name="title"
-          ></slot>
-          <KTextTruncator
-            v-else
-            :text="title"
-            :maxLines="titleMaxLines"
-          />
+          <span aria-hidden="true">
+            <!-- @slot A scoped slot via which the `title` can be customized. Provides the `titleText` attribute.-->
+            <slot 
+              v-if="$scopedSlots.title"
+              name="title"
+              :titleText="title"
+            ></slot>
+            <KTextTruncator
+              v-else
+              :text="title"
+              :maxLines="titleMaxLines"
+            />
+          </span>
         </router-link>
+        <!--
+          Set tabindex to 0 to make title focusable so we
+          can use the same focus ring logic like when title
+          is a router-link. Relatedly set data-focus so that
+          the trackInputModality can set modality to keyboard
+          to make the focus ring display correctly
+          -->
+        <span
+          v-else
+          tabindex="0"
+          data-focus="true"
+          class="title"
+          :aria-labelledby="`card-title-${_uid}`"
+          @focus="onTitleFocus"
+          @blur="onTitleBlur"
+        >
+          <span aria-hidden="true">
+            <!-- @slot A scoped slot via which the `title` can be customized. Provides the `titleText` attribute. -->
+            <slot 
+              v-if="$scopedSlots.title"
+              name="title"
+              :titleText="title"
+            ></slot>
+            <KTextTruncator
+              v-else
+              :text="title"
+              :maxLines="titleMaxLines"
+            />
+          </span>
+        </span>
       </component>
 
       <div
@@ -172,14 +217,6 @@
     },
     props: {
       /**
-       * A Vue route object that defines
-       * where the card click should navigate.
-       */
-      to: {
-        type: Object,
-        required: true,
-      },
-      /**
        * HTML heading level in range (h2 - h6) for the title
        */
       headingLevel: {
@@ -195,11 +232,20 @@
         },
       },
       /**
+       * A Vue route object. If provided, card click
+       * will navigate to the target.
+       */
+      to: {
+        type: Object,
+        required: false,
+        default: null,
+      },
+      /**
        * Card title
        */
       title: {
         type: String,
-        required: false,
+        required: true,
         default: null,
       },
       /**
@@ -293,13 +339,13 @@
       return {
         mouseDownTime: 0,
         ThumbnailDisplays,
-        isLinkFocused: false,
+        isTitleFocused: false,
         thumbnailError: false,
       };
     },
     computed: {
       focusStyle() {
-        return this.isLinkFocused ? this.$coreOutline : {};
+        return this.isTitleFocused ? this.$coreOutline : {};
       },
       hasAboveTitleArea() {
         return this.$slots.aboveTitle || this.preserveAboveTitle;
@@ -430,29 +476,28 @@
         return {};
       },
     },
-    mounted() {
-      if (!this.$slots.title && !this.title) {
-        console.error(`[KCard] provide title via 'title' slot or prop`);
-      }
-    },
     methods: {
-      onLinkFocus() {
+      onTitleFocus() {
         if (this.isSkeleton) {
           return;
         }
-        this.isLinkFocused = true;
+        this.isTitleFocused = true;
       },
-      onLinkBlur() {
-        this.isLinkFocused = false;
+      onTitleBlur() {
+        this.isTitleFocused = false;
       },
       onThumbnailError() {
         this.thumbnailError = true;
       },
-      navigate() {
-        if (this.isSkeleton) {
-          return;
+      clickHandler(event) {
+        /**
+         * Emitted when a card is clicked or pressed with enter.
+         * Contains the DOM event in the payload.
+         */
+        this.$emit('click', event);
+        if (this.to) {
+          this.$router.push(this.to);
         }
-        this.$router.push(this.to);
       },
       onFocus(e) {
         /**
@@ -466,13 +511,13 @@
          */
         this.$emit('hover', e);
       },
-      onEnter() {
-        this.navigate();
+      onEnter(event) {
+        this.clickHandler(event);
       },
       onMouseDown() {
         this.mouseDownTime = new Date().getTime();
       },
-      onClick() {
+      onClick(event) {
         if (this.isSkeleton) {
           return;
         }
@@ -482,10 +527,10 @@
         // Calculate the time difference between the mouse button press and release.
         // If the time difference is greater than or equal to 200 milliseconds,
         // it means that the mouse button was pressed and held for a longer time,
-        // which is not typically interpreted as a click event. Do not navigate
-        // in such case.
+        // which is not typically interpreted as a click event so do not run
+        // the click handler.
         if (mouseUpTime - this.mouseDownTime < 200) {
-          this.navigate();
+          this.clickHandler(event);
         } else {
           return;
         }
@@ -581,7 +626,7 @@
     height: 100%;
   }
 
-  .link {
+  .title {
     display: inline-block; // allows title placeholder in the skeleton card
     width: 100%; // allows title placeholder in the skeleton card
     color: inherit;
