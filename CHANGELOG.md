@@ -7,6 +7,63 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#825]
+  - **Description:** Make the `title` prop required
+  - **Products impact:** updated API
+  - **Addresses:** A new use-case in Studio in https://github.com/learningequality/studio/pull/4803 where a side panel needs to be toggled on card click without changing URL.
+  - **Components:** KCard
+  - **Breaking:** yes
+  - **Impacts a11y:** no
+  - **Guidance:** Even if you use the `title` slot, pass the title text via the `title` prop.
+
+[#825]: https://github.com/learningequality/kolibri-design-system/pull/825
+
+- [#825]
+  - **Description:** Change the `title` slot into a scoped slot
+  - **Products impact:** updated API
+  - **Addresses:** A new use-case in Studio in https://github.com/learningequality/studio/pull/4803 where a side panel needs to be toggled on card click without changing URL.
+  - **Components:** KCard
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:**  Consider using the slot's `textTitle` attribute to achieve more intuitive code when customizing the title.
+
+[#825]: https://github.com/learningequality/kolibri-design-system/pull/825
+
+- [#825]
+  - **Description:** Emit `click` event when card is clicked.
+  - **Products impact:** updated API
+  - **Addresses:** A new use-case in Studio in https://github.com/learningequality/studio/pull/4803 where a side panel needs to be toggled on card click without changing URL.
+  - **Components:** KCard
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#825]: https://github.com/learningequality/kolibri-design-system/pull/825
+
+- [#825]
+  - **Description:** Make `to` prop optional and when not provided, do not render the title text as `router-link` but rather as `span`.
+  - **Products impact:** updated API
+  - **Addresses:** A new use-case in Studio in https://github.com/learningequality/studio/pull/4803 where a side panel needs to be toggled on card click without changing URL.
+  - **Components:** KCard
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#825]: https://github.com/learningequality/kolibri-design-system/pull/825
+
+- [#825]
+  - **Description:** Ensure reliable screen readers announcements no matter whether card is link or no, and no matter whether the title is customized via the title slot
+  - **Products impact:** bugfix
+  - **Addresses:** A new use-case in Studio in https://github.com/learningequality/studio/pull/4803 where a side panel needs to be toggled on card click without changing URL.
+  - **Components:** KCard
+  - **Breaking:** no
+  - **Impacts a11y:** yes
+  - **Guidance:** -
+
+[#825]: https://github.com/learningequality/kolibri-design-system/pull/825
+
+
+
 - [#818]
   - **Description:** keyboard navigation on KDropdownMenu
   - **Products impact:** bugfix.
