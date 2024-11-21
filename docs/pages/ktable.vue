@@ -39,15 +39,15 @@
               { label: 'Age', dataType: 'number', columnId: 'age' },
               { label: 'City', dataType: 'string', columnId: 'city' },
             ],
-          rows: [
-              ['John Doe', 28, 'New York'],
-              ['Jane Smith', 34, 'Los Angeles'],
-              ['Samuel Green', 22, 'Chicago'],
-              ['Alice Johnson', 30, 'Houston'],
-              ['Michael Brown', 45, 'Phoenix'],
-              ['Emily Davis', 27, 'Philadelphia'],
-            ]
-          };
+            rows: [
+                ['John Doe', 28, 'New York'],
+                ['Jane Smith', 34, 'Los Angeles'],
+                ['Samuel Green', 22, 'Chicago'],
+                ['Alice Johnson', 30, 'Houston'],
+                ['Michael Brown', 45, 'Phoenix'],
+                ['Emily Davis', 27, 'Philadelphia'],
+              ]
+            };
         },
       </DocsShowCode>
       <!-- eslint-enable -->
@@ -64,10 +64,9 @@
       <h3>Table with sorting</h3>
       <p>
         The <code>KTable</code> offers built-in sorting functionality. There are 4 permissible data types - <code>string</code>,<code>number</code>,<code>date</code> and <code>undefined</code>. Columns declared with <code>undefined</code> data type are not sortable. This example demonstrates a table with sorting enabled via the <code>sortable</code> prop.
-        
       </p>
       <p>
-       Clicking the same header multiple times toggles the sort direction cyclically in the order of ascending, descending, and unsorted.
+        Clicking the same header multiple times toggles the sort direction cyclically in the order of ascending, descending, and unsorted.
       </p>
 
       <DocsShowCode language="html">
@@ -233,7 +232,7 @@
       </DocsShow>
       <!-- eslint-enable -->
 
-      <!--Table with Default Sort-->
+      <!--Table with default sort-->
       <h3>Table with default sort</h3>
       <p>
         This is an example to show how to use the <code>defaultSort</code> prop to sort the table based on a particular column upon the initial load. The <code>defaultSort</code> attribute can be used irrespective of the <code>sortable</code> attribute.
@@ -264,7 +263,6 @@
           caption="Unsortable Table with Rows Sorted by 'Age' Column"
           :defaultSort="{ columnId: 'age', direction: 'asc' }"
         />
-
       </DocsShowCode>
 
       <!-- eslint-disable -->
@@ -308,7 +306,7 @@
         />
       </DocsShow>
 
-      <!-- Disable Builtin Sorting -->
+      <!-- Disable built-in sorting -->
       <h3>Disable built-in sorting</h3>
       <p>
         For <code>sortable</code> tables, you can use the <code>disableBuiltinSorting</code> prop to disable built-in sort function. This is useful when the table receives already sorted data, for example when sorting is done by backend or a custom sorting function outside the table. In this case, when one of the header sort buttons is clicked, the table won't sort the column itself, but only emit the <code>changeSort</code> event to notify the parent component to handle the sorting logic. The event contains column index of the header and the sort order in its payload.
