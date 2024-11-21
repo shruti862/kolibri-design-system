@@ -61,12 +61,13 @@
       </DocsShow>
 
       <!-- Frontend Sorting Example-->
-      <h3>Table with Sorting</h3>
+      <h3>Table with sorting</h3>
       <p>
-        The <code>KTable</code> can be used with sorting functionality, allowing you to sort data on the client side without the need for server requests. There are 4 permissible data types - <code>string</code>,<code>number</code>,<code>date</code> and <code>undefined</code>. Columns declared with <code>undefined</code> data type are not sortable. This example demonstrates a table with sorting enabled. To allow client side sorting, set the <code>sortable</code> attribute to <code>true</code>.
+        The <code>KTable</code> offers built-in sorting functionality. There are 4 permissible data types - <code>string</code>,<code>number</code>,<code>date</code> and <code>undefined</code>. Columns declared with <code>undefined</code> data type are not sortable. This example demonstrates a table with sorting enabled via the <code>sortable</code> prop.
+        
       </p>
       <p>
-        You can also notice that clicking the same header multiple times toggles the sort direction cyclically in the order of <code>asc</code>, <code>desc</code> and <code>none</code>. The <code>none</code> state is the default state when the table is loaded by default.
+       Clicking the same header multiple times toggles the sort direction cyclically in the order of ascending, descending, and unsorted.
       </p>
 
       <DocsShowCode language="html">
@@ -233,9 +234,9 @@
       <!-- eslint-enable -->
 
       <!--Table with Default Sort-->
-      <h3>Table with Default Sort</h3>
+      <h3>Table with default sort</h3>
       <p>
-        This is an example to show how <code>KTable</code> can be used with the <code>defaultSort</code> attribute to sort the table based on a particular column. This is useful if the table needs to be sorted based on any column from the beginning itself (by default). The <code>defaultSort</code> attribute can be used irrespective of the <code>sortable</code> attribute (as <code>sortable</code> is used to configure whether the client has sorting capabilities or not). 
+        This is an example to show how to use the <code>defaultSort</code> prop to sort the table based on a particular column upon the initial load. The <code>defaultSort</code> attribute can be used irrespective of the <code>sortable</code> attribute.
       </p>
 
       <p>
@@ -247,7 +248,7 @@
       </p>
 
       <DocsShowCode language="html">
-        <h4>Sortable Table with Rows Sorted by 'Age' Column</h4>
+        <h4>Sortable table with rows sorted by 'Age' column</h4>
         <KTable
           :headers="headers"
           :rows="rows"
@@ -256,7 +257,7 @@
           :defaultSort="{ columnId: 'age', direction: 'asc' }"
         />
 
-        <h4>Unsortable Table with Rows Sorted by 'Age' Column</h4>
+        <h4>Unsortable table with rows sorted by 'Age' column</h4>
         <KTable 
           :headers="headers"
           :rows="rows"
@@ -308,9 +309,9 @@
       </DocsShow>
 
       <!-- Disable Builtin Sorting -->
-      <h3>Disable Builtin Sorting</h3>
+      <h3>Disable built-in sorting</h3>
       <p>
-        You can make use of the <code>disableBuiltinSorting</code> attribute to disable all sorting functionality by the table component. This is useful when you want to display the data in a particular order or you want to define a custom sorting function. 
+        For <code>sortable</code> tables, you can use the <code>disableBuiltinSorting</code> prop to disable built-in sort function. This is useful when the table receives already sorted data, for example when sorting is done by backend or a custom sorting function outside the table. In this case, when one of the header sort buttons is clicked, the table won't sort the column itself, but only emit the <code>changeSort</code> event to notify the parent component to handle the sorting logic. The event contains column index of the header and the sort order in its payload.
       </p>
 
       <p>
