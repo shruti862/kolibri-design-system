@@ -227,7 +227,7 @@
         default: '',
       },
       /**
-       * Set default label
+       * Specifies the label text. Default is  empty  if not provided.
        */
       label: {
         type: String,
@@ -262,7 +262,7 @@
         default: '',
       },
       /**
-       * key attribute to identify individual elements within a list rendered
+       * Used as a key identifier for individual elements in a rendered list.
        */
       keys: {
         type: Object,
@@ -307,8 +307,7 @@
         default: false,
       },
       /**
-       * If provided, shows a KIconButton with the given text
-       *
+       * Displays a KIconButton with the specified text when provided.
        */
       clearText: {
         type: String,
@@ -528,7 +527,7 @@
 
       query() {
         /**
-         * Emit on change query
+         * Emits whenever the query value changes.
          */
         this.$emit('query-change', this.query);
       },
@@ -598,8 +597,7 @@
         value = value ? value : this.multiple ? [] : '';
         this.selection = value;
         /**
-         * Emitted when the value is selected or
-         * Emitted when reset method is called.
+         * Emits an 'input' event with the new value when the selection is updated.
          */
         this.$emit('input', value);
       },
