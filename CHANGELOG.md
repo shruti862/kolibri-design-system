@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#831]
+  - **Description:** Creates the initial KToolbar component as a direct port of UiToolbar
+  - **Products impact:** new API, removed API - adds KToolbar, removes UiToolbar from the keen dir
+  - **Addresses:** N/A
+  - **Components:** UiToolbar, KToolbar
+  - **Breaking:** yes
+  - **Impacts a11y:** no
+  - **Guidance:** Creates initial KToolbar component as a port of UiToolbar. Further changes and iterations to API expected.
+
+[#831]: https://github.com/learningequality/kolibri-design-system/pull/831
+
+
+
 - [#825]
   - **Description:** Make the `title` prop required
   - **Products impact:** updated API
