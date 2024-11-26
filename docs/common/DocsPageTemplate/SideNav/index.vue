@@ -83,6 +83,7 @@
           window.sessionStorage.setItem('nav-filter', newValue);
           //Pushing filter state to the browser history
           const browse = newValue ? `?search=$(encodeURIcomponent(newValue))` : window.location.pathname;
+          window.history.pushState({ filterText: newvalue}),'',browse);
         }
       },
     },
