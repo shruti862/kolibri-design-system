@@ -41,6 +41,7 @@
   import NavSectionList from './NavSectionList';
   import { termList, matches } from '~/common/DocsFilter/utils';
   import tableOfContents from '~/tableOfContents.js';
+import events from '../../../../lib/keen/helpers/events';
 
   export default {
     name: 'SideNav',
@@ -94,6 +95,14 @@
           this.filterText = filterText;
         }
         this.$refs.links.scrollTop = window.sessionStorage.getItem('nav-scroll');
+        //Restoring filter state when a user nagigates back
+        window.addEventListener('popstate',(event => {
+          if (event.state && 'filterText' in event.state) {
+            this.filterText =event.state.filterText;
+          } 
+          }
+          }
+        }))
       }
       // don't show the nav until the state is set
       this.loaded = true;
