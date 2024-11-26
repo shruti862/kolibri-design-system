@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#843]
+  - **Description:** Restore value watcher to update selection in KSelect
+  - **Products impact:** bugfix
+  - **Addresses:** https://github.com/learningequality/kolibri/issues/12821
+  - **Components:** KSelect
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** Fixes a regression
+
+[#843]: https://github.com/learningequality/kolibri-design-system/pull/843
+
+
+
 - [#831]
   - **Description:** Creates the initial KToolbar component as a direct port of UiToolbar
   - **Products impact:** new API, removed API - adds KToolbar, removes UiToolbar from the keen dir
