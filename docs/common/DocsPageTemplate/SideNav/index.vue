@@ -40,8 +40,7 @@
   import throttle from 'lodash/throttle';
   import NavSectionList from './NavSectionList';
   import { termList, matches } from '~/common/DocsFilter/utils';
-  import tableOfContents from '~/tableOfContents.js';
-import events from '../../../../lib/keen/helpers/events';
+  import tableOfContents from '~/tableOfContents.js'
 
   export default {
     name: 'SideNav',
