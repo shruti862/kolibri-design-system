@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#844]
+  - **Description:** Bump kds version to 5.0.0-rc10.
+  - **Products impact:** -.
+  - **Addresses:** -.
+  - **Components:** -.
+  - **Breaking:** -.
+  - **Impacts a11y:** -.
+  - **Guidance:** -.
+
+[#844]: https://github.com/learningequality/kolibri-design-system/pull/844
+
+
+
 - [#843]
   - **Description:** Restore value watcher to update selection in KSelect
   - **Products impact:** bugfix
