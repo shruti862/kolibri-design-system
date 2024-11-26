@@ -492,6 +492,9 @@
     },
 
     watch: {
+      value(inputValue) {
+        this.selection = inputValue;
+      },
       filteredOptions() {
         this.highlightedOption = this.filteredOptions[0];
         resetScroll(this.$refs.optionsList);
