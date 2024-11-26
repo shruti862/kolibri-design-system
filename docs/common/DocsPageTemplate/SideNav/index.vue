@@ -97,16 +97,15 @@ import events from '../../../../lib/keen/helpers/events';
         this.$refs.links.scrollTop = window.sessionStorage.getItem('nav-scroll');
 
         //Restoring filter state when a user navigates back
-        window.addEventListener('popstate',(event => {
+        window.addEventListener('popstate',(event) => {
           if (event.state && 'filterText' in event.state) {
-            this.filterText =event.state.filterText;
-          }else {
-            this,filterText='';//Reset it back
+            this.filterText = event.state.filterText;
+          } else {
+            this.filterText='';//Reset if no filterText is in state
           }
-          })
-          
-          }
-      // don't show the nav until the state is set
+        });
+      }
+          // don't show the nav until the state is set
       this.loaded = true;
     },
     methods: {
