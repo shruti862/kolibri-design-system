@@ -82,7 +82,7 @@
         if (window) {
           window.sessionStorage.setItem('nav-filter', newValue);
           //Pushing filter state to the browser history
-          const url = newValue ? `?search=${encodeURIComponent(newValue)}` : window.location.pathname;
+          const url = newValue ? `?filter=${encodeURIComponent(newValue)}` : window.location.pathname;
           window.history.pushState({ filterText: newValue },'',url);
         }
       },
