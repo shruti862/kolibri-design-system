@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#821]
+  - **Description:** Documentation update for kselect
+  - **Products impact:** none
+  - **Addresses:** [Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.](https://github.com/learningequality/kolibri-design-system/issues/664#issuecomment-2470533019)
+  - **Components:** Kselect
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#821]: https://github.com/learningequality/kolibri-design-system/pull/821
+
+
+
 - [#844]
   - **Description:** Bump kds version to 5.0.0-rc10.
   - **Products impact:** -.
