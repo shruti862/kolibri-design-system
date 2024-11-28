@@ -43,7 +43,7 @@
           :class="labelClasses"
           :style="activeColorStyle"
         >
-          <!-- @slot Displays the label -->
+          <!-- @slot Optional slot as alternative to `label` prop -->
           <slot>{{ label }}</slot>
         </div>
 
@@ -52,7 +52,7 @@
             class="ui-select-display-value"
             :class="{ 'is-placeholder': !hasDisplayText }"
           >
-            <!-- @slot Displays the selected value else placeholder -->
+            <!-- @slot Optional slot to override the display of the selected value -->
             <slot name="display">
               {{ hasDisplayText ? displayText : (
                 hasFloatingLabel && isLabelInline) ? null : placeholder }}
@@ -108,7 +108,7 @@
 
                 @mouseover.native.stop="onMouseover(option)"
               >
-                <!-- @slot Highlights the selected value -->
+                <!-- @slot Optional slot to override the display of the option in the options dropdown -->
                 <slot
                   name="option"
 
@@ -120,7 +120,7 @@
               </KSelectOption>
 
               <div v-show="hasNoResults" class="ui-select-no-results">
-                <!-- @slot Text displayed if no results found -->
+                <!-- @slot Optional slot as alternative to `noResultsText` prop -->
                 <slot name="no-results">
                   {{ noResultsText }}
                 </slot>
@@ -132,14 +132,14 @@
 
       <div v-if="hasFeedback" class="ui-select-feedback">
         <div v-if="showError" class="ui-select-feedback-text">
-          <!-- @slot Displays error text -->
+          <!-- @slot Optional slot as alternative to `invalidText` prop -->
           <slot name="error">
             {{ invalidText }}
           </slot>
         </div>
 
         <div v-else-if="showHelp" class="ui-select-feedback-text">
-          <!-- @slot Displays help text -->
+          <!-- @slot Optional slot as alternative to `help` prop -->
           <slot name="help">
             {{ help }}
           </slot>
@@ -262,7 +262,8 @@
         default: '',
       },
       /**
-       * Used as a key identifier for individual elements in a rendered list.
+       * Object that defines the label, value and image keys in objects of the `options` prop.
+       * Default: { label: 'label', value: 'value', image: 'image' }
        */
       keys: {
         type: Object,
@@ -307,7 +308,7 @@
         default: false,
       },
       /**
-       * Displays a KIconButton with the specified text when provided.
+       * Defines the tooltip and aria-label of the clear button if the select is clearable.
        */
       clearText: {
         type: String,
