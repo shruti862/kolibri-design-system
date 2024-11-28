@@ -100,7 +100,11 @@
           if (event.state && 'filterText' in event.state) {
             this.filterText = event.state.filterText;
           } else {
+        //Reset the search bar if no filter in the URL
+          if (window.location.pathname === '/' && !window.location.search) { 
             this.filterText='';//Reset if no filterText is in state
+
+
           }
         });
       }
