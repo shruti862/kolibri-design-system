@@ -81,9 +81,13 @@
       filterText(newValue) {
         if (window) {
           window.sessionStorage.setItem('nav-filter', newValue);
-          //Pushing filter state to the browser history
-          const url = newValue ? `?filter=${encodeURIComponent(newValue)}` : window.location.pathname;
-          window.history.pushState({ filterText: newValue },'',url);
+         //Clear the filter query when filtertext is empty
+         if (!newValue) {
+          this.$router.replace({ path: this.$route.path,query: {} });
+         }else {
+          //else ,update the filter query param
+          this.$router.push({ path: this.$route.path, query: { ...this.$route.query, filter: newValue}});
+         }
         }
       },
     },
