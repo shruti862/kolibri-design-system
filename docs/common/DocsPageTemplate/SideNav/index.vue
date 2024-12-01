@@ -40,7 +40,7 @@
   import throttle from 'lodash/throttle';
   import NavSectionList from './NavSectionList';
   import { termList, matches } from '~/common/DocsFilter/utils';
-  import tableOfContents from '~/tableOfContents.js'
+  import tableOfContents from '~/tableOfContents.js';
 
   export default {
     name: 'SideNav',
@@ -82,12 +82,12 @@
         if (window) {
           window.sessionStorage.setItem('nav-filter', newValue);
          //Clear the filter query when filtertext is empty
-         if (!newValue) {
+        if (!newValue) {
           this.$router.replace({ path: this.$route.path, query: {} });
-         } else {
+        } else {
           //else ,update the filter query param
           this.$router.push({ path: this.$route.path, query: { ...this.$route.query, filter: newValue}});
-         }
+        }
         }
       },
     },
@@ -108,7 +108,7 @@
           }
         });
       }
-          // don't show the nav until the state is set
+        // don't show the nav until the state is set
       this.loaded = true;
     },
     methods: {
