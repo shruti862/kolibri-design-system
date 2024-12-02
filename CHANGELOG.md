@@ -7,6 +7,18 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#819]
+  - **Description:** This PR addresses the reorganization of content related to Material Design elevation. The Google Material Design elevation image was previously located under the dropdown menu section, which was not relevant to its intended focus on layering and hierarchy. It has been moved to the z-index section for better alignment with layering concepts.
+  - **Products impact:** updated API
+  - **Addresses:** learningequality/kolibri-design-system#813
+  - **Components:**  no
+  - **Impacts a11y:** no
+  - **Guidance:** Clearer guidance reduces the potential for confusion while referring to the drop-shadow docs.
+
+[#819]: https://github.com/learningequality/kolibri-design-system/pull/819
+
+
+
 - [#821]
   - **Description:** Documentation update for kselect
   - **Products impact:** none
