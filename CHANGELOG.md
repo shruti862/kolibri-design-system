@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#846]
+  - **Description:** Added `radiogroup` role to the `KRadioButtonGroup` component as described in https://www.w3.org/WAI/ARIA/apg/patterns/radio/
+  - **Products impact:** none
+  - **Addresses:** addresses #828
+  - **Components:** `KRadioButtonGroup` component.
+  - **Breaking:** No
+  - **Impacts a11y:** yes
+  - **Guidance:** `radiogroup` role offers a better UX to screen reader users by providing context that they are navigating through (and selecting from) a group of related set of options, and how many they have available.
+
+[#846]: https://github.com/learningequality/kolibri-design-system/pull/846
+
+
+
 - [#819]
   - **Description:** This PR addresses the reorganization of content related to Material Design elevation. The Google Material Design elevation image was previously located under the dropdown menu section, which was not relevant to its intended focus on layering and hierarchy. It has been moved to the z-index section for better alignment with layering concepts.
   - **Products impact:** updated API
