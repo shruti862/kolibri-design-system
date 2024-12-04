@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#838]
+  - **Description:** Re-organizes `KCard` styles to improve content tolerance and simplify styles, and fixes the thumbnail overflow problems in horizontal layout with small thumbnail
+  - **Products impact:** bugfix
+  - **Addresses:**  Thumbnail overflow problems in horizontal layout with small thumbnail experienced in Kolibri and Studio
+  - **Components:** `KCard`
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#838]: https://github.com/learningequality/kolibri-design-system/pull/838
+
+
+
 - [#824]
   - **Description:** Adds default sorting functionality feature
   - **Products impact:** new API
