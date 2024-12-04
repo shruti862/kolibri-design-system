@@ -180,7 +180,7 @@
 
 <script>
 
-  import { inject } from '@vue/composition-api';
+  import { inject } from 'vue';
 
   const Orientations = {
     HORIZONTAL: 'horizontal',

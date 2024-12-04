@@ -115,7 +115,7 @@
 
 <script>
 
-  import { computed } from '@vue/composition-api';
+  import { computed } from 'vue';
   import useKResponsiveWindow from '../../lib/composables/useKResponsiveWindow';
 
   export default {

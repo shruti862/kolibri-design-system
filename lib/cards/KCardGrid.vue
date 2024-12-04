@@ -43,7 +43,7 @@
 
 <script>
 
-  import { watch, ref, provide } from '@vue/composition-api';
+  import { watch, ref, provide } from 'vue';
 
   import { LAYOUT_1_1_1, LAYOUT_1_2_2, LAYOUT_1_2_3 } from './gridBaseLayouts';
   import useGridLayout from './useGridLayout';

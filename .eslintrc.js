@@ -1,4 +1,4 @@
-const esLintConfig = require('kolibri-tools/.eslintrc');
+const esLintConfig = require('kolibri-format/.eslintrc');
 
 // Vuetify's helper attributes use hyphens and they would
 // not be recognized if auto-formatted to camel case
@@ -7,7 +7,7 @@ esLintConfig.rules['vue/attribute-hyphenation'] = 0;
 // This rule conflicts with Nuxt page naming
 esLintConfig.rules['kolibri/vue-filename-and-component-name-match'] = 0;
 
-// This rule is currently disabled in kolibri-tools/.eslintrc
+// This rule is currently disabled in kolibri-format/.eslintrc
 esLintConfig.rules['vue/require-default-prop'] = 1;
 
 // max-len rules are unhelpful for documentation

@@ -88,7 +88,7 @@
 
 <script>
 
-  import { ref } from '@vue/composition-api';
+  import { ref } from 'vue';
   import useKLiveRegion from '../../lib/composables/useKLiveRegion';
 
   export default {

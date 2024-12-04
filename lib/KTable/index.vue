@@ -95,7 +95,7 @@
 
 <script>
 
-  import { ref, computed, watch } from '@vue/composition-api';
+  import { ref, computed, watch } from 'vue';
   import useSorting, {
     SORT_ORDER_ASC,
     SORT_ORDER_DESC,

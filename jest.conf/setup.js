@@ -9,7 +9,6 @@ import 'mock-match-media/jest-setup';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueIntl from 'vue-intl';
-import VueCompositionAPI from '@vue/composition-api';
 import KThemePlugin from '../lib/KThemePlugin';
 
 global.beforeEach(() => {
@@ -30,7 +29,6 @@ global.afterEach(() => {
 
 // Register Vue plugins and components
 Vue.use(VueRouter);
-Vue.use(VueCompositionAPI);
 Vue.use(KThemePlugin);
 Vue.use(VueIntl);
 

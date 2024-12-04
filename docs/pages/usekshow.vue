@@ -121,7 +121,7 @@
 
 <script>
 
-  import { ref } from '@vue/composition-api';
+  import { ref } from 'vue';
   import useKShow from '../../lib/composables/useKShow';
   import PropsTable from '../common/DocsPageTemplate/jsdocs/PropsTable';
 
