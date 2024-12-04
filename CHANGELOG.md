@@ -7,6 +7,41 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#824]
+  - **Description:** Adds default sorting functionality feature
+  - **Products impact:** new API
+  - **Addresses:** [#794](https://github.com/learningequality/kolibri-design-system/issues/794)
+  - **Components:** KTable
+  - **Breaking:**  no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#824]: https://github.com/learningequality/kolibri-design-system/pull/824
+
+- [#824]
+  - **Description:**  Adds requirement for `columnId` attribute in all `header` objects
+  - **Products impact:** updated API
+  - **Addresses:** [#794](https://github.com/learningequality/kolibri-design-system/issues/794)
+  - **Components:** KTable
+  - **Breaking:**  yes
+  - **Impacts a11y:** no
+  - **Guidance:** Add a unique column identifier `columnId` to all `header` objects
+
+[#824]: https://github.com/learningequality/kolibri-design-system/pull/824
+
+- [#824]
+  - **Description:** Renames `disableDefaultSorting` prop to `disableBuiltinSorting`
+  - **Products impact:** updated API
+  - **Addresses:** [#794](https://github.com/learningequality/kolibri-design-system/issues/794)
+  - **Components:** KTable
+  - **Breaking:**  yes
+  - **Impacts a11y:** no
+  - **Guidance:** Rename all occurrence of `disableDefaultSorting`
+
+[#824]: https://github.com/learningequality/kolibri-design-system/pull/824
+
+
+
 - [#835]
   - **Description:** Enables the action that updates the contributions spreadsheet
   - **Products impact:** no
