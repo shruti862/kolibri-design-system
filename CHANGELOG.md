@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#835]
+  - **Description:** Enables the action that updates the contributions spreadsheet
+  - **Products impact:** no
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#835]: https://github.com/learningequality/kolibri-design-system/pull/835
+
+
+
 - [#846]
   - **Description:** Added `radiogroup` role to the `KRadioButtonGroup` component as described in https://www.w3.org/WAI/ARIA/apg/patterns/radio/
   - **Products impact:** none
