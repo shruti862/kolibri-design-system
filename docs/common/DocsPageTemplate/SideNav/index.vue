@@ -80,7 +80,6 @@
     watch: {
       filterText(newValue) {
         if (window) {
-          window.sessionStorage.setItem('nav-filter', newValue);
          //Clear the filter query when filtertext is empty
         if (!newValue) {
           this.$router.replace({ path: this.$route.path, query: {} });
@@ -93,10 +92,7 @@
     },
     mounted() {
       if (window) {
-        const filterText = window.sessionStorage.getItem('nav-filter');
-        if (filterText) {
-          this.filterText = filterText;
-        }
+       
         this.$refs.links.scrollTop = window.sessionStorage.getItem('nav-scroll');
 
         //Restoring filter state when a user navigates back
