@@ -41,7 +41,7 @@
   import NavSectionList from './NavSectionList';
   import { termList, matches } from '~/common/DocsFilter/utils';
   import tableOfContents from '~/tableOfContents.js';
-
+ 
   export default {
     name: 'SideNav',
     components: {
@@ -90,23 +90,30 @@
         }
       },
     },
-    mounted() {
-      if (window) {
+   mounted() {
+  if (window) {
+    const { filter } = this.$route.query;
+   // Set filterText from the query parameter if it exists
+    if (filter) {
+      this.filterText = filter;
+    }
+     this.$refs.links.scrollTop = window.sessionStorage.getItem('nav-scroll');
+    // Restoring filter state when a user navigates back
+    window.addEventListener('popstate', (event) => {
+      if (event.state && 'filterText' in event.state) {
+        this.filterText = event.state.filterText;
+      } else {
+        this.filterText = ''; // Reset if no filterText is in state
        
-        this.$refs.links.scrollTop = window.sessionStorage.getItem('nav-scroll');
-
-        //Restoring filter state when a user navigates back
-        window.addEventListener('popstate',(event) => {
-          if (event.state && 'filterText' in event.state) {
-            this.filterText = event.state.filterText;
-          } else {
-            this.filterText='';//Reset if no filterText is in state
-          }
-        });
       }
-        // don't show the nav until the state is set
-      this.loaded = true;
-    },
+    });
+      
+  }
+
+//  Don't show the nav until the state is set
+  this.loaded = true;
+},
+
     methods: {
       throttleHandleScroll: throttle(function handleScroll() {
         window.sessionStorage.setItem('nav-scroll', this.$refs.links.scrollTop);
