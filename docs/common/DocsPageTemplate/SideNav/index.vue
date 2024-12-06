@@ -41,6 +41,7 @@
   import NavSectionList from './NavSectionList';
   import { termList, matches } from '~/common/DocsFilter/utils';
   import tableOfContents from '~/tableOfContents.js';
+  import debounce from 'lodash/debounce';
  
   export default {
     name: 'SideNav',
@@ -51,6 +52,7 @@
       return {
         filterText: '',
         loaded: false,
+        debounceUpdateQuery: null,
       };
     },
     computed: {
@@ -87,6 +89,7 @@
           //else ,update the filter query param
           this.$router.push({ path: this.$route.path, query: { ...this.$route.query, filter: newValue}});
         }
+        this.debouncedUpdateQuery(newValue);
         }
       },
     },
