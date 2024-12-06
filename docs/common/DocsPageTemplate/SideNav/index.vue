@@ -85,39 +85,45 @@
          //Clear the filter query when filtertext is empty
         if (!newValue) {
           this.$router.replace({ path: this.$route.path, query: {} });
-        } else {
+        }
+        else {
           //else ,update the filter query param
           this.$router.push({ path: this.$route.path, query: { ...this.$route.query, filter: newValue}});
         }
         this.debouncedUpdateQuery(newValue);
         }
-      },
+      }
     },
    mounted() {
-  if (window) {
+    if (window) {
     const { filter } = this.$route.query;
-   // Set filterText from the query parameter if it exists
+      // Set filterText from the query parameter if it exists
     if (filter) {
       this.filterText = filter;
     }
      this.$refs.links.scrollTop = window.sessionStorage.getItem('nav-scroll');
-    // Restoring filter state when a user navigates back
-    window.addEventListener('popstate', (event) => {
-      if (event.state && 'filterText' in event.state) {
-        this.filterText = event.state.filterText;
-      } else {
-        this.filterText = ''; // Reset if no filterText is in state
-       
+     // Restoring filter state when a user navigates back
+     window.addEventListener('popstate', (event) => {
+       if (event.state && 'filterText' in event.state) {
+         this.filterText = event.state.filterText;
+       } else {
+         this.filterText = ''; // Reset if no filterText is in state
+       }
+     });
+       // Create debounced function for updating the query
+    this.debouncedUpdateQuery = debounce((newValue) => {
+      if (newValue) {
+        this.$router.push({ path: this.$route.path, query: { ...this.$route.query, filter: newValue } });
+      } 
+      else {
+        this.$router.push({ path: this.$route.path, query: {} });
       }
-    });
-      
-  }
-
-//  Don't show the nav until the state is set
+    }, 2000); // 2-second debounce delay
+    }
+  //  Don't show the nav until the state is set
   this.loaded = true;
 },
-
-    methods: {
+     methods: {
       throttleHandleScroll: throttle(function handleScroll() {
         window.sessionStorage.setItem('nav-scroll', this.$refs.links.scrollTop);
       }, 100),
