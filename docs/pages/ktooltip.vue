@@ -29,7 +29,7 @@
         tooltip with this reference.
       </p>
 
-      <h4>Disabled State</h4>
+      <h3>Disabled State</h3>
 
       <KTooltip reference="disableButton" :refs="$refs" disabled>
         This tooltip is disabled
@@ -51,7 +51,7 @@
         <code>disabled</code> prop is set to <code>true</code> to disable the tooltip.
       </p>
 
-      <h4>Supported Placements</h4>
+      <h3>Supported Placements</h3>
       <div style="display: flex; flex-wrap: wrap;">
         <div style="margin: 10px;">
           <KTooltip reference="topButton" :refs="$refs" placement="top">
@@ -75,7 +75,7 @@
         <code>placement</code> prop is used to specify the placement of the tooltip.
       </p>
 
-      <h4>Max Width</h4>
+      <h3>Max Width</h3>
       <KTooltip reference="maxWidthButton" :refs="$refs" maxWidth="200px">
         This tooltip has a max width of 200px
       </KTooltip>
