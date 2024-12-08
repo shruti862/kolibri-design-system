@@ -22,6 +22,7 @@
     </template>
 
     <!-- Render the separator between items -->
+    <!-- issue :: but right now it is not placing separators between items of list -->
     <template #divider>
       <span class="breadcrumbs-divider">›</span>
     </template>
@@ -34,12 +35,13 @@
         appearance="raised-button"
       >
         <template #menu>
+          <!-- issue :: dropdown menu shows only text of the overflowItems but not the link , I don't know whether i am doing the right way to reference link or not -->
           <KDropdownMenu
             :options="overflowItems
               .filter(item => item.type !== 'separator') // Filter out separators
               .map(item => ({
                 label: item.text, // Display 'text' in the menu
-                link: item.link ? item.link.path : null // Use 'path' for the actual hyperlink
+                link: item.link ? item.link : null 
               }))"
           />
         </template>
