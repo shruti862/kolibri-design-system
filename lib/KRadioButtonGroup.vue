@@ -1,6 +1,9 @@
 <template>
 
-  <div class="k-radio-button-group" role="radiogroup">
+  <div
+    class="k-radio-button-group"
+    role="radiogroup"
+  >
     <!-- @slot For `KRadioButton`s -->
     <slot></slot>
   </div>
@@ -64,7 +67,8 @@
        * Sets a tabIndex attribute on each KRadioButton and adds it to an array to enable navigation
        * between radio buttons using arrow keys in Firefox Browser.
        *
-       * @param {Array<object>} children - An array of objects where each object represents a child component of KRadioButtonGroup.
+       * @param {Array<object>} children - An array of objects where each object represents a child
+       * component of KRadioButtonGroup.
        * @returns {void}
        */
       queryAndAddRadioBtns(children) {
@@ -102,7 +106,7 @@
         }
       },
       focusPreviousRadio(event) {
-        let newFocusedRadioIdx =
+        const newFocusedRadioIdx =
           this.focusedRadioIdx === this.firstRadioIdx
             ? this.lastRadioIdx
             : this.focusedRadioIdx - 1;

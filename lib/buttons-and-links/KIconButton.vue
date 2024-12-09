@@ -14,13 +14,17 @@
     <UiTooltip
       v-if="tooltip"
       :zIndex="24"
-      open-on="hover"
-      :position="tooltipPosition" 
+      openOn="hover"
+      :position="tooltipPosition"
     >
       {{ tooltip }}
     </UiTooltip>
     <!-- UiIconButton used flexbox - 7px is the magic centering number -->
-    <KIcon :icon="icon" :color="color" :style="iconStyles" />
+    <KIcon
+      :icon="icon"
+      :color="color"
+      :style="iconStyles"
+    />
     <!-- @slot Pass sub-components into the button, typically `KDropdownMenu` -->
     <slot name="menu"></slot>
   </KButton>

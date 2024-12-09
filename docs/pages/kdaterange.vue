@@ -1,12 +1,20 @@
 <template>
 
   <DocsPageTemplate apiDocs>
-
-    <DocsPageSection title="Overview" anchor="#overview">
-      The KDateRange is a modal component that contains two input components and a calendar component that 
-      allow for a start and end date selection. 
+    <DocsPageSection
+      title="Overview"
+      anchor="#overview"
+    >
+      The KDateRange is a modal component that contains two input components and a calendar
+      component that allow for a start and end date selection.
       <div>
-        <KButton text="open demo" :primary="true" appearance="flat-button" :style="{ marginTop: '5px' }" @click="modalShown = true" />
+        <KButton
+          text="open demo"
+          :primary="true"
+          appearance="flat-button"
+          :style="{ marginTop: '5px' }"
+          @click="modalShown = true"
+        />
         <ClientOnly>
           <KDateRange
             v-if="modalShown"

@@ -8,7 +8,11 @@
     >
       <template if="loaded">
         <h1 class="header">
-          <KLogo altText="Design System" size="60" :showBackground="true" />
+          <KLogo
+            altText="Design System"
+            size="60"
+            :showBackground="true"
+          />
           <span class="header-text">Design System</span>
         </h1>
 
@@ -22,7 +26,6 @@
           />
         </div>
       </template>
-
     </nav>
 
     <!-- used to help indicate that there is more to see if one scrolls down -->
@@ -55,7 +58,7 @@
         return termList(this.filterText);
       },
       visibleTableOfContents() {
-        let toc = [];
+        const toc = [];
         for (const section of tableOfContents) {
           // if the section title matches, add the entire thing
           if (matches(this.terms, section.title)) {
@@ -64,7 +67,7 @@
           // otherwise, check for matching pages by title and keywords
           else {
             const matchingPages = section.pages.filter(page =>
-              matches(this.terms, page.title + page.keywords.join(' '))
+              matches(this.terms, page.title + page.keywords.join(' ')),
             );
             if (matchingPages.length) {
               toc.push(section.clone({ pages: matchingPages }));

@@ -10,9 +10,7 @@
     ></div>
 
     <!--@slot Default slot where the focusable content will be rendered -->
-    <slot>
-
-    </slot>
+    <slot> </slot>
 
     <!-- Focus trap ending point. If not disabled, focuses this last when tabbing. -->
     <div
@@ -107,8 +105,10 @@
 
 
 <style scoped>
+
   .focus-trap-first,
   .focus-trap-last {
     outline: none; /* Prevents focus outline */
   }
+
 </style>

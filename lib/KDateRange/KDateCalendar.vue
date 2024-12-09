@@ -21,31 +21,78 @@
         @click="goNextMonth"
       />
       <div class="calendar-month-left">
-        <div class="months-text" data-test="previousMonth">
+        <div
+          class="months-text"
+          data-test="previousMonth"
+        >
           {{ monthString(activeMonth) + ' ' + activeYearStart }}
         </div>
-        <ul v-for="weekIndex in 6" :key="weekIndex" class="calendar-days">
+        <ul
+          v-for="weekIndex in 6"
+          :key="weekIndex"
+          class="calendar-days"
+        >
           <li
             v-for="dayInWeekIndex in numOfDays"
             :key="dayInWeekIndex"
             :style="[
-              (selectionOrder(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate) === 'first') ||
-                (selectionOrder(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate) === 'second') ?
-                  { backgroundColor: $themeBrand.primary.v_100 } : {}
+              selectionOrder(
+                weekIndex,
+                dayInWeekIndex,
+                'first',
+                activeMonthDay,
+                activeMonthDate,
+              ) === 'first' ||
+                selectionOrder(
+                  weekIndex,
+                  dayInWeekIndex,
+                  'first',
+                  activeMonthDay,
+                  activeMonthDate,
+                ) === 'second'
+                ? { backgroundColor: $themeBrand.primary.v_100 }
+                : {},
             ]"
-            :class="[{
-              'calendar-days--disabled': isDateDisabled(weekIndex, dayInWeekIndex, activeMonthDay, activeMonthDate) || isDateDisabledLeft(weekIndex, dayInWeekIndex, activeMonthDay),
-              'selected-first': ( selectionOrder(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate) === 'first'),
-              'selected-second': ( selectionOrder(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate) === 'second'),
-            }]"
+            :class="[
+              {
+                'calendar-days-disabled':
+                  isDateDisabled(weekIndex, dayInWeekIndex, activeMonthDay, activeMonthDate) ||
+                  isDateDisabledLeft(weekIndex, dayInWeekIndex, activeMonthDay),
+                'selected-first':
+                  selectionOrder(
+                    weekIndex,
+                    dayInWeekIndex,
+                    'first',
+                    activeMonthDay,
+                    activeMonthDate,
+                  ) === 'first',
+                'selected-second':
+                  selectionOrder(
+                    weekIndex,
+                    dayInWeekIndex,
+                    'first',
+                    activeMonthDay,
+                    activeMonthDate,
+                  ) === 'second',
+              },
+            ]"
             @click="selectFirstItem(weekIndex, dayInWeekIndex)"
           >
             <KDateDay
               :day="getDayCell(weekIndex, dayInWeekIndex, activeMonthDay, activeMonthDate)"
-              :isSelected="isDateSelected(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate)"
-              :isInRange="isDateInRange(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate)"
-              :isDisabled="isDateDisabled(weekIndex, dayInWeekIndex, activeMonthDay, activeMonthDate) || isDateDisabledLeft(weekIndex, dayInWeekIndex, activeMonthDay)"
-              :isLastDay="isLastDay(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate)"
+              :isSelected="
+                isDateSelected(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate)
+              "
+              :isInRange="
+                isDateInRange(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate)
+              "
+              :isDisabled="
+                isDateDisabled(weekIndex, dayInWeekIndex, activeMonthDay, activeMonthDate) ||
+                  isDateDisabledLeft(weekIndex, dayInWeekIndex, activeMonthDay)
+              "
+              :isLastDay="
+                isLastDay(weekIndex, dayInWeekIndex, 'first', activeMonthDay, activeMonthDate)
+              "
               :isEndOfWeek="dayInWeekIndex === 7"
               :isStartOfWeek="dayInWeekIndex === 1"
               :activeMonth="activeMonth"
@@ -54,31 +101,104 @@
         </ul>
       </div>
       <div class="calendar-month-right">
-        <div class="months-text" data-test="currentMonth">
+        <div
+          class="months-text"
+          data-test="currentMonth"
+        >
           {{ monthString(nextActiveMonth) + ' ' + activeYearEnd }}
         </div>
-        <ul v-for="weekIndex in 6" :key="weekIndex" class="calendar-days">
+        <ul
+          v-for="weekIndex in 6"
+          :key="weekIndex"
+          class="calendar-days"
+        >
           <li
             v-for="dayInWeekIndex in numOfDays"
             :key="dayInWeekIndex"
             :style="[
-              (selectionOrder(weekIndex, dayInWeekIndex, 'second', nextActiveMonthDay, nextActiveMonthDate) === 'first') ||
-                (selectionOrder(weekIndex, dayInWeekIndex, 'second', nextActiveMonthDay, nextActiveMonthDate) === 'second') ?
-                  { backgroundColor: $themeBrand.primary.v_100 } : {}
+              selectionOrder(
+                weekIndex,
+                dayInWeekIndex,
+                'second',
+                nextActiveMonthDay,
+                nextActiveMonthDate,
+              ) === 'first' ||
+                selectionOrder(
+                  weekIndex,
+                  dayInWeekIndex,
+                  'second',
+                  nextActiveMonthDay,
+                  nextActiveMonthDate,
+                ) === 'second'
+                ? { backgroundColor: $themeBrand.primary.v_100 }
+                : {},
             ]"
-            :class="[{
-              'calendar-days--disabled': isDateDisabled(weekIndex, dayInWeekIndex, nextActiveMonthDay, nextActiveMonthDate) || isDateDisabledRight(weekIndex, dayInWeekIndex, nextActiveMonthDay),
-              'selected-first': (selectionOrder(weekIndex, dayInWeekIndex, 'second', nextActiveMonthDay, nextActiveMonthDate) === 'first'),
-              'selected-second': (selectionOrder(weekIndex, dayInWeekIndex, 'second', nextActiveMonthDay, nextActiveMonthDate) === 'second')
-            }]"
+            :class="[
+              {
+                'calendar-days-disabled':
+                  isDateDisabled(
+                    weekIndex,
+                    dayInWeekIndex,
+                    nextActiveMonthDay,
+                    nextActiveMonthDate,
+                  ) || isDateDisabledRight(weekIndex, dayInWeekIndex, nextActiveMonthDay),
+                'selected-first':
+                  selectionOrder(
+                    weekIndex,
+                    dayInWeekIndex,
+                    'second',
+                    nextActiveMonthDay,
+                    nextActiveMonthDate,
+                  ) === 'first',
+                'selected-second':
+                  selectionOrder(
+                    weekIndex,
+                    dayInWeekIndex,
+                    'second',
+                    nextActiveMonthDay,
+                    nextActiveMonthDate,
+                  ) === 'second',
+              },
+            ]"
             @click="selectSecondItem(weekIndex, dayInWeekIndex)"
           >
             <KDateDay
               :day="getDayCell(weekIndex, dayInWeekIndex, nextActiveMonthDay, nextActiveMonthDate)"
-              :isSelected="isDateSelected(weekIndex, dayInWeekIndex, 'second', nextActiveMonthDay, nextActiveMonthDate)"
-              :isInRange="isDateInRange(weekIndex, dayInWeekIndex, 'second', nextActiveMonthDay, nextActiveMonthDate)"
-              :isDisabled="isDateDisabled(weekIndex, dayInWeekIndex, nextActiveMonthDay, nextActiveMonthDate) || isDateDisabledRight(weekIndex, dayInWeekIndex, nextActiveMonthDay)"
-              :isLastDay="isLastDay(weekIndex, dayInWeekIndex, 'second', nextActiveMonthDay, nextActiveMonthDate)"
+              :isSelected="
+                isDateSelected(
+                  weekIndex,
+                  dayInWeekIndex,
+                  'second',
+                  nextActiveMonthDay,
+                  nextActiveMonthDate,
+                )
+              "
+              :isInRange="
+                isDateInRange(
+                  weekIndex,
+                  dayInWeekIndex,
+                  'second',
+                  nextActiveMonthDay,
+                  nextActiveMonthDate,
+                )
+              "
+              :isDisabled="
+                isDateDisabled(
+                  weekIndex,
+                  dayInWeekIndex,
+                  nextActiveMonthDay,
+                  nextActiveMonthDate,
+                ) || isDateDisabledRight(weekIndex, dayInWeekIndex, nextActiveMonthDay)
+              "
+              :isLastDay="
+                isLastDay(
+                  weekIndex,
+                  dayInWeekIndex,
+                  'second',
+                  nextActiveMonthDay,
+                  nextActiveMonthDate,
+                )
+              "
               :isEndOfWeek="dayInWeekIndex === 7"
               :isStartOfWeek="dayInWeekIndex === 1"
               :activeMonth="nextActiveMonth"
@@ -245,7 +365,7 @@
         this.dateRange = Object.assign(
           {},
           this.dateRange,
-          this.getNewDateRange(result, this.activeMonth, this.activeYearStart)
+          this.getNewDateRange(result, this.activeMonth, this.activeYearStart),
         );
         this.$emit('updateSelectedDates', this.dateRange);
       },
@@ -254,7 +374,7 @@
         this.dateRange = Object.assign(
           {},
           this.dateRange,
-          this.getNewDateRange(result, this.nextActiveMonth, this.activeYearEnd)
+          this.getNewDateRange(result, this.nextActiveMonth, this.activeYearEnd),
         );
         this.$emit('updateSelectedDates', this.dateRange);
       },
@@ -284,7 +404,7 @@
           this.isValidDate(this.selectedEndDate) &&
           isAfter(this.selectedEndDate, this.selectedStartDate) &&
           format(this.selectedStartDate, 'DD/MM/YYYY') !==
-            format(this.selectedEndDate, 'DD/MM/YYYY')
+          format(this.selectedEndDate, 'DD/MM/YYYY')
         ) {
           if (
             this.selectedStartDate &&
@@ -324,7 +444,8 @@
         return !(result > 0 && result <= activeMonthDate);
       },
       /**
-       * returns true for disabled dates before the firstAllowedDate; should be visible but grayed out
+       * returns true for disabled dates before the firstAllowedDate;
+       * should be visible but grayed out
        */
       isDateDisabledLeft(weekIndex, dayInWeekIndex, activeMonthDay) {
         const result = this.getDayIndexInMonth(weekIndex, dayInWeekIndex, activeMonthDay);
@@ -347,7 +468,7 @@
           weekIndex,
           dayInWeekIndex,
           nextActiveMonthDay,
-          nextActiveMonthDate
+          nextActiveMonthDate,
         );
         const lastDay =
           key === 'first'
@@ -454,7 +575,7 @@
     margin-top: 6px;
   }
 
-  .calendar-days li.calendar-days--disabled {
+  .calendar-days li.calendar-days-disabled {
     pointer-events: none;
     cursor: not-allowed;
     opacity: 0.3;
