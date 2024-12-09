@@ -2,7 +2,7 @@
 
   <div
     v-if="showGrid"
-    class="card-grid"
+    class="k-card-grid"
   >
     <transition name="fade" mode="out-in" appear>
       <ul
@@ -31,7 +31,7 @@
 
     <div
       v-if="debug"
-      class="debug"
+      class="k-debug"
     >
       <div>DEBUG</div>
       <div>breakpoint: {{ windowBreakpoint }}</div>
@@ -194,7 +194,7 @@
     opacity: 0;
   }
 
-  .card-grid {
+  .k-card-grid {
     position: relative; // for '.debug' absolute positioning
   }
 
@@ -208,7 +208,7 @@
     list-style: none;
   }
 
-  .debug {
+  .k-debug {
     position: absolute;
     top: 0;
     left: 0;
