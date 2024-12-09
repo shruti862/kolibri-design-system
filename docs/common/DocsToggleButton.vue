@@ -1,6 +1,9 @@
 <template>
 
-  <button class="toggle" @click="onClick">
+  <button
+    class="toggle"
+    @click="onClick"
+  >
     <span v-if="show">{{ hideText }}<KIcon icon="dropup" /></span>
     <span v-else>{{ showText }}<KIcon icon="dropdown" /></span>
   </button>
@@ -83,6 +86,7 @@
 
     &:hover {
       color: $link-hover-color;
+
       svg {
         fill: $link-hover-color;
       }

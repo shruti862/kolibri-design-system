@@ -1,6 +1,10 @@
 <template>
 
-  <div class="grid-item" :class="unitClass" :style="computedStyle">
+  <div
+    class="grid-item"
+    :class="unitClass"
+    :style="computedStyle"
+  >
     <div
       :class="{ debug: gridMetrics.debug, error: !validInputs }"
       :dir="alignment === 'auto' ? 'auto' : null"
@@ -109,7 +113,7 @@
         if (this.computedSpan > this.gridMetrics.numCols) {
           // eslint-disable-next-line no-console
           console.error(
-            `Item span (${this.computedSpan}) is larger than grid size (${this.gridMetrics.numCols})`
+            `Item span (${this.computedSpan}) is larger than grid size (${this.gridMetrics.numCols})`,
           );
           return false;
         }

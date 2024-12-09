@@ -1,11 +1,15 @@
 <template>
 
-  <span v-if="!textEmpty" :style="appearanceOverrides">
+  <span
+    v-if="!textEmpty"
+    :style="appearanceOverrides"
+  >
     <template v-if="text">
       {{ text }}
     </template>
     <template v-else>
-      <!-- @slot Pass sub-components to render, if none of the nodes in the entire node hierarchy contain text, then the `KEmptyPlaceholder` component will be rendered -->
+      <!-- @slot Pass sub-components to render, if none of the nodes in the entire node hierarchy
+       contain text, then the `KEmptyPlaceholder` component will be rendered -->
       <slot></slot>
     </template>
   </span>

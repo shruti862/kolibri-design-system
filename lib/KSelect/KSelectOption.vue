@@ -1,10 +1,23 @@
 <template>
 
-  <li class="ui-select-option" :class="classes" :style="selectedStyle">
+  <li
+    class="ui-select-option"
+    :class="classes"
+    :style="selectedStyle"
+  >
     <slot>
-      <div v-if="multiple" class="ui-select-option-checkbox" :style="selectedStyle">
+      <div
+        v-if="multiple"
+        class="ui-select-option-checkbox"
+        :style="selectedStyle"
+      >
         <UiIcon v-if="selected">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
             <path
               d="M9.984 17.016l9-9-1.406-1.453-7.594 7.594-3.563-3.563L5.016
             12zm9-14.016C20.11 3 21 3.938 21 5.016v13.97C21 20.062 20.11 21 18.984
@@ -14,7 +27,12 @@
         </UiIcon>
 
         <UiIcon v-else>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
             <path
               d="M18.984 3C20.062 3 21 3.938 21 5.016v13.97C21 20.062 20.062
             21 18.984 21H5.014C3.938 21 3 20.064 3 18.986V5.015C3 3.94 3.936
@@ -24,16 +42,23 @@
         </UiIcon>
       </div>
 
-      <div v-if="type === 'basic'" class="ui-select-option-basic">
+      <div
+        v-if="type === 'basic'"
+        class="ui-select-option-basic"
+      >
         {{ option[keys.label] || option }}
       </div>
 
-      <div v-if="type === 'image'" class="ui-select-option-image">
-        <div class="ui-select-option-image-object" :style="imageStyle"></div>
-
+      <div
+        v-if="type === 'image'"
+        class="ui-select-option-image"
+      >
         <div
-          class="ui-select-option-image-text"
-        >
+          class="ui-select-option-image-object"
+          :style="imageStyle"
+        ></div>
+
+        <div class="ui-select-option-image-text">
           {{ option[keys.label] }}
         </div>
       </div>

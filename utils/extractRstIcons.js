@@ -36,10 +36,12 @@ const consola = require('consola');
 // Within iconDefinitions.js, match the main object: `const KolibriIcons = {...}`
 const MAIN_OBJECT_PATTERN = /const KolibriIcons = {(.*?\n)}/s;
 
-// Within the main object, match all individual definition objects: `  someIconName: { icon: require('./some/icon/path'), ...}`
+// Within the main object, match all individual definition objects:
+// `  someIconName: { icon: require('./some/icon/path'), ...}`
 const ICON_DEFINITION_PATTERN = /\n {2}(\w+): {.*?\s+icon:\s+require\('(.+?)'\).*?},/gs;
 
-// Within a definition object, match a defaultColor attribute: `defaultColor: themeTokens().someColor`
+// Within a definition object, match a defaultColor attribute:
+// `defaultColor: themeTokens().someColor`
 const ICON_DEFINITION_COLOR_PATTERN = /defaultColor:\s+themeTokens\(\)\.(\w+)/s;
 
 // Within an icon file, match just the SVG tag
@@ -69,7 +71,7 @@ function writeRstIcons() {
       // what to dump into icon-replacements.txt? (used in rst_prolog)
       const wrapperSpanColorClass = colorMatch ? ` design-system-icon-color-${colorMatch[1]}` : '';
       output.push(
-        `.. |${aliasName}| replace:: :raw-html:\`<span class="design-system-icon${wrapperSpanColorClass}">${svgContent}</span>\``
+        `.. |${aliasName}| replace:: :raw-html:\`<span class="design-system-icon${wrapperSpanColorClass}">${svgContent}</span>\``,
       );
     }
 
@@ -77,7 +79,7 @@ function writeRstIcons() {
     output.sort();
     const outputPath = path.resolve('./docs/rstIconReplacements.txt');
     fs.writeFile(outputPath, output.join('\n') + '\n', () =>
-      consola.info(`Wrote rst icon replacement strings to ${outputPath}`)
+      consola.info(`Wrote rst icon replacement strings to ${outputPath}`),
     );
   });
 }

@@ -4,19 +4,23 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th class="stretch">
-          Description
-        </th>
+        <th class="stretch">Description</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(event, i) in publicApi" :key="i">
+      <tr
+        v-for="(event, i) in publicApi"
+        :key="i"
+      >
         <td class="first-col">
           <code>{{ event.name }}</code>
           <DocsAnchorTarget :anchor="`#event:${event.name}`" />
         </td>
         <td>
-          <vue-simple-markdown v-if="event.description" :source="event.description" />
+          <vue-simple-markdown
+            v-if="event.description"
+            :source="event.description"
+          />
           <KEmptyPlaceholder v-else />
         </td>
       </tr>

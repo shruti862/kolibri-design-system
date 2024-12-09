@@ -13,7 +13,11 @@
     <div>
       <!-- @slot Description of modal -->
       <slot name="description">
-        <p id="modal-description" ref="description" class="description">
+        <p
+          id="modal-description"
+          ref="description"
+          class="description"
+        >
           {{ description }}
         </p>
       </slot>
@@ -220,7 +224,7 @@
         firstAllowedDate: this.firstAllowedDate,
       };
       this.validationMachine = interpret(
-        validationMachine.withContext({ ...initialContext, ...currentContext })
+        validationMachine.withContext({ ...initialContext, ...currentContext }),
       );
       this.validationMachine.start();
 

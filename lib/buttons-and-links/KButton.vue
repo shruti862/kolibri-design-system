@@ -28,7 +28,10 @@
     <slot v-if="$slots.default"></slot>
 
     <template>
-      <span class="link-text" :style="textStyle">{{ text }}</span>
+      <span
+        class="link-text"
+        :style="textStyle"
+      >{{ text }}</span>
     </template>
 
     <!-- @slot Slot alternative to the `iconAfter` prop -->
@@ -48,7 +51,7 @@
       class="dropdown-arrow"
       :style="arrowStyles"
       data-test="dropdownIcon"
-      style="width: 24px; height: 24px;"
+      style="width: 24px; height: 24px"
     />
   </component>
 

@@ -4,20 +4,17 @@
     <div
       class="overlay"
       :style="marginLeftStyle"
-    >
-    </div>
+    ></div>
     <div
       v-for="n in cols - 1"
       :key="n"
       class="overlay"
       :style="gutterStyle(n)"
-    >
-    </div>
+    ></div>
     <div
       class="overlay"
       :style="marginRightStyle"
-    >
-    </div>
+    ></div>
   </div>
 
 </template>

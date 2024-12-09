@@ -15,14 +15,53 @@
     :aria-label="altText"
   >
     <title>{{ altText }}</title>
-    <use v-if="showBackground" :href="backgroundHref" :fill="blobColor" :mask="applyMask ? 'url(#cutout-mask)' : null" />
-    <use v-if="!applyMask" href="#body" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#right-wing-inner" class="wing-inner" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#right-wing-middle" class="wing-middle" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#right-wing-outer" class="wing-outer" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#left-wing-inner" class="wing-inner" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#left-wing-middle" class="wing-middle" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#left-wing-outer" class="wing-outer" :stroke="strokeColor" />
+    <use
+      v-if="showBackground"
+      :href="backgroundHref"
+      :fill="blobColor"
+      :mask="applyMask ? 'url(#cutout-mask)' : null"
+    />
+    <use
+      v-if="!applyMask"
+      href="#body"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#right-wing-inner"
+      class="wing-inner"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#right-wing-middle"
+      class="wing-middle"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#right-wing-outer"
+      class="wing-outer"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#left-wing-inner"
+      class="wing-inner"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#left-wing-middle"
+      class="wing-middle"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#left-wing-outer"
+      class="wing-outer"
+      :stroke="strokeColor"
+    />
     <defs>
       <g id="blob-background">
         <path
@@ -34,7 +73,12 @@
         />
       </g>
       <g id="rect-background">
-        <rect width="200" height="200" rx="20" ry="20" />
+        <rect
+          width="200"
+          height="200"
+          rx="20"
+          ry="20"
+        />
       </g>
       <g id="body">
         <path
@@ -42,13 +86,13 @@
           151.879 115.5 154.5C114.566 159.01 110.376 162.409 106.255 159.3C104.108 157.681
           102.698 154.847 102.209 152.3C101.265 147.375 102.751 141.099 105 133.5ZM105 133.5C92
           121.5 80.5894 106.993 86.0001 88C87.8773 81.4102 91.5066 76.5374 92.5907 67.8576C92.9229
-          65.1979 92.0525 63.0863 92.5907 60.3303C93.1958 57.2315 95.7567 53.5948 99.6458 52.8029C101.94
-          52.3358 104.538 52.8993 106.701 54.6847C108.251 55.9644 109.53 57.5443 109.801 59.5775C110.137
-          62.0918 109.848 65.8372 109.969 68.8091C110.064 71.1567 111.01 74.3275 111.846 76.5C123.727
-          101.615 117 110.5 105 133.5ZM102.455 52.7427C104.844 53.1793 107.316 54.5807 111.846
-          51.9511C117.52 46.8315 124.682 39.4836 129.898 34.0323C123.952 40.1759 122.341 41.8109
-          114.35 49.692C112.985 51.7283 111.085 54.0494 110.647 55.8138C110.089 58.0588 109.812
-          61.4633 109.967 63.8191"
+          65.1979 92.0525 63.0863 92.5907 60.3303C93.1958 57.2315 95.7567 53.5948 99.6458 
+          2.8029C101.94 52.3358 104.538 52.8993 106.701 54.6847C108.251 55.9644 109.53 57.5443
+          109.801 59.5775C110.137 62.0918 109.848 65.8372 109.969 68.8091C110.064 71.1567 111.01
+          74.3275 111.846 76.5C123.727 101.615 117 110.5 105 133.5ZM102.455 52.7427C104.844 53.1793
+          107.316 54.5807 111.846 51.9511C117.52 46.8315 124.682 39.4836 129.898 34.0323C123.952
+          40.1759 122.341 41.8109 114.35 49.692C112.985 51.7283 111.085 54.0494 110.647
+          55.8138C110.089 58.0588 109.812 61.4633 109.967 63.8191"
           stroke-width="6"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -110,15 +154,48 @@
       </g>
       <mask id="cutout-mask">
         <!-- Start with a white rectangle as the base of the mask -->
-        <rect x="0" y="0" width="200" height="200" fill="white" />
+        <rect
+          x="0"
+          y="0"
+          width="200"
+          height="200"
+          fill="white"
+        />
         <!-- Cut out the shapes that make up the logo from the mask -->
-        <use href="#body" stroke="black" />
-        <use href="#right-wing-inner" class="wing-inner" stroke="black" />
-        <use href="#right-wing-middle" class="wing-middle" stroke="black" />
-        <use href="#right-wing-outer" class="wing-outer" stroke="black" />
-        <use href="#left-wing-inner" class="wing-inner" stroke="black" />
-        <use href="#left-wing-middle" class="wing-middle" stroke="black" />
-        <use href="#left-wing-outer" class="wing-outer" stroke="black" />
+        <use
+          href="#body"
+          stroke="black"
+        />
+        <use
+          href="#right-wing-inner"
+          class="wing-inner"
+          stroke="black"
+        />
+        <use
+          href="#right-wing-middle"
+          class="wing-middle"
+          stroke="black"
+        />
+        <use
+          href="#right-wing-outer"
+          class="wing-outer"
+          stroke="black"
+        />
+        <use
+          href="#left-wing-inner"
+          class="wing-inner"
+          stroke="black"
+        />
+        <use
+          href="#left-wing-middle"
+          class="wing-middle"
+          stroke="black"
+        />
+        <use
+          href="#left-wing-outer"
+          class="wing-outer"
+          stroke="black"
+        />
       </mask>
     </defs>
   </svg>
@@ -211,7 +288,8 @@
         validator: value => backgroundStyles.includes(value),
       },
       /**
-       * The color scheme for the logo: default, monoBlack, monoWhite, monoPrimary, monoSecondary, whiteGrey, blackGrey
+       * The color scheme for the logo:
+       * default, monoBlack, monoWhite, monoPrimary, monoSecondary, whiteGrey, blackGrey
        */
       colorScheme: {
         type: String,
@@ -257,66 +335,66 @@
 <style>
 
   .animate .wing-inner {
-    animation: flapInner 2s 1.2s both infinite;
+    animation: flap-inner 2s 1.2s both infinite;
   }
 
   .animate .wing-middle {
-    animation: flapMiddle 2s 1.2s both infinite;
+    animation: flap-middle 2s 1.2s both infinite;
   }
 
   .animate .wing-outer {
-    animation: flapOuter 2s 1.2s both infinite;
+    animation: flap-outer 2s 1.2s both infinite;
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes flapInner {
+  @keyframes flap-inner {
     0% {
       opacity: 0;
     }
+
     10% {
       opacity: 1;
     }
+
     30% {
       opacity: 1;
     }
+
     100% {
       opacity: 0;
     }
   }
 
-  @keyframes flapMiddle {
+  @keyframes flap-middle {
     0% {
       opacity: 0;
     }
+
     20% {
       opacity: 0;
     }
+
     40% {
       opacity: 1;
     }
+
     100% {
       opacity: 0;
     }
   }
 
-  @keyframes flapOuter {
+  @keyframes flap-outer {
     0% {
       opacity: 0;
     }
+
     40% {
       opacity: 0;
     }
+
     50% {
       opacity: 1;
     }
+
     100% {
       opacity: 0;
     }

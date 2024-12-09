@@ -29,7 +29,7 @@
       >
       </span>
     </template>
-  </kcard>
+  </KCard>
 
 </template>
 
@@ -91,6 +91,7 @@
     0% {
       transform: translateX(-100%);
     }
+
     100% {
       transform: translateX(100%);
     }
@@ -115,8 +116,10 @@
     @extend %dropshadow-2dp; // need to re-apply dropshadow because of `oveflow: hidden`
 
     position: relative;
-    overflow: hidden; // contain animation style within card area
-    border-radius: 0.5em; // prevents sharp corner, should match inner card area border radius in KCard
+    // contain animation style within card area
+    overflow: hidden;
+    // prevents sharp corner, should match inner card area border radius in KCard
+    border-radius: 0.5em;
   }
 
   .k-skeleton-card::before {

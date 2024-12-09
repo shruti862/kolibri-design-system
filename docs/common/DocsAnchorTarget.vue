@@ -14,7 +14,11 @@
       />
     </DocsInternalLink>
     <!-- hidden target to account for variable height of header -->
-    <a :id="anchorId" :href="anchor" class="offset-target">#</a>
+    <a
+      :id="anchorId"
+      :href="anchor"
+      class="offset-target"
+    >#</a>
   </div>
 
 </template>

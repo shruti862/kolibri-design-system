@@ -8,32 +8,28 @@
    and remove unused logic.
   -->
 
-
   <transition :name="disableDefaultTransition ? '' : 'ui-progress-circular--transition-fade'">
     <div
       v-if="show(_uid, shouldShow, minVisibleTime)"
       class="ui-progress-circular"
       :class="[classes, { delay }]"
-      :style="{ 'width': size + 'px', 'height': size + 'px' }"
+      :style="{ width: size + 'px', height: size + 'px' }"
     >
       <!-- Alternative circle rendering to explore: http://jsfiddle.net/6e3QJ/29/ -->
       <svg
         v-if="type === 'determinate'"
         class="ui-progress-circular-determinate"
-
         role="progressbar"
         :aria-valuemax="100"
         :aria-valuemin="0"
         :aria-valuenow="progress"
         :height="size"
-
         :width="size"
       >
         <circle
           class="ui-progress-circular-determinate-path"
           fill="transparent"
           stroke-dashoffset="0"
-
           :cx="size / 2"
           :cy="size / 2"
           :r="radius"
@@ -50,10 +46,8 @@
         v-else
         class="ui-progress-circular-indeterminate"
         role="progressbar"
-
         viewBox="25 25 50 50"
         :aria-valuemax="100"
-
         :aria-valuemin="0"
         :style="{ stroke: $themeTokens.loading }"
       >
@@ -64,7 +58,6 @@
           fill="none"
           r="20"
           stroke-miterlimit="10"
-
           :stroke-width="calculatedStroke"
           :style="{
             stroke: $themeTokens.loading,
@@ -93,14 +86,17 @@
     },
     props: {
       /**
-       * One of `'determinate'` or `'indeterminate'`. Determinate loaders represent a known completion percentage, while indeterminate loaders simply show that activity is currently happening.
+       * One of `'determinate'` or `'indeterminate'`.
+       * Determinate loaders represent a known completion percentage.
+       * Indeterminate loaders simply show that activity is currently happening.
        */
       type: {
         type: String,
         default: 'indeterminate', // 'indeterminate' or 'determinate'
       },
       /**
-       * Whether the loader should be displayed or not. It needs to be used instead of `v-if/v-show` for `minVisibleTime` to work.
+       * Whether the loader should be displayed or not.
+       * It needs to be used instead of `v-if/v-show` for `minVisibleTime` to work.
        */
       shouldShow: {
         type: Boolean,
@@ -114,14 +110,19 @@
         default: 0,
       },
       /**
-       * Whether there should be a delay before the loader displays. Useful if the action often takes less than a second or two.
+       * Whether there should be a delay before the loader displays.
+       * Useful if the action often takes less than a second or two.
        */
       delay: {
         type: Boolean,
         default: false,
       },
       /**
-       * Do not hide the loader until `minVisibleTime` in milliseconds. Useful to avoid jarring UX when the actions finishes very fast. In comparison to `delay`, `minVisibleTime` emphasizes that an action associated with the loader is indeed taking place. `shouldShow` prop needs to be used instead of `v-if/v-show` for this to work.
+       * Do not hide the loader until `minVisibleTime` in milliseconds.
+       * Useful to avoid jarring UX when the actions finishes very fast.
+       * In comparison to `delay`, `minVisibleTime` emphasizes that an
+       * action associated with the loader is indeed taking place.
+       * `shouldShow` prop needs to be used instead of `v-if/v-show` for this to work.
        */
       minVisibleTime: {
         type: Number,
@@ -274,7 +275,9 @@
 
   .ui-progress-circular--transition-fade-enter-active,
   .ui-progress-circular--transition-fade-leave-active {
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
   }
 
   .ui-progress-circular--transition-fade-enter,

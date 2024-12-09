@@ -1,7 +1,12 @@
 <template>
 
   <div>
-    <fieldset :aria-label="legendText" class="date-input-fieldset" :aria-describedby="inputId" aria-live="polite">
+    <fieldset
+      :aria-label="legendText"
+      class="date-input-fieldset"
+      :aria-describedby="inputId"
+      aria-live="polite"
+    >
       <KTextBox
         :ref="inputRef"
         :value="value"
@@ -16,7 +21,10 @@
         @input="handleInput"
       />
       <span class="k-date-vhidden">
-        <span v-if="value" :id="inputId">
+        <span
+          v-if="value"
+          :id="inputId"
+        >
           {{ dateDescription }}
         </span>
       </span>

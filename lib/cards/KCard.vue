@@ -14,7 +14,7 @@
     @keyup.enter="onEnter"
   >
     <div
-      :class="['k-card-area', ...cardAreaClasses ]"
+      :class="['k-card-area', ...cardAreaClasses]"
       :style="{ backgroundColor: $themeTokens.surface }"
     >
       <div class="k-upper-card-area">
@@ -27,7 +27,10 @@
         - Prevents undesired screen reader announcements
           when title is customized via the `title` slot
       -->
-          <span :id="`k-card-title-${_uid}`" class="visuallyhidden">
+          <span
+            :id="`k-card-title-${_uid}`"
+            class="visuallyhidden"
+          >
             {{ title }}
           </span>
           <component
@@ -58,8 +61,9 @@
               @blur.native="onTitleBlur"
             >
               <span aria-hidden="true">
-                <!-- @slot A scoped slot via which the `title` can be customized. Provides the `titleText` attribute.-->
-                <slot 
+                <!-- @slot A scoped slot via which the `title` can be customized. 
+                 Provides the `titleText` attribute.-->
+                <slot
                   v-if="$scopedSlots.title"
                   name="title"
                   :titleText="title"
@@ -88,8 +92,9 @@
               @blur="onTitleBlur"
             >
               <span aria-hidden="true">
-                <!-- @slot A scoped slot via which the `title` can be customized. Provides the `titleText` attribute. -->
-                <slot 
+                <!-- @slot A scoped slot via which the `title` can be customized. 
+                 Provides the `titleText` attribute. -->
+                <slot
                   v-if="$scopedSlots.title"
                   name="title"
                   :titleText="title"
@@ -199,12 +204,12 @@
   };
 
   function cardValidator(allowedValues, propName) {
-    return function(value) {
+    return function (value) {
       if (!Object.values(allowedValues).includes(value)) {
         throw new Error(
           `Invalid ${propName} value: '${value}'. Allowed values are: ${Object.values(
-            allowedValues
-          ).join(', ')}`
+            allowedValues,
+          ).join(', ')}`,
         );
       }
       return true;
@@ -233,6 +238,7 @@
           if (value <= 6 && value >= 2) {
             return true;
           } else {
+            // eslint-disable-next-line no-console
             console.error(`[KCard] 'headingLevel' must be between 2 and 6.`);
             return false;
           }

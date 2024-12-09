@@ -1,7 +1,10 @@
 <template>
 
-  <div style="direction: inherit;">
-    <div class="pure-g" :style="style">
+  <div style="direction: inherit">
+    <div
+      class="pure-g"
+      :style="style"
+    >
       <!-- @slot Children of a `KFixedGrid` must be `KFixedGridItem` components -->
       <slot></slot>
     </div>

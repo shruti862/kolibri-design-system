@@ -6,11 +6,12 @@
       :href="linkUrl"
       :text="linkText"
     />
-    <span v-else>
-      Local environment
-    </span>
+    <span v-else> Local environment </span>
     <span>|</span>
-    <DocsGithubLink text="Release notes" href="https://github.com/learningequality/kolibri-design-system/releases" />
+    <DocsGithubLink
+      text="Release notes"
+      href="https://github.com/learningequality/kolibri-design-system/releases"
+    />
   </div>
 
 </template>

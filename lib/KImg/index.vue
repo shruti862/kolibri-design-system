@@ -7,7 +7,7 @@
         :alt="alternativeText"
         :style="imgStyles"
         @error="onError"
-        @load="onLoad" 
+        @load="onLoad"
       >
       <span
         v-if="$slots.placeholder"
@@ -19,7 +19,7 @@
 
       <span
         v-if="$slots.topLeft"
-        :style="{ position: 'absolute', top: '0',left: '0', zIndex: '2' }"
+        :style="{ position: 'absolute', top: '0', left: '0', zIndex: '2' }"
       >
         <!-- @slot Places content on top of an image, to its top left corner. -->
         <slot name="topLeft"></slot>
@@ -45,7 +45,6 @@
         <!-- @slot Places content on top of an image, to its bottom right corner. -->
         <slot name="bottomRight"></slot>
       </span>
-
     </span>
   </span>
 
@@ -331,7 +330,8 @@
          */
         if (this.$listeners && this.$listeners.error) {
           /**
-           * Emitted when the image fails to load or a misconfiguration error occurs. Expect either an `Event` or `Error`
+           * Emitted when the image fails to load or a misconfiguration error occurs.
+           * Expect either an `Event` or `Error`
            */
           this.$emit('error', event);
         } else {

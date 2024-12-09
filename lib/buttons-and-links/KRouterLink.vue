@@ -14,13 +14,12 @@
     @mouseenter.native="hovering = true"
     @mouseleave.native="hovering = false"
   >
-
     <!-- @slot Optional slot as alternative to `icon` prop -->
     <slot name="icon">
       <KIcon
         v-if="icon"
         :icon="icon"
-        style="top: 4px;"
+        style="top: 4px"
         :color="iconColor"
         data-test="icon-before"
       />
@@ -30,7 +29,10 @@
     <slot v-if="$slots.default"></slot>
 
     <template v-else>
-      <span class="link-text" :style="spanStyle">{{ text }}</span>
+      <span
+        class="link-text"
+        :style="spanStyle"
+      >{{ text }}</span>
     </template>
 
     <!-- @slot Optional slot as alternative to `iconAfter` prop -->
@@ -38,7 +40,7 @@
       <KIcon
         v-if="iconAfter"
         :icon="iconAfter"
-        style="top: 4px;"
+        style="top: 4px"
         :color="iconColor"
         data-test="icon-after"
       />
