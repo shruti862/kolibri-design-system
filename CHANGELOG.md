@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#504]
+  - **Description:** Remove use of /deep/ in favour of ::v-deep
+  - **Products impact:** none
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** no
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#504]: https://github.com/learningequality/kolibri-design-system/pull/504
+
+
+
 - [#645]
   - **Description:** Upgrades Node.js to v18, along with Kolibri-Tools to v0.16, Jest to v29 and Nuxt to v2.15
   - **Products impact:** none
