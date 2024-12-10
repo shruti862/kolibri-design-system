@@ -11,11 +11,16 @@
       </p>
 
       <!-- eslint-disable -->
+      <!-- prettier-ignore -->
       <DocsShowCode language="javascript">
-        import KThemePlugin from 'kolibri-design-system/lib/KThemePlugin'; import trackInputModality
-        from 'kolibri-design-system/lib/styles/trackInputModality'; import trackMediaType from
-        'kolibri-design-system/lib/styles/trackMediaType'; Vue.use(KThemePlugin);
-        trackInputModality(); trackMediaType();
+        import KThemePlugin from 'kolibri-design-system/lib/KThemePlugin';
+        import trackInputModality from 'kolibri-design-system/lib/styles/trackInputModality';
+        import trackMediaType from 'kolibri-design-system/lib/styles/trackMediaType';
+
+        Vue.use(KThemePlugin);
+
+        trackInputModality();
+        trackMediaType();
       </DocsShowCode>
       <!-- eslint-enable -->
 

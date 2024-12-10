@@ -402,8 +402,15 @@
       </DocsShowCode>
 
       <!-- eslint-disable -->
+      <!-- prettier-ignore -->
       <DocsShowCode language="javascript">
-        export default { methods() { onClick() { console.log('Card clicked'); } }, };
+        export default {
+          methods() {
+            onClick() {
+              console.log('Card clicked');
+            }
+          },
+        };
       </DocsShowCode>
       <!-- eslint-enable -->
 

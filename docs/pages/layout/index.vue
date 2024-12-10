@@ -121,7 +121,7 @@
         Responsive layouts in the design system are built using reactive JavaScript state in Vue
         components rather than CSS media queries. This is done using
         <DocsLibraryLink component="useKResponsiveWindow" /> when reactive window's size information
-        is needed or <DocsLibraryLink component="KResponsiveElement" /> when reactive component's
+        is needed or <DocsLibraryLink component="useKResponsiveElement" /> when reactive component's
         size information is needed.
       </p>
     </DocsPageSection>
