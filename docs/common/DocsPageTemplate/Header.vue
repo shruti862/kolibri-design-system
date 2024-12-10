@@ -1,10 +1,16 @@
 <template>
 
-  <div class="header" :class="{ scrolled }">
+  <div
+    class="header"
+    :class="{ scrolled }"
+  >
     <div>
       <h1 class="header-text">
         <span :class="{ code: codeStyle }">{{ title }}</span>
-        <a href="#" @click="scrollToTop">
+        <a
+          href="#"
+          @click="scrollToTop"
+        >
           <file-svg
             src="../../assets/link.svg"
             class="icon-link"
@@ -15,10 +21,20 @@
       </h1>
       <BranchLink style="float: right" />
     </div>
-    <div style="clear: both;"></div>
-    <ul v-if="sections.length" class="nav">
-      <li v-for="(section, i) in sections" :key="i" class="nav-item">
-        <DocsInternalLink :href="section.anchor" :text="section.title" />
+    <div style="clear: both"></div>
+    <ul
+      v-if="sections.length"
+      class="nav"
+    >
+      <li
+        v-for="(section, i) in sections"
+        :key="i"
+        class="nav-item"
+      >
+        <DocsInternalLink
+          :href="section.anchor"
+          :text="section.title"
+        />
       </li>
     </ul>
   </div>

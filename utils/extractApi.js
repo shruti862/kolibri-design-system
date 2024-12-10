@@ -1,5 +1,5 @@
-const path = require('path');
-const fs = require('fs');
+const path = require('node:path');
+const fs = require('node:fs');
 const docGenAPI = require('vue-docgen-api');
 const globby = require('globby');
 const consola = require('consola');
@@ -48,7 +48,7 @@ async function writeApi() {
 
   const outputPath = path.resolve('./docs/jsdocs.js');
   fs.writeFile(outputPath, docsOutputString + JSON.stringify(output, null, 2), () =>
-    consola.info('Wrote jsdocs to', outputPath)
+    consola.info('Wrote jsdocs to', outputPath),
   );
 }
 

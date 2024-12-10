@@ -4,7 +4,7 @@
     <UiPopover
       v-if="trigger"
       ref="popover"
-      :z-index="100"
+      :zIndex="100"
       :trigger="trigger"
       :containFocus="true"
       :dropdownPosition="position"
@@ -17,11 +17,11 @@
     >
       <!-- Slot to set a header to the dropdown menu -->
       <slot name="header"></slot>
-      <UiMenu 
-        ref="menu" 
-        :options="options" 
-        :hasIcons="hasIcons" 
-        @select="handleSelection" 
+      <UiMenu
+        ref="menu"
+        :options="options"
+        :hasIcons="hasIcons"
+        @select="handleSelection"
       />
     </UiPopover>
   </div>
@@ -31,7 +31,7 @@
 
 <script>
 
-  import { computed } from '@vue/composition-api';
+  import { computed } from 'vue';
   import UiMenu from './keen/UiMenu';
   import UiPopover from './keen/UiPopover';
   import useKContextMenu from './composables/_useKContextMenu';
@@ -62,7 +62,8 @@
     },
     props: {
       /**
-       * The dropdown menu popover flips its position to avoid overflows within the parent. Setting it to false disables the flipping behavior.
+       * The dropdown menu popover flips its position to avoid overflows within the parent.
+       * Setting it to false disables the flipping behavior.
        */
       constrainToScrollParent: {
         type: Boolean,
@@ -145,9 +146,11 @@
       window.removeEventListener('keydown', this.handleOpenMenuNavigation, true);
     },
     methods: {
-      handleOpen() {
+      async handleOpen() {
         this.lastFocusElement = document.activeElement;
-        this.$nextTick(() => this.$nextTick(() => this.setFocus()));
+        await this.$nextTick();
+        await this.$nextTick();
+        this.setFocus();
         window.addEventListener('keydown', this.handleOpenMenuNavigation, true);
       },
       setFocus() {
@@ -197,7 +200,7 @@
         const lastChild = menuElements[menuElements.length - 1];
         const popoverIsOpen = popover.clientWidth > 0 && popover.clientHeight > 0;
         // set current element and its siblings
-        let focusedElement = document.activeElement;
+        const focusedElement = document.activeElement;
 
         // manage rotating through the options using arrow keys
         // UP arrow: .keyCode is depricated and should used only as a fallback
@@ -215,7 +218,8 @@
           //Chekcing if next sibling is divider and skipping it
           const sibling = this.getNextFocusableSibling(focusedElement);
           sibling ? this.$nextTick(() => sibling.focus()) : this.$nextTick(() => this.setFocus());
-          // if a TAB key, not an arrow key, close the popover and advance to next item in the tab index
+          // if a TAB key, not an arrow key,
+          // close the popover and advance to next item in the tab index
         } else if ((event.key == 'Tab' || event.keyCode == 9) && popoverIsOpen) {
           this.$emit('tab', event);
           this.closePopover();
