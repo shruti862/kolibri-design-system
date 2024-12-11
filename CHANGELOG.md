@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#864]
+  - **Description:** Bump nanoid from 3.3.7 to 3.3.8
+  - **Products impact:** Dev Dependency upgrade
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#864]: https://github.com/learningequality/kolibri-design-system/pull/864
+
+
+
 - [#863]
   - **Description:** Updates KDS version to 5.0.0-rc11
   - **Products impact:** -.
