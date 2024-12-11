@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#868]
+  - **Description:** Revert regression in KLogo display
+  - **Products impact:** bugfix
+  - **Addresses:** -
+  - **Components:** KLogo
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#868]: https://github.com/learningequality/kolibri-design-system/pull/868
+
+
+
 - [#849]
   - **Description:** A Reusable action is added to .github repo. This PR makes use of it.
   - **Products impact:** none
