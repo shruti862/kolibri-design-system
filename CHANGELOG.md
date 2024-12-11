@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#866]
+  - **Description:** Bump vue-docgen-api from 4.78.0 to 4.79.2
+  - **Products impact:** Dev Dependency upgrade
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#866]: https://github.com/learningequality/kolibri-design-system/pull/866
+
+
+
 - [#864]
   - **Description:** Bump nanoid from 3.3.7 to 3.3.8
   - **Products impact:** Dev Dependency upgrade
