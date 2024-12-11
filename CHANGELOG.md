@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#849]
+  - **Description:** A Reusable action is added to .github repo. This PR makes use of it.
+  - **Products impact:** none
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#849]: https://github.com/learningequality/kolibri-design-system/pull/849
+
+
+
 - [#866]
   - **Description:** Bump vue-docgen-api from 4.78.0 to 4.79.2
   - **Products impact:** Dev Dependency upgrade
