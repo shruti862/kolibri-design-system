@@ -55,7 +55,6 @@
 </template>
 
 
-
 <script>
 
   import throttle from 'lodash/throttle';
@@ -87,7 +86,7 @@
       },
       overflowDirection: {
         type: String,
-        default: 'start',
+        default: 'end',
         validator(value) {
           return ['start', 'end'].includes(value);
         },

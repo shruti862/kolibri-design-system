@@ -64,6 +64,7 @@
 
 </template>
 
+
 <script>
 
   export default {
@@ -93,6 +94,7 @@
   };
 
 </script>
+
 
 <style scoped lang="scss">
 
@@ -125,12 +127,6 @@
     color: #000000;
   }
 
-  .breadcrumbs-crumb-text {
-    font-weight: bold;
-    color: #007aff;
-    text-decoration: none;
-  }
-
   li {
     position: static;
     display: inline;
@@ -146,7 +142,6 @@
     background-color: transparent;
   }
 
-  /* Dropdown text styles (non-clickable items) */
   .dropdown-text {
     display: inline-block;
     padding: 16px;
