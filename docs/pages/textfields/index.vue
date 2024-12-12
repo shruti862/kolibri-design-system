@@ -50,14 +50,16 @@
 
     <DocsDoNot>
       <template #do>
-        <img src="./assistive-1.png" >
-        <p class="do-dont">Use helper text to indicate an input is required</p>
+        <img src="./assistive-1.png">
+        <p class="do-dont">
+          Use helper text to indicate an input is required
+        </p>
       </template>
     </DocsDoNot>
 
     <DocsDoNot>
       <template #do>
-        <img src="./assistive-2.png" >
+        <img src="./assistive-2.png">
         <p class="do-dont">
           Show a ratio of characters used and total character limit for fields with character limits
         </p>
@@ -76,7 +78,7 @@
 
     <DocsDoNot style="display: inline-block">
       <template #do>
-        <img src="./icon-1.png" >
+        <img src="./icon-1.png">
         <p class="do-dont">
           Include a clear icon to indicate an ability to clear the field when text is present
         </p>
@@ -85,21 +87,25 @@
 
     <DocsDoNot style="display: inline-block">
       <template #do>
-        <img src="./icon-2.png" >
-        <p class="do-dont">Include a copy icon to indicate information is able to be copied</p>
+        <img src="./icon-2.png">
+        <p class="do-dont">
+          Include a copy icon to indicate information is able to be copied
+        </p>
       </template>
     </DocsDoNot>
 
     <DocsDoNot style="display: inline-block">
       <template #do>
-        <img src="./icon-3.png" >
-        <p class="do-dont">Include an info icon that reveals more information on hover or click</p>
+        <img src="./icon-3.png">
+        <p class="do-dont">
+          Include an info icon that reveals more information on hover or click
+        </p>
       </template>
     </DocsDoNot>
 
     <DocsDoNot style="display: inline-block">
       <template #do>
-        <img src="./icon-4.png" >
+        <img src="./icon-4.png">
         <p class="do-dont">
           Include controls that can affect the the input of a numeric text field
         </p>
@@ -108,7 +114,7 @@
 
     <DocsDoNot style="display: inline-block">
       <template #do>
-        <img src="./icon-5.png" >
+        <img src="./icon-5.png">
         <p class="do-dont">
           Include a dropdown icon to indicate the presence of a nested menu component
         </p>
@@ -117,7 +123,7 @@
 
     <DocsDoNot style="display: inline-block">
       <template #do>
-        <img src="./icon-6.png" >
+        <img src="./icon-6.png">
         <p class="do-dont">
           Include an icon signifier to the left of the label to indicates a theme or category of the
           dropdown menu options
@@ -144,22 +150,28 @@
 
       <DocsDoNot>
         <template #do>
-          <img src="./errors-1.png" >
-          <p class="do-dont">Be specific as possible about how to resolve the error</p>
+          <img src="./errors-1.png">
+          <p class="do-dont">
+            Be specific as possible about how to resolve the error
+          </p>
         </template>
       </DocsDoNot>
 
       <DocsDoNot>
         <template #do>
-          <img src="./errors-2.png" >
-          <p class="do-dont">Provide general error text for nonspecific errors</p>
+          <img src="./errors-2.png">
+          <p class="do-dont">
+            Provide general error text for nonspecific errors
+          </p>
         </template>
       </DocsDoNot>
 
       <DocsDoNot>
         <template #not>
-          <img src="./errors-3.png" >
-          <p class="do-dont">Stack error text below helper text</p>
+          <img src="./errors-3.png">
+          <p class="do-dont">
+            Stack error text below helper text
+          </p>
         </template>
       </DocsDoNot>
     </DocsPageSection>
@@ -173,7 +185,7 @@
 
     <DocsDoNot>
       <template #do>
-        <img src="./advanced-1.png" >
+        <img src="./advanced-1.png">
         <p class="do-dont">
           Prompt autocomplete suggestions to help users navigate lengthy dropdown menus
         </p>
@@ -182,8 +194,10 @@
 
     <DocsDoNot>
       <template #do>
-        <img src="./advanced-2.png" >
-        <p class="do-dont">Display multiple selections as chips</p>
+        <img src="./advanced-2.png">
+        <p class="do-dont">
+          Display multiple selections as chips
+        </p>
       </template>
     </DocsDoNot>
 

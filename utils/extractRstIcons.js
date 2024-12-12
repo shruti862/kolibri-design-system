@@ -71,7 +71,7 @@ function writeRstIcons() {
       // what to dump into icon-replacements.txt? (used in rst_prolog)
       const wrapperSpanColorClass = colorMatch ? ` design-system-icon-color-${colorMatch[1]}` : '';
       output.push(
-        `.. |${aliasName}| replace:: :raw-html:\`<span class="design-system-icon${wrapperSpanColorClass}">${svgContent}</span>\``,
+        `.. |${aliasName}| replace:: :raw-html:\`<span class="design-system-icon${wrapperSpanColorClass}">${svgContent}</span>\``
       );
     }
 
@@ -79,7 +79,7 @@ function writeRstIcons() {
     output.sort();
     const outputPath = path.resolve('./docs/rstIconReplacements.txt');
     fs.writeFile(outputPath, output.join('\n') + '\n', () =>
-      consola.info(`Wrote rst icon replacement strings to ${outputPath}`),
+      consola.info(`Wrote rst icon replacement strings to ${outputPath}`)
     );
   });
 }

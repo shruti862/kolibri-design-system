@@ -45,10 +45,10 @@
       </p>
       <DocsDoNot>
         <template #do>
-          <img src="./modal-title.png" >
+          <img src="./modal-title.png">
         </template>
         <template #not>
-          <img src="./modal-badtitle.png" >
+          <img src="./modal-badtitle.png">
         </template>
       </DocsDoNot>
       <h3>Content</h3>
@@ -150,45 +150,61 @@
     >
       <DocsDoNot>
         <template #do>
-          <img src="./modal.png" >
-          <p class="do-dont">Present one modal at a time</p>
+          <img src="./modal.png">
+          <p class="do-dont">
+            Present one modal at a time
+          </p>
         </template>
         <template #not>
-          <img src="./modal-overlay.png" >
-          <p class="do-dont">Overlay modals on modals</p>
+          <img src="./modal-overlay.png">
+          <p class="do-dont">
+            Overlay modals on modals
+          </p>
         </template>
       </DocsDoNot>
 
       <DocsDoNot>
         <template #do>
-          <img src="./modal-checks.png" >
-          <p class="do-dont">Use modals for simple, singular, focused tasks</p>
+          <img src="./modal-checks.png">
+          <p class="do-dont">
+            Use modals for simple, singular, focused tasks
+          </p>
         </template>
         <template #not>
-          <img src="./modal-table.png" >
-          <p class="do-dont">Insert a table or other complex interactions</p>
+          <img src="./modal-table.png">
+          <p class="do-dont">
+            Insert a table or other complex interactions
+          </p>
         </template>
       </DocsDoNot>
 
       <DocsDoNot>
         <template #do>
-          <img src="./modal-delete.png" >
-          <p class="do-dont">Use language which directly implies the result of the action</p>
+          <img src="./modal-delete.png">
+          <p class="do-dont">
+            Use language which directly implies the result of the action
+          </p>
         </template>
         <template #not>
-          <img src="./modal-alert.png" >
-          <p class="do-dont">Use ambiguous language for titles, content, and actions</p>
+          <img src="./modal-alert.png">
+          <p class="do-dont">
+            Use ambiguous language for titles, content, and actions
+          </p>
         </template>
       </DocsDoNot>
 
       <DocsDoNot>
         <template #do>
-          <img src="./modal.png" >
-          <p class="do-dont">Present a single way to continue through and exit the modal</p>
+          <img src="./modal.png">
+          <p class="do-dont">
+            Present a single way to continue through and exit the modal
+          </p>
         </template>
         <template #not>
-          <img src="./modal-back.png" >
-          <p class="do-dont">Use an ‘X’ button, back, or other duplicative actions</p>
+          <img src="./modal-back.png">
+          <p class="do-dont">
+            Use an ‘X’ button, back, or other duplicative actions
+          </p>
         </template>
       </DocsDoNot>
     </DocsPageSection>

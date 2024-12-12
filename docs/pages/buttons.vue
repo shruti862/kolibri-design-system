@@ -107,7 +107,7 @@
             appearance="raised-button"
           />
         </KButtonGroup>
-        <br >
+        <br>
         <KButtonGroup>
           <KButton
             text="Primary"

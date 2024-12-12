@@ -60,7 +60,9 @@
         this HTML and SCSS in a Vue template:
       </p>
       <DocsShowCode language="html">
-        <div class="box">Hello!</div>
+        <div class="box">
+          Hello!
+        </div>
       </DocsShowCode>
       <!-- eslint-disable -->
       <!-- prettier-ignore -->
@@ -77,7 +79,9 @@
       <!-- eslint-enable -->
       <p>can help easily reproduce styles like:</p>
       <DocsShow>
-        <div class="box box-2dp">Hello!</div>
+        <div class="box box-2dp">
+          Hello!
+        </div>
       </DocsShow>
       <p>
         In order for Kolibri to be dynamically themed colors cannot be defined as SCSS constants.
@@ -127,9 +131,15 @@
       </p>
 
       <DocsShow>
-        <div class="box box-1dp">1dp</div>
-        <div class="box box-2dp">2dp</div>
-        <div class="box box-6dp">6dp</div>
+        <div class="box box-1dp">
+          1dp
+        </div>
+        <div class="box box-2dp">
+          2dp
+        </div>
+        <div class="box box-6dp">
+          6dp
+        </div>
       </DocsShow>
 
       <p>Follow the guidance below to decide what depth to use for a drop shadow:</p>
@@ -204,8 +214,12 @@
         responsive:
       </p>
       <DocsShow>
-        <div class="box immediate">Immediate hover</div>
-        <div class="box ease">Easing hover</div>
+        <div class="box immediate">
+          Immediate hover
+        </div>
+        <div class="box ease">
+          Easing hover
+        </div>
       </DocsShow>
       <p>
         Easing functions should be applied to every visual state transition, including color

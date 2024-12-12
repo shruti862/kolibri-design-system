@@ -50,12 +50,16 @@
 
     <DocsDoNot>
       <template #do>
-        <img src="./text-do.png" >
-        <p class="do-dont">Minimize text and rely on interface clarity</p>
+        <img src="./text-do.png">
+        <p class="do-dont">
+          Minimize text and rely on interface clarity
+        </p>
       </template>
       <template #not>
-        <img src="./text-dont.png" >
-        <p class="do-dont">Write repetitive menu option text</p>
+        <img src="./text-dont.png">
+        <p class="do-dont">
+          Write repetitive menu option text
+        </p>
       </template>
     </DocsDoNot>
 
@@ -85,12 +89,16 @@
 
     <DocsDoNot>
       <template #do>
-        <img src="./icon-do.png" >
-        <p class="do-dont">Use iconography as a visual aid for important actions</p>
+        <img src="./icon-do.png">
+        <p class="do-dont">
+          Use iconography as a visual aid for important actions
+        </p>
       </template>
       <template #not>
-        <img src="./icon-dont.png" >
-        <p class="do-dont">Use repetitive iconography in filter menus</p>
+        <img src="./icon-dont.png">
+        <p class="do-dont">
+          Use repetitive iconography in filter menus
+        </p>
       </template>
     </DocsDoNot>
 

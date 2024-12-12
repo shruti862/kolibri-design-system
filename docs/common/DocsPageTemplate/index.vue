@@ -60,7 +60,7 @@
         node =>
           node.componentOptions &&
           node.componentOptions.tag === DocsPageSection.name &&
-          node.componentOptions.propsData.anchor,
+          node.componentOptions.propsData.anchor
       )
       .map(node => node.componentOptions.propsData);
   }

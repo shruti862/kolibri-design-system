@@ -856,7 +856,9 @@
           >
             Load (4 s)
           </KButton>
-          <KButton @click="debug = !debug"> Debug: {{ debug ? 'On' : 'Off' }} </KButton>
+          <KButton @click="debug = !debug">
+            Debug: {{ debug ? 'On' : 'Off' }}
+          </KButton>
         </KButtonGroup>
       </div>
 

@@ -17,9 +17,15 @@
           ariaLabel="Coach reports"
           :tabs="tabs"
         >
-          <template #tabLessons> Lessons tab content </template>
-          <template #tabLearners> Learners tab content </template>
-          <template #tabGroups> Groups tab content </template>
+          <template #tabLessons>
+            Lessons tab content
+          </template>
+          <template #tabLearners>
+            Learners tab content
+          </template>
+          <template #tabGroups>
+            Groups tab content
+          </template>
         </KTabs>
       </DocsShow>
 

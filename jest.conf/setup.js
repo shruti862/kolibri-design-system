@@ -47,14 +47,14 @@ process.on('unhandledRejection', (reason, p) => {
 
 // Copied from https://github.com/kentor/flush-promises/blob/f33ac564190c784019f1f689dd544187f4b77eb2/index.js
 global.flushPromises = function flushPromises() {
-  return new Promise(function (resolve) {
+  return new Promise(function(resolve) {
     setImmediate(resolve);
   });
 };
 
 function removeWhitespaceFromHtml(htmlString) {
   // https://stackoverflow.com/a/33108909
-  return htmlString.replace(/>\s+|\s+</g, function (m) {
+  return htmlString.replace(/>\s+|\s+</g, function(m) {
     return m.trim();
   });
 }
@@ -64,7 +64,7 @@ global.expect.extend({
 
   toBeInDom(received) {
     const pass = removeWhitespaceFromHtml(document.body.innerHTML).includes(
-      removeWhitespaceFromHtml(received),
+      removeWhitespaceFromHtml(received)
     );
     if (pass) {
       return {

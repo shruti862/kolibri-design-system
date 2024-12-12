@@ -201,7 +201,7 @@
         return Array.from({ length: number }, (_, i) =>
           dividerMod && i && i % dividerMod === 0
             ? { type: 'divider' }
-            : { label: `Item ${i + 1}`, icon: 'edit' },
+            : { label: `Item ${i + 1}`, icon: 'edit' }
         );
       },
     },

@@ -64,7 +64,7 @@
         />, described below.
       </p>
       <p>To reduce visual noise, avoid nesting containers in containers.</p>
-      <img src="./containers.png" >
+      <img src="./containers.png">
       <h3>Maximum width</h3>
       <p>
         If a page container contains text, set its maximum width to <code>1000px</code> in order to
@@ -86,7 +86,7 @@
         Use sparingly and reserve them for situations where white space does not properly separate
         elements or groups of elements, such as a table, compact list items, or list sections.
       </p>
-      <img src="./dividers.png" >
+      <img src="./dividers.png">
       <p>
         Dividers may also have internal page container tabs associated with them, such as in Kolibri
         Coach reports and planning pages. These may be added to the design system in the future.
@@ -183,7 +183,7 @@
         The example below shows a small window with four columns. The page container on the left is
         one column wide and the page containers on the right are three columns wide:
       </p>
-      <img src="./nested.png" >
+      <img src="./nested.png">
       <p>
         <strong>Grid items</strong> are a concept specific to Kolibri's grid system, based loosely
         on the
@@ -195,7 +195,7 @@
         each page container on the right, there is a single-column grid item on the left and a
         two-column grid item on the right:
       </p>
-      <img src="./items.png" >
+      <img src="./items.png">
       <p>
         For browser compatibility reasons our grid system is based on <code>inline-block</code> and
         not CSS grids, so the behavior is slightly different and vertical alignment can be somewhat
@@ -327,7 +327,7 @@
         layouts.
       </p>
       <p>The example shown above would probably need to be implemented using nested grids:</p>
-      <img src="./nested2.png" >
+      <img src="./nested2.png">
       <p>
         Here it might make sense to make the outer grid responsive, and implement the inner page
         containers or cards with fixed grids.

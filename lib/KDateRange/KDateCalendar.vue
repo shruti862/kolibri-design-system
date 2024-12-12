@@ -365,7 +365,7 @@
         this.dateRange = Object.assign(
           {},
           this.dateRange,
-          this.getNewDateRange(result, this.activeMonth, this.activeYearStart),
+          this.getNewDateRange(result, this.activeMonth, this.activeYearStart)
         );
         this.$emit('updateSelectedDates', this.dateRange);
       },
@@ -374,7 +374,7 @@
         this.dateRange = Object.assign(
           {},
           this.dateRange,
-          this.getNewDateRange(result, this.nextActiveMonth, this.activeYearEnd),
+          this.getNewDateRange(result, this.nextActiveMonth, this.activeYearEnd)
         );
         this.$emit('updateSelectedDates', this.dateRange);
       },
@@ -404,7 +404,7 @@
           this.isValidDate(this.selectedEndDate) &&
           isAfter(this.selectedEndDate, this.selectedStartDate) &&
           format(this.selectedStartDate, 'DD/MM/YYYY') !==
-          format(this.selectedEndDate, 'DD/MM/YYYY')
+            format(this.selectedEndDate, 'DD/MM/YYYY')
         ) {
           if (
             this.selectedStartDate &&
@@ -468,7 +468,7 @@
           weekIndex,
           dayInWeekIndex,
           nextActiveMonthDay,
-          nextActiveMonthDate,
+          nextActiveMonthDate
         );
         const lastDay =
           key === 'first'

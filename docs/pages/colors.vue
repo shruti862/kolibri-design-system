@@ -63,13 +63,17 @@
       </p>
 
       <DocsShowCode language="html">
-        <div :style="{ color: $themeTokens.error }">This is an error</div>
+        <div :style="{ color: $themeTokens.error }">
+          This is an error
+        </div>
       </DocsShowCode>
 
       <p>This will display:</p>
 
       <DocsShow>
-        <div :style="{ color: $themeTokens.error }">This is an error</div>
+        <div :style="{ color: $themeTokens.error }">
+          This is an error
+        </div>
       </DocsShow>
 
       <p>Move style definitions from the template to computed props if the style gets complex.</p>
@@ -83,7 +87,7 @@
       </p>
 
       <DocsShowCode language="html">
-        <input :class="$computedClass({ '::placeholder': { color: $themeTokens.annotation } })" >
+        <input :class="$computedClass({ '::placeholder': { color: $themeTokens.annotation } })">
       </DocsShowCode>
 
       <p>
@@ -108,10 +112,18 @@
       </p>
 
       <DocsShowCode language="html">
-        <div :style="{ backgroundColor: $themePalette.red.v_600 }">base</div>
-        <div :style="{ backgroundColor: $darken1($themePalette.red.v_600) }">$darken1</div>
-        <div :style="{ backgroundColor: $darken2($themePalette.red.v_600) }">$darken2</div>
-        <div :style="{ backgroundColor: $darken3($themePalette.red.v_600) }">$darken3</div>
+        <div :style="{ backgroundColor: $themePalette.red.v_600 }">
+          base
+        </div>
+        <div :style="{ backgroundColor: $darken1($themePalette.red.v_600) }">
+          $darken1
+        </div>
+        <div :style="{ backgroundColor: $darken2($themePalette.red.v_600) }">
+          $darken2
+        </div>
+        <div :style="{ backgroundColor: $darken3($themePalette.red.v_600) }">
+          $darken3
+        </div>
       </DocsShowCode>
       <DocsShow>
         <div
@@ -501,7 +513,7 @@
         for (const color in this.$themePalette) {
           if (color !== 'grey' && typeof this.$themePalette[color] === 'object') {
             palette.push(
-              Object.keys(this.$themePalette[color]).map(variant => `palette.${color}.${variant}`),
+              Object.keys(this.$themePalette[color]).map(variant => `palette.${color}.${variant}`)
             );
           }
         }

@@ -21,8 +21,12 @@
       <code>show(key, shouldShow, minVisibleTime)</code>
 
       <DocsShowCode language="html">
-        <div v-if="show('key-1', isLoading, minVisibleTime)">Loading...</div>
-        <div v-else>Loaded!</div>
+        <div v-if="show('key-1', isLoading, minVisibleTime)">
+          Loading...
+        </div>
+        <div v-else>
+          Loaded!
+        </div>
       </DocsShowCode>
       <!-- eslint-disable -->
       <!-- prettier-ignore -->
@@ -196,7 +200,7 @@
         minVisibleTime.value = minVisibleTimeInput.value;
         isFetching.value = true;
 
-        timeoutId = setTimeout(function () {
+        timeoutId = setTimeout(function() {
           isFetching.value = false;
         }, fetchingTime.value);
       }

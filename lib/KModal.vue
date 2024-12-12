@@ -251,13 +251,13 @@
       if (this.$props.cancelText && !this.$listeners.cancel) {
         // eslint-disable-next-line no-console
         console.error(
-          'A "cancelText" has been set, but there is no "cancel" listener. The "cancel" button may not work correctly.',
+          'A "cancelText" has been set, but there is no "cancel" listener. The "cancel" button may not work correctly.'
         );
       }
       if (this.$props.submitText && !this.$listeners.submit) {
         // eslint-disable-next-line no-console
         console.error(
-          'A "submitText" has been set, but there is no "submit" listener. The "submit" button may not work correctly.',
+          'A "submitText" has been set, but there is no "submit" listener. The "submit" button may not work correctly.'
         );
       }
     },
@@ -303,7 +303,7 @@
        * If there is not enough vertical space, create a vertically scrollable area and a
        * scroll shadow
        */
-      updateContentSectionStyle: debounce(function () {
+      updateContentSectionStyle: debounce(function() {
         if (this.$refs.title && this.$refs.actions) {
           const maxContentHeightCheck =
             this.windowHeight -
@@ -439,18 +439,13 @@
   }
 
   .scroll-shadow {
-    background:
-      linear-gradient(white 30%, hsla(0deg, 0%, 100%, 0)),
+    background: linear-gradient(white 30%, hsla(0deg, 0%, 100%, 0)),
       linear-gradient(hsla(0deg, 0%, 100%, 0) 10px, white 70%) bottom,
       radial-gradient(at top, rgba(0, 0, 0, 0.2), transparent 70%),
       radial-gradient(at bottom, rgba(0, 0, 0, 0.2), transparent 70%) bottom;
     background-repeat: no-repeat;
     background-attachment: local, local, scroll, scroll;
-    background-size:
-      100% 20px,
-      100% 20px,
-      100% 10px,
-      100% 10px;
+    background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
   }
 
   .contains-kselect {

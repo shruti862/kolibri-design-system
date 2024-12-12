@@ -6,7 +6,9 @@
       class="filter"
     />
 
-    <h3 v-if="general.length">General use</h3>
+    <h3 v-if="general.length">
+      General use
+    </h3>
     <div class="icon-table">
       <IconBlock
         v-for="(aliasList, index) in general"
@@ -16,7 +18,9 @@
       />
     </div>
 
-    <h3 v-if="withColor.length">Aliases with default colors</h3>
+    <h3 v-if="withColor.length">
+      Aliases with default colors
+    </h3>
     <div class="icon-table">
       <IconBlock
         v-for="(aliasList, index) in withColor"
@@ -26,7 +30,9 @@
       />
     </div>
 
-    <h3 v-if="learningActivities.length">Learning activities</h3>
+    <h3 v-if="learningActivities.length">
+      Learning activities
+    </h3>
     <div class="icon-table">
       <IconBlock
         v-for="(aliasList, index) in learningActivities"
@@ -36,7 +42,9 @@
       />
     </div>
 
-    <h3 v-if="resourceCategories.length">Resource categories</h3>
+    <h3 v-if="resourceCategories.length">
+      Resource categories
+    </h3>
     <div class="icon-table">
       <IconBlock
         v-for="(aliasList, index) in resourceCategories"
@@ -121,22 +129,22 @@
               !KolibriIcons[alias].learningActivity &&
               !KolibriIcons[alias].resourceCategory
             );
-          }),
+          })
         ).filter(this.termFilter);
       },
       withColor() {
         return sortedIconAliases(
-          getIconGroups(alias => Boolean(KolibriIcons[alias].defaultColor)),
+          getIconGroups(alias => Boolean(KolibriIcons[alias].defaultColor))
         ).filter(this.termFilter);
       },
       learningActivities() {
         return sortedIconAliases(
-          getIconGroups(alias => Boolean(KolibriIcons[alias].learningActivity)),
+          getIconGroups(alias => Boolean(KolibriIcons[alias].learningActivity))
         ).filter(this.termFilter);
       },
       resourceCategories() {
         return sortedIconAliases(
-          getIconGroups(alias => Boolean(KolibriIcons[alias].resourceCategory)),
+          getIconGroups(alias => Boolean(KolibriIcons[alias].resourceCategory))
         ).filter(this.termFilter);
       },
     },

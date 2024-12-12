@@ -200,7 +200,7 @@
       if (this.buttonValue === null) {
         // eslint-disable-next-line no-console
         console.warn(
-          "KRadioButton: 'value' prop is deprecated and will be removed in a future release. Please use 'buttonValue' instead.",
+          "KRadioButton: 'value' prop is deprecated and will be removed in a future release. Please use 'buttonValue' instead."
         );
       }
       if (process.env.NODE_ENV !== 'production') {

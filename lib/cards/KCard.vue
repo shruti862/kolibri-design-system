@@ -204,12 +204,12 @@
   };
 
   function cardValidator(allowedValues, propName) {
-    return function (value) {
+    return function(value) {
       if (!Object.values(allowedValues).includes(value)) {
         throw new Error(
           `Invalid ${propName} value: '${value}'. Allowed values are: ${Object.values(
-            allowedValues,
-          ).join(', ')}`,
+            allowedValues
+          ).join(', ')}`
         );
       }
       return true;

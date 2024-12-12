@@ -113,7 +113,7 @@
         if (this.computedSpan > this.gridMetrics.numCols) {
           // eslint-disable-next-line no-console
           console.error(
-            `Item span (${this.computedSpan}) is larger than grid size (${this.gridMetrics.numCols})`,
+            `Item span (${this.computedSpan}) is larger than grid size (${this.gridMetrics.numCols})`
           );
           return false;
         }

@@ -48,7 +48,7 @@ async function writeApi() {
 
   const outputPath = path.resolve('./docs/jsdocs.js');
   fs.writeFile(outputPath, docsOutputString + JSON.stringify(output, null, 2), () =>
-    consola.info('Wrote jsdocs to', outputPath),
+    consola.info('Wrote jsdocs to', outputPath)
   );
 }
 

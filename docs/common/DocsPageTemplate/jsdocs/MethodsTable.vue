@@ -4,7 +4,9 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th class="stretch">Description</th>
+        <th class="stretch">
+          Description
+        </th>
       </tr>
     </thead>
     <tbody>
