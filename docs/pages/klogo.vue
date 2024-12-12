@@ -1,11 +1,20 @@
 <template>
 
   <DocsPageTemplate apiDocs>
-    <DocsPageSection title="Overview" anchor="#overview">
-      <p><code>KLogo</code> displays the Kolibri logo and provides functionality to manipulate it such as setting its dimensions, color scheme, animation, and background.</p>
+    <DocsPageSection
+      title="Overview"
+      anchor="#overview"
+    >
+      <p>
+        <code>KLogo</code> displays the Kolibri logo and provides functionality to manipulate it
+        such as setting its dimensions, color scheme, animation, and background.
+      </p>
     </DocsPageSection>
 
-    <DocsPageSection title="Usage" anchor="#usage">
+    <DocsPageSection
+      title="Usage"
+      anchor="#usage"
+    >
       <h3>Default display</h3>
       <p>Shows Kolibri logo.</p>
 
@@ -15,10 +24,8 @@
           altText="Kolibri Logo"
           :size="150"
         />
-        <div style="width: 100%; text-align: center; display: none;">
-          <KButton @click="saveSVG('defaultLogoNoBackground')">
-            Save SVG
-          </KButton>
+        <div style="display: none; width: 100%; text-align: center">
+          <KButton @click="saveSVG('defaultLogoNoBackground')"> Save SVG </KButton>
         </div>
       </DocsShow>
       <DocsShowCode language="html">
@@ -38,10 +45,8 @@
           :showBackground="true"
           :size="150"
         />
-        <div style="width: 100%; text-align: center; display: none;">
-          <KButton @click="saveSVG('defaultLogoWithBackground')">
-            Save SVG
-          </KButton>
+        <div style="display: none; width: 100%; text-align: center">
+          <KButton @click="saveSVG('defaultLogoWithBackground')"> Save SVG </KButton>
         </div>
       </DocsShow>
       <DocsShowCode language="html">
@@ -62,10 +67,8 @@
           :showBackground="true"
           :size="150"
         />
-        <div style="width: 100%; text-align: center; display: none;">
-          <KButton @click="saveSVG('defaultLogoWithRectBackground')">
-            Save SVG
-          </KButton>
+        <div style="display: none; width: 100%; text-align: center">
+          <KButton @click="saveSVG('defaultLogoWithRectBackground')"> Save SVG </KButton>
         </div>
       </DocsShow>
       <DocsShowCode language="html">
@@ -96,15 +99,23 @@
       </DocsShowCode>
 
       <h3>Display with different color schemes</h3>
-      <p>Different color schemes can be used - but only with the showBackground prop. Note the transparent lines for the monochrome logos.</p>
+      <p>
+        Different color schemes can be used - but only with the showBackground prop. Note the
+        transparent lines for the monochrome logos.
+      </p>
 
       <DocsShow>
         <template
-          v-for="colorScheme in ['monoBlack', 'monoWhite', 'monoPrimary', 'monoSecondary', 'whiteGrey', 'blackGrey']"
+          v-for="colorScheme in [
+            'monoBlack',
+            'monoWhite',
+            'monoPrimary',
+            'monoSecondary',
+            'whiteGrey',
+            'blackGrey',
+          ]"
         >
-          <p :key="`text${colorScheme}`">
-            Color scheme: {{ colorScheme }}
-          </p>
+          <p :key="`text${colorScheme}`">Color scheme: {{ colorScheme }}</p>
           <KLogo
             :ref="`${colorScheme}LogoWithBackground`"
             :key="colorScheme"
@@ -114,13 +125,11 @@
             :showBackground="true"
             :size="150"
           />
-          <div 
+          <div
             :key="`button${colorScheme}`"
-            style="width: 100%; text-align: center; display: none;"
+            style="display: none; width: 100%; text-align: center"
           >
-            <KButton @click="saveSVG(`${colorScheme}LogoWithBackground`)">
-              Save SVG
-            </KButton>
+            <KButton @click="saveSVG(`${colorScheme}LogoWithBackground`)"> Save SVG </KButton>
           </div>
         </template>
       </DocsShow>
@@ -128,13 +137,19 @@
       <h3>Dimensions</h3>
 
       <p>
-        You can apply the most common dimensions to the image container via the props <DocsInternalLink href="/kimg#prop:size">
+        You can apply the most common dimensions to the image container via the props
+        <DocsInternalLink href="/kimg#prop:size">
           <code>size</code>
-        </DocsInternalLink>, <DocsInternalLink href="/kimg#prop:maxSize">
+        </DocsInternalLink>,
+        <DocsInternalLink href="/kimg#prop:maxSize">
           <code>maxSize</code>
-        </DocsInternalLink>, and <DocsInternalLink href="/kimg#prop:minSize">
+        </DocsInternalLink>, and
+        <DocsInternalLink href="/kimg#prop:minSize">
           <code>minSize</code>
-        </DocsInternalLink>. Values may be either numbers or strings consisting of a numeral and a valid unit. The following units are supported: <code>%, cm, em, ex, ch, in, lh, mm, px, rem, rlh, vh, vw</code>. If you don't provide a unit, <code>px</code> will be used by default.
+        </DocsInternalLink>. Values may be either numbers or strings consisting of a numeral and a valid unit. The
+        following units are supported:
+        <code>%, cm, em, ex, ch, in, lh, mm, px, rem, rlh, vh, vw</code>. If you don't provide a
+        unit, <code>px</code> will be used by default.
       </p>
 
       <DocsShowCode language="html">
@@ -148,13 +163,18 @@
 
       <h3>Alternative text</h3>
 
-      <p>Alternative text (<code>altText</code>) is required for the logo image. When creating it, consider the following:</p>
+      <p>
+        Alternative text (<code>altText</code>) is required for the logo image. When creating it,
+        consider the following:
+      </p>
       <ul>
         <li>If the logo is used as a flat image, you can use the string "Kolibri logo"</li>
-        <li>If the the logo is used as a link, then the alternative text needs to give the context where the link is leading (for example "Go to home page", or similar)</li>
+        <li>
+          If the the logo is used as a link, then the alternative text needs to give the context
+          where the link is leading (for example "Go to home page", or similar)
+        </li>
       </ul>
     </DocsPageSection>
-
   </DocsPageTemplate>
 
 </template>
@@ -202,14 +222,14 @@
 <style scoped>
 
   .halfsquare-background {
-    background-size: 10px 10px; /* size of the squares */
-    background-image: 
-      linear-gradient(45deg, #ffffff 50%, #F5F5F5 50%),
-      linear-gradient(45deg, #F5F5F5 50%, #ffffff 50%);
-    background-position:
-      0 0, /* this is the position of the first pattern */
-      5px 5px; /* this position offsets the second pattern to create the checker effect */
+    background-image: linear-gradient(45deg, #ffffff 50%, #f5f5f5 50%),
+      linear-gradient(45deg, #f5f5f5 50%, #ffffff 50%);
     background-repeat: repeat;
+    background-position:
+      0 0,
+      /* this is the position of the first pattern */ 5px 5px; /* this position offsets the second pattern to create the checker effect */
+
+    background-size: 10px 10px; /* size of the squares */
   }
 
 </style>

@@ -1,18 +1,23 @@
-const esLintConfig = require('kolibri-tools/.eslintrc');
+const esLintConfig = require('kolibri-format/.eslintrc');
 
-// Vuetify's helper attributes use hyphens and they would
-// not be recognized if auto-formatted to camel case
-esLintConfig.rules['vue/attribute-hyphenation'] = 0;
+const nuxtDocsRules = {
+  // Vuetify's helper attributes use hyphens and they would
+  // not be recognized if auto-formatted to camel case
+  'vue/attribute-hyphenation': 0,
+  // This rule conflicts with Nuxt page naming
+  'vue/no-reserved-component-names': 0,
+  // This rule conflicts with Nuxt page naming
+  'kolibri/vue-filename-and-component-name-match': 0,
+  // max-len rules are unhelpful for documentation
+  'max-len': 0,
+  'vue/max-len': 0,
+};
 
-// This rule conflicts with Nuxt page naming
-esLintConfig.rules['kolibri/vue-filename-and-component-name-match'] = 0;
+esLintConfig.overrides.push({
+  files: ['docs/**/*.vue'],
+  rules: nuxtDocsRules,
+});
 
-// This rule is currently disabled in kolibri-tools/.eslintrc
-esLintConfig.rules['vue/require-default-prop'] = 1;
-
-// max-len rules are unhelpful for documentation
-esLintConfig.rules['max-len'] = 0;
-esLintConfig.rules['vue/max-len'] = 0;
 
 // Allow nuxt resources to be found
 esLintConfig.settings['import/resolver'].nuxt = {

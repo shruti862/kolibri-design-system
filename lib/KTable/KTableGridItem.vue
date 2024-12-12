@@ -58,7 +58,8 @@
     },
     methods: {
       onKeydown(event) {
-        // Ensures that clickable elements within a table cell, such as buttons and links, can be clicked with ENTER key.
+        // Ensures that clickable elements within a table cell, such as buttons and links,
+        // can be clicked with ENTER key.
         const focusedElement = event.target;
         if (
           event.key === 'Enter' &&
@@ -76,10 +77,10 @@
 
 
 <style scoped>
-td {
-  word-wrap: break-word; 
-  white-space: normal; 
-}
 
+  td {
+    word-wrap: break-word;
+    white-space: normal;
+  }
 
 </style>

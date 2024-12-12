@@ -22,8 +22,8 @@
       ref="list"
       class="list"
     >
-      <template v-for="(item) in items">
-        <!-- Divider Slot -->
+      <template v-for="item in items">
+        <!-- @slot Slot for rendering divider items -->
         <slot
           v-if="isDivider(item)"
           name="divider"
@@ -44,6 +44,9 @@
       ref="moreButtonWrapper"
       class="more-button-wrapper"
     >
+      <!-- @slot Slot responsible of rendering the "see more" button.
+       This slot receives as prop a list `overflowItems` with items
+       that dont fit into the visible list.-->
       <slot
         v-if="isMoreButtonVisible"
         name="more"
@@ -126,7 +129,7 @@
       // Add resize observer to watch inner list items size changes
       if (typeof window !== 'undefined' && window.ResizeObserver) {
         this.resizeObserver = new ResizeObserver(() =>
-          requestAnimationFrame(this.throttledSetOverflowItems)
+          requestAnimationFrame(this.throttledSetOverflowItems),
         );
         this.resizeObserver.observe(this.$refs.list);
       }
@@ -200,7 +203,7 @@
         // check if overflowed items would fit if the moreButton were not visible
         const overflowedWidth = overflowItemsIdx.reduce(
           (acc, idx) => acc + itemsSizes[idx].width,
-          0
+          0,
         );
         if (overflowedWidth <= this.moreButtonWidth + availableWidth) {
           while (overflowItemsIdx.length > 0) {
@@ -283,16 +286,16 @@
   }
 
   .list {
-    overflow: visible;
+    position: relative;
     display: flex;
     flex-wrap: wrap;
-    justify-content:flex-start;
     align-items: center;
+    overflow: visible;
   }
 
   .list > * {
-    visibility: hidden;
     flex-shrink: 0;
+    visibility: hidden;
   }
 
   .more-button-wrapper {

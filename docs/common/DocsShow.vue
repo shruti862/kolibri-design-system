@@ -1,7 +1,10 @@
 <template>
 
   <div>
-    <div class="show" :style="style">
+    <div
+      class="show"
+      :style="style"
+    >
       <slot></slot>
     </div>
   </div>

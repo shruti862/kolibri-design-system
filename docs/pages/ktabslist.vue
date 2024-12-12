@@ -1,8 +1,10 @@
 <template>
 
   <DocsPageTemplate apiDocs>
-    <DocsPageSection title="Overview" anchor="#overview">
-
+    <DocsPageSection
+      title="Overview"
+      anchor="#overview"
+    >
       <p>Displays the tab list of a tabbed interface:</p>
 
       <DocsShow language="html">
@@ -18,13 +20,34 @@
         />
       </DocsShow>
 
-      <p><code>KTabsList</code> is meant to be used together with <DocsLibraryLink component="KTabsPanel" />, which displays tabs' content. Using these two components is recommended in situations when <DocsLibraryLink component="KTabs" /> is not sufficient, for example, when a tab list is rendered within a different component than tab panels.</p>
+      <p>
+        <code>KTabsList</code> is meant to be used together with
+        <DocsLibraryLink component="KTabsPanel" />, which displays tabs' content. Using these two
+        components is recommended in situations when <DocsLibraryLink component="KTabs" /> is not
+        sufficient, for example, when a tab list is rendered within a different component than tab
+        panels.
+      </p>
     </DocsPageSection>
 
-    <DocsPageSection title="Basic usage" anchor="#basic-usage">
-      <p>Tab list items are rendered as buttons. Tab panels' content is passed via <DocsLibraryLink component="KTabsPanel" /> slots named by corresponding tabs' IDs from objects of the <code>tabs</code> array. The component takes care of displaying only content corresponding to the active tab.</p>
+    <DocsPageSection
+      title="Basic usage"
+      anchor="#basic-usage"
+    >
+      <p>
+        Tab list items are rendered as buttons. Tab panels' content is passed via
+        <DocsLibraryLink component="KTabsPanel" /> slots named by corresponding tabs' IDs from
+        objects of the <code>tabs</code> array. The component takes care of displaying only content
+        corresponding to the active tab.
+      </p>
 
-      <p>Each tabbed interface needs to have <code>ariaLabel</code> or <code>ariaLabelledBy</code> and also an identifier, <code>tabsID</code>, that is unique in regard to a page where tabs are rendered. Another purpose of <code>tabsId</code> is to link <code>KTabsList</code> and <DocsLibraryLink component="KTabsPanel" /> representing a single tabbed interface. These two components also need to share information about the currently active tab stored in <code>activeTabId</code>.</p>
+      <p>
+        Each tabbed interface needs to have <code>ariaLabel</code> or
+        <code>ariaLabelledBy</code> and also an identifier, <code>tabsID</code>, that is unique in
+        regard to a page where tabs are rendered. Another purpose of <code>tabsId</code> is to link
+        <code>KTabsList</code> and <DocsLibraryLink component="KTabsPanel" /> representing a single
+        tabbed interface. These two components also need to share information about the currently
+        active tab stored in <code>activeTabId</code>.
+      </p>
 
       <DocsShowCode language="html">
         <AppBar>
@@ -40,20 +63,14 @@
           tabsId="coachReportsTabs"
           :activeTabId="activeTabId"
         >
-          <template #tabLessons>
-            Lessons tab content
-          </template>
-          <template #tabLearners>
-            Learners tab content
-          </template>
-          <template #tabGroups>
-            Groups tab content
-          </template>
+          <template #tabLessons> Lessons tab content </template>
+          <template #tabLearners> Learners tab content </template>
+          <template #tabGroups> Groups tab content </template>
         </KTabsPanel>
       </DocsShowCode>
 
       <!-- eslint-disable -->
-      <!-- prevent prettier from changing indentation -->
+      <!-- prettier-ignore -->
       <DocsShowCode language="javascript">
         data() {
           return {
@@ -69,13 +86,23 @@
       <!-- eslint-enable -->
     </DocsPageSection>
 
-    <DocsPageSection title="With router" anchor="#with-router">
-      <p>When implementing tabs with the router, it's the router view rather than <DocsLibraryLink component="KTabsPanel" /> that is responsible for displaying the active tab content.</p>
+    <DocsPageSection
+      title="With router"
+      anchor="#with-router"
+    >
+      <p>
+        When implementing tabs with the router, it's the router view rather than
+        <DocsLibraryLink component="KTabsPanel" /> that is responsible for displaying the active tab
+        content.
+      </p>
 
-      <p>In such a case, define <code>to</code> property with a router link object as its value in objects of the <code>tabs</code> array:</p>
+      <p>
+        In such a case, define <code>to</code> property with a router link object as its value in
+        objects of the <code>tabs</code> array:
+      </p>
 
       <!-- eslint-disable -->
-      <!-- prevent prettier from changing indentation -->
+      <!-- prettier-ignore -->
       <DocsShowCode language="javascript">
         data() {
           return {
@@ -89,13 +116,16 @@
       </DocsShowCode>
       <!-- eslint-enable -->
 
-      <p>Then, tabs will be rendered as router links and you can use the router view to display the active tab content:</p>
+      <p>
+        Then, tabs will be rendered as router links and you can use the router view to display the
+        active tab content:
+      </p>
 
       <DocsShowCode language="html">
         <AppBar>
           <KTabsList
             v-model="activeTabId"
-            tabsId="coachReportsTabs"  
+            tabsId="coachReportsTabs"
             ariaLabel="Coach reports"
             :tabs="tabs"
           />
@@ -109,9 +139,16 @@
         </KTabsPanel>
       </DocsShowCode>
 
-      <p>Note that here, tabs content is not passed to <DocsLibraryLink component="KTabsPanel" /> via named slots, for it's the router view that's responsible for rendering it.</p> 
+      <p>
+        Note that here, tabs content is not passed to <DocsLibraryLink component="KTabsPanel" /> via
+        named slots, for it's the router view that's responsible for rendering it.
+      </p>
 
-      <p>However, it is still required to wrap the active tab content in <DocsLibraryLink component="KTabsPanel" />. Otherwise, even though tabs may seem to function correctly at first glance, accessibility would be broken.</p>
+      <p>
+        However, it is still required to wrap the active tab content in
+        <DocsLibraryLink component="KTabsPanel" />. Otherwise, even though tabs may seem to function
+        correctly at first glance, accessibility would be broken.
+      </p>
 
       <DocsDoNot>
         <template #not>
@@ -132,7 +169,10 @@
             <!-- the active tab content is displayed in this router view -->
             <router-view />
           </DocsShowCode>
-          <p>Place the router view outside of <DocsLibraryLink component="KTabsPanel" /> or forget to use <DocsLibraryLink component="KTabsPanel" /> altogether</p>
+          <p>
+            Place the router view outside of <DocsLibraryLink component="KTabsPanel" /> or forget to
+            use <DocsLibraryLink component="KTabsPanel" /> altogether
+          </p>
         </template>
 
         <template #do>
@@ -159,8 +199,15 @@
       </DocsDoNot>
     </DocsPageSection>
 
-    <DocsPageSection title="More tabs on a page" anchor="#more-tabs-on-a-page">
-      <p>When there are two or more tabbed interfaces on one page, it is important to identify each one of them with an ID unique in regard to the page. Otherwise, some a11y features may break.</p>
+    <DocsPageSection
+      title="More tabs on a page"
+      anchor="#more-tabs-on-a-page"
+    >
+      <p>
+        When there are two or more tabbed interfaces on one page, it is important to identify each
+        one of them with an ID unique in regard to the page. Otherwise, some a11y features may
+        break.
+      </p>
 
       <p>This is achieved by providing a unique value to <code>tabsId</code> property:</p>
 
@@ -173,12 +220,18 @@
       </DocsShowCode>
     </DocsPageSection>
 
-    <DocsPageSection title="Appearance" anchor="#appearance">
+    <DocsPageSection
+      title="Appearance"
+      anchor="#appearance"
+    >
       <p>There are several ways to adjust tabs styling.</p>
 
       <p>Using props is the most straightforward:</p>
 
-      <DocsShow language="html" dark>
+      <DocsShow
+        language="html"
+        dark
+      >
         <KTabsList
           v-model="ex2activeTabId"
           tabsId="tabsProps"
@@ -208,7 +261,12 @@
         />
       </DocsShowCode>
 
-      <p>When that's not sufficient, <code>appearanceOverrides</code> and <code>appearanceOverridesActive</code> can be used, where the former complements or overrides styles common to all tabs and the latter contains styles specific to an active tab:</p>
+      <p>
+        When that's not sufficient, <code>appearanceOverrides</code> and
+        <code>appearanceOverridesActive</code> can be used, where the former complements or
+        overrides styles common to all tabs and the latter contains styles specific to an active
+        tab:
+      </p>
 
       <DocsShow language="html">
         <KTabsList
@@ -218,13 +276,13 @@
           :tabs="tabs"
           :appearanceOverrides="{
             ':hover': {
-              color: $themeTokens.primary
+              color: $themeTokens.primary,
             },
             textTransform: 'none',
-            margin: '0 32px'
+            margin: '0 32px',
           }"
           :appearanceOverridesActive="{
-            borderBottomWidth: '6px'
+            borderBottomWidth: '6px',
           }"
         />
         <KTabsPanel
@@ -241,18 +299,22 @@
           :tabs="tabs"
           :appearanceOverrides="{
             ':hover': {
-              color: $themeTokens.primary
+              color: $themeTokens.primary,
             },
             textTransform: 'none',
-            margin: '0 32px'
+            margin: '0 32px',
           }"
           :appearanceOverridesActive="{
-            borderBottomWidth: '6px'
+            borderBottomWidth: '6px',
           }"
         />
       </DocsShowCode>
 
-      <p>Lastly, the <code>tab</code> slot can be used to adjust labels, for example to add icons. It's a scoped slot that exposes <code>tab</code> object and <code>isActive</code> boolean value:</p> 
+      <p>
+        Lastly, the <code>tab</code> slot can be used to adjust labels, for example to add icons.
+        It's a scoped slot that exposes <code>tab</code> object and <code>isActive</code> boolean
+        value:
+      </p>
 
       <DocsShow language="html">
         <KTabsList
@@ -293,7 +355,7 @@
       </DocsShowCode>
 
       <!-- eslint-disable -->
-      <!-- prevent prettier from changing indentation -->
+      <!-- prettier-ignore -->
       <DocsShowCode language="javascript">
         icons: {
           tabLessons: 'lesson',
@@ -304,15 +366,23 @@
       <!-- eslint-enable -->
     </DocsPageSection>
 
-    <DocsPageSection title="Related" anchor="#related">
+    <DocsPageSection
+      title="Related"
+      anchor="#related"
+    >
       <ul>
         <li>
-          <DocsInternalLink text="Tabs page" href="/tabs" /> has an overview and usage guidance for all tab-related components
+          <DocsInternalLink
+            text="Tabs page"
+            href="/tabs"
+          />
+          has an overview and usage guidance for all tab-related components
         </li>
-        <li><DocsLibraryLink component="KTabsPanel" /> is a component to be used together with <code>KTabsList</code></li>
         <li>
-          <DocsLibraryLink component="KTabs" /> is an alternative way to implement tabs
+          <DocsLibraryLink component="KTabsPanel" /> is a component to be used together with
+          <code>KTabsList</code>
         </li>
+        <li><DocsLibraryLink component="KTabs" /> is an alternative way to implement tabs</li>
       </ul>
     </DocsPageSection>
   </DocsPageTemplate>

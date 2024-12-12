@@ -1,9 +1,15 @@
 <template>
 
-  <section :style="style" class="section-wrapper">
+  <section
+    :style="style"
+    class="section-wrapper"
+  >
     <h2 v-if="title">
       {{ title }}
-      <DocsAnchorTarget v-if="anchor" :anchor="anchor" />
+      <DocsAnchorTarget
+        v-if="anchor"
+        :anchor="anchor"
+      />
     </h2>
     <slot></slot>
   </section>
@@ -13,7 +19,7 @@
 
 <script>
 
-  const consola = require('consola');
+  import consola from 'consola';
 
   export default {
     name: 'DocsPageSection',

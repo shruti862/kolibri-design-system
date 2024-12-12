@@ -7,6 +7,121 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#868]
+  - **Description:** Revert regression in KLogo display
+  - **Products impact:** bugfix
+  - **Addresses:** -
+  - **Components:** KLogo
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#868]: https://github.com/learningequality/kolibri-design-system/pull/868
+
+
+
+- [#849]
+  - **Description:** A Reusable action is added to .github repo. This PR makes use of it.
+  - **Products impact:** none
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#849]: https://github.com/learningequality/kolibri-design-system/pull/849
+
+
+
+- [#866]
+  - **Description:** Bump vue-docgen-api from 4.78.0 to 4.79.2
+  - **Products impact:** Dev Dependency upgrade
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#866]: https://github.com/learningequality/kolibri-design-system/pull/866
+
+
+
+- [#864]
+  - **Description:** Bump nanoid from 3.3.7 to 3.3.8
+  - **Products impact:** Dev Dependency upgrade
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#864]: https://github.com/learningequality/kolibri-design-system/pull/864
+
+
+
+- [#863]
+  - **Description:** Updates KDS version to 5.0.0-rc11
+  - **Products impact:** -.
+  - **Addresses:** -.
+  - **Components:** -.
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#863]: https://github.com/learningequality/kolibri-design-system/pull/863
+
+
+
+- [#504]
+  - **Description:** Remove use of /deep/ in favour of ::v-deep
+  - **Products impact:** none
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** no
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#504]: https://github.com/learningequality/kolibri-design-system/pull/504
+
+
+
+- [#645]
+  - **Description:** Upgrades Node.js to v18, along with Kolibri-Tools to v0.16, Jest to v29 and Nuxt to v2.15
+  - **Products impact:** none
+  - **Addresses:** #439
+  - **Components:** none
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** Netlify configuration needs to be updated to use v18 as well
+
+[#645]: https://github.com/learningequality/kolibri-design-system/pull/645
+
+- [#645]
+  - **Description:** Component error handling now use `@error` listener to avoid polluting test output, nor suppressing `console.*` in tests
+  - **Products impact:** any
+  - **Addresses:** n/a
+  - **Components:** `KImg`, `KTabs`, `KTabsList`
+  - **Breaking:** yes
+  - **Impacts a11y:** no
+  - **Guidance:** The `KImg` component may now emit an `Error` object in its `@error` listener when incorrectly configured, in addition to an `UiEvent|Event` when an image fails to load. Consumers should type check the value.
+
+[#645]: https://github.com/learningequality/kolibri-design-system/pull/645
+
+
+
+- [#851]
+  - **Description:** Prepends all internal `KCard` class names with `k`
+  - **Products impact:** bugfix
+  - **Addresses:** Prevent from aggressive overrides from global Vuetify styles in Studio, for example when `KCard`'s `.title` styles were changed unexpectedly by the Vuetify's `.title` styles, causing text being cut off and incorrectly styled overall. Reported in https://github.com/learningequality/studio/pull/4803.
+  - **Components:** `KCard`
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#851]: https://github.com/learningequality/kolibri-design-system/pull/851
+
+
+
 - [#838]
   - **Description:** Re-organizes `KCard` styles to improve content tolerance and simplify styles, and fixes the thumbnail overflow problems in horizontal layout with small thumbnail
   - **Products impact:** bugfix

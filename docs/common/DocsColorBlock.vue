@@ -1,9 +1,15 @@
 <template>
 
   <div class="block-wrapper">
-    <div class="color-block" :style="{ backgroundColor: value }"></div>
+    <div
+      class="color-block"
+      :style="{ backgroundColor: value }"
+    ></div>
     <div class="code name">
-      <code>{{ name }}</code><DocsAnchorTarget v-if="definition" :anchor="anchor" />
+      <code>{{ name }}</code><DocsAnchorTarget
+        v-if="definition"
+        :anchor="anchor"
+      />
     </div>
     <div class="code value">
       <DocsInternalLink
@@ -15,7 +21,10 @@
       <code v-else-if="isToken">{{ tokenSource }}</code>
       <code v-else>{{ value }}</code>
     </div>
-    <p v-if="$slots.default" class="description">
+    <p
+      v-if="$slots.default"
+      class="description"
+    >
       <slot></slot>
     </p>
   </div>

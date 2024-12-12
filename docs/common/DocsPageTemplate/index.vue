@@ -14,7 +14,7 @@
         :sections="pageSections"
         :title="page.title"
         :codeStyle="page.isCode"
-        style="visibility: hidden;"
+        style="visibility: hidden"
       />
 
       <div class="content">
@@ -26,7 +26,10 @@
           :anchor="section.anchor"
           fullwidth
         >
-          <component :is="section.component" :api="api[section.key]" />
+          <component
+            :is="section.component"
+            :api="api[section.key]"
+          />
         </DocsPageSection>
       </div>
     </div>
@@ -57,7 +60,7 @@
         node =>
           node.componentOptions &&
           node.componentOptions.tag === DocsPageSection.name &&
-          node.componentOptions.propsData.anchor
+          node.componentOptions.propsData.anchor,
       )
       .map(node => node.componentOptions.propsData);
   }

@@ -1,6 +1,10 @@
 <template>
 
-  <div class="k-radio-button-container" :class="{ 'k-radio-button-disabled': disabled }" @click="toggleCheck">
+  <div
+    class="k-radio-button-container"
+    :class="{ 'k-radio-button-disabled': disabled }"
+    @click="toggleCheck"
+  >
     <div class="tr">
       <div class="k-radio-button">
         <input
@@ -25,14 +29,14 @@
           icon="radioSelected"
           class="radio-button-icon"
           name="radio_button_checked"
-          :style="[{ fill: $themeTokens.primary }, disabledStyle, activeStyle ]"
+          :style="[{ fill: $themeTokens.primary }, disabledStyle, activeStyle]"
         />
         <KIcon
           v-else
           icon="radioUnselected"
           class="radio-button-icon"
           name="radio_button_unchecked"
-          :style="[{ fill: $themeTokens.annotation }, disabledStyle, activeStyle ]"
+          :style="[{ fill: $themeTokens.annotation }, disabledStyle, activeStyle]"
         />
       </div>
 
@@ -40,7 +44,7 @@
         :dir="labelDir"
         class="k-radio-button-label"
         :for="id"
-        :class="{ 'visuallyhidden': !showLabel }"
+        :class="{ visuallyhidden: !showLabel }"
         :style="labelStyle"
         @click.prevent
       >
@@ -51,7 +55,11 @@
         <template v-else>
           <div :class="[truncateText]">{{ label }}</div>
         </template>
-        <div v-if="description" class="description" :style="[{ color: disabled ? '' : $themeTokens.annotation }, disabledStyle ]">
+        <div
+          v-if="description"
+          class="description"
+          :style="[{ color: disabled ? '' : $themeTokens.annotation }, disabledStyle]"
+        >
           {{ description }}
         </div>
       </label>
@@ -186,11 +194,13 @@
     },
     mounted() {
       if (this.buttonValue === null && this.value === null) {
+        // eslint-disable-next-line no-console
         console.error('KRadioButton: buttonValue prop is required');
       }
       if (this.buttonValue === null) {
+        // eslint-disable-next-line no-console
         console.warn(
-          "KRadioButton: 'value' prop is deprecated and will be removed in a future release. Please use 'buttonValue' instead."
+          "KRadioButton: 'value' prop is deprecated and will be removed in a future release. Please use 'buttonValue' instead.",
         );
       }
       if (process.env.NODE_ENV !== 'production') {
@@ -258,6 +268,7 @@
           parent = parent.$parent;
         }
         // If we get here, no KRadioButtonGroup was found
+        // eslint-disable-next-line no-console
         console.warn('KRadioButton should be nested inside a KRadioButtonGroup component.');
       },
     },

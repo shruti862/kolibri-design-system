@@ -5,7 +5,7 @@
     to allow for @click.stop on buttons and similar
     rendered within a card via its slots -->
   <li
-    :class="['k-card', $slots.select ? 'with-selection-controls' : undefined]"
+    :class="['k-card', $slots.select ? 'k-with-selection-controls' : undefined]"
     :style="[gridItemStyle, focusStyle]"
     @focus="onFocus"
     @mouseenter="onHover"
@@ -14,11 +14,11 @@
     @keyup.enter="onEnter"
   >
     <div
-      :class="['card-area', ...cardAreaClasses ]"
+      :class="['k-card-area', ...cardAreaClasses]"
       :style="{ backgroundColor: $themeTokens.surface }"
     >
-      <div class="upper-card-area">
-        <div class="around-title">
+      <div class="k-upper-card-area">
+        <div class="k-around-title">
           <!--
         Utilizing `visuallyhidden`, `aria-labelledby`,
         and `aria-hidden` to ensure:
@@ -27,12 +27,15 @@
         - Prevents undesired screen reader announcements
           when title is customized via the `title` slot
       -->
-          <span :id="`card-title-${_uid}`" class="visuallyhidden">
+          <span
+            :id="`k-card-title-${_uid}`"
+            class="visuallyhidden"
+          >
             {{ title }}
           </span>
           <component
             :is="headingElement"
-            class="heading"
+            class="k-heading"
             :style="{ color: $themeTokens.text }"
           >
             <!--
@@ -52,14 +55,15 @@
               event=""
               :to="to"
               draggable="false"
-              class="title"
-              :aria-labelledby="`card-title-${_uid}`"
+              class="k-title"
+              :aria-labelledby="`k-card-title-${_uid}`"
               @focus.native="onTitleFocus"
               @blur.native="onTitleBlur"
             >
               <span aria-hidden="true">
-                <!-- @slot A scoped slot via which the `title` can be customized. Provides the `titleText` attribute.-->
-                <slot 
+                <!-- @slot A scoped slot via which the `title` can be customized. 
+                 Provides the `titleText` attribute.-->
+                <slot
                   v-if="$scopedSlots.title"
                   name="title"
                   :titleText="title"
@@ -82,14 +86,15 @@
               v-else
               tabindex="0"
               data-focus="true"
-              class="title"
-              :aria-labelledby="`card-title-${_uid}`"
+              class="k-title"
+              :aria-labelledby="`k-card-title-${_uid}`"
               @focus="onTitleFocus"
               @blur="onTitleBlur"
             >
               <span aria-hidden="true">
-                <!-- @slot A scoped slot via which the `title` can be customized. Provides the `titleText` attribute. -->
-                <slot 
+                <!-- @slot A scoped slot via which the `title` can be customized. 
+                 Provides the `titleText` attribute. -->
+                <slot
                   v-if="$scopedSlots.title"
                   name="title"
                   :titleText="title"
@@ -106,7 +111,7 @@
           <div
             v-if="hasAboveTitleArea"
             data-test="aboveTitle"
-            class="above-title"
+            class="k-above-title"
           >
             <!-- @slot Places content to the area above the title. -->
             <slot name="aboveTitle"></slot>
@@ -115,7 +120,7 @@
           <div
             v-if="hasBelowTitleArea"
             data-test="belowTitle"
-            class="below-title"
+            class="k-below-title"
             :style="{ color: $themeTokens.annotation }"
           >
             <!-- @slot Places content to the area below the title. -->
@@ -125,7 +130,7 @@
 
         <div
           v-if="thumbnailDisplay !== ThumbnailDisplays.NONE"
-          class="thumbnail"
+          class="k-thumbnail"
         >
           <!-- 
             Render KImg even if thumbnailSrc is not provided since in that case
@@ -142,7 +147,7 @@
           />
           <span
             v-if="!thumbnailSrc || thumbnailError"
-            class="thumbnail-placeholder"
+            class="k-thumbnail-placeholder"
           >
             <!-- @slot Places content to the thumbnail placeholder area. -->
             <slot name="thumbnailPlaceholder"></slot>
@@ -153,7 +158,7 @@
       <div
         v-if="hasFooterArea"
         data-test="footer"
-        class="footer"
+        class="k-footer"
       >
         <!-- @slot Places content to the footer area. -->
         <slot name="footer"></slot>
@@ -166,7 +171,7 @@
     -->
     <div
       v-if="$slots.select"
-      class="selection-control"
+      class="k-selection-control"
       @keyup.enter.stop
       @click.stop
     >
@@ -180,7 +185,7 @@
 
 <script>
 
-  import { inject } from '@vue/composition-api';
+  import { inject } from 'vue';
 
   const Orientations = {
     HORIZONTAL: 'horizontal',
@@ -199,12 +204,12 @@
   };
 
   function cardValidator(allowedValues, propName) {
-    return function(value) {
+    return function (value) {
       if (!Object.values(allowedValues).includes(value)) {
         throw new Error(
           `Invalid ${propName} value: '${value}'. Allowed values are: ${Object.values(
-            allowedValues
-          ).join(', ')}`
+            allowedValues,
+          ).join(', ')}`,
         );
       }
       return true;
@@ -233,6 +238,7 @@
           if (value <= 6 && value >= 2) {
             return true;
           } else {
+            // eslint-disable-next-line no-console
             console.error(`[KCard] 'headingLevel' must be between 2 and 6.`);
             return false;
           }
@@ -395,7 +401,7 @@
           this.thumbnailDisplay === ThumbnailDisplays.LARGE
         ) {
           return {
-            cardAreaClasses: ['vertical-with-large-thumbnail'],
+            cardAreaClasses: ['k-vertical-with-large-thumbnail'],
             thumbnailAspectRatio: undefined,
             thumbnailStyles: {
               ...thumbnailCommonStyles,
@@ -409,7 +415,7 @@
           this.thumbnailDisplay === ThumbnailDisplays.SMALL
         ) {
           return {
-            cardAreaClasses: ['vertical-with-small-thumbnail'],
+            cardAreaClasses: ['k-vertical-with-small-thumbnail'],
             thumbnailAspectRatio: undefined,
             thumbnailStyles: {
               ...thumbnailCommonStyles,
@@ -423,7 +429,7 @@
           this.thumbnailDisplay === ThumbnailDisplays.NONE
         ) {
           return {
-            cardAreaClasses: ['vertical-with-none-thumbnail'],
+            cardAreaClasses: ['k-vertical-with-none-thumbnail'],
             thumbnailAspectRatio: undefined,
             thumbnailStyles: undefined,
           };
@@ -435,8 +441,8 @@
         ) {
           return {
             cardAreaClasses: [
-              'horizontal-with-large-thumbnail',
-              `thumbnail-align-${this.thumbnailAlign}`,
+              'k-horizontal-with-large-thumbnail',
+              `k-thumbnail-align-${this.thumbnailAlign}`,
             ],
             thumbnailAspectRatio: undefined,
             thumbnailStyles: {
@@ -452,8 +458,8 @@
         ) {
           return {
             cardAreaClasses: [
-              'horizontal-with-small-thumbnail',
-              `thumbnail-align-${this.thumbnailAlign}`,
+              'k-horizontal-with-small-thumbnail',
+              `k-thumbnail-align-${this.thumbnailAlign}`,
             ],
             thumbnailAspectRatio: '1:1',
             thumbnailStyles: {
@@ -468,7 +474,7 @@
           this.thumbnailDisplay === ThumbnailDisplays.NONE
         ) {
           return {
-            cardAreaClasses: ['horizontal-with-none-thumbnail'],
+            cardAreaClasses: ['k-horizontal-with-none-thumbnail'],
             thumbnailAspectRatio: undefined,
             thumbnailStyles: undefined,
           };
@@ -560,18 +566,18 @@
     list-style-type: none;
     cursor: pointer;
 
-    &.with-selection-controls {
+    &.k-with-selection-controls {
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
 
-      .selection-control {
+      .k-selection-control {
         margin-right: 20px;
       }
     }
   }
 
-  .card-area {
+  .k-card-area {
     @extend %dropshadow-2dp;
 
     display: flex;
@@ -589,13 +595,13 @@
     }
   }
 
-  .heading {
+  .k-heading {
     font-size: 16px;
     font-weight: 600;
     line-height: 1.5;
   }
 
-  .title {
+  .k-title {
     display: inline-block; // allows title placeholder in the skeleton card
     width: 100%; // allows title placeholder in the skeleton card
     color: inherit;
@@ -607,19 +613,19 @@
   // are grouped together in all layoyts, abstract them
   // into one whole here. Simplifies common spacing
   // styles as well as layout-specific styles.
-  .around-title {
+  .k-around-title {
     display: flex;
     flex-direction: column;
 
-    .heading {
+    .k-heading {
       order: 2;
     }
 
-    .above-title {
+    .k-above-title {
       order: 1;
     }
 
-    .below-title {
+    .k-below-title {
       order: 3;
     }
   }
@@ -627,42 +633,42 @@
   /************* Spacing *************/
 
   // first reset
-  .around-title,
-  .heading,
-  .above-title,
-  .below-title,
-  .footer {
+  .k-around-title,
+  .k-heading,
+  .k-above-title,
+  .k-below-title,
+  .k-footer {
     padding: 0;
     margin: 0;
   }
 
   /* stylelint-disable no-duplicate-selectors */
-  .around-title {
+  .k-around-title {
     padding: $spacer;
   }
   /* stylelint-enable no-duplicate-selectors */
 
-  .footer {
+  .k-footer {
     padding: 0 $spacer $spacer $spacer;
   }
 
-  .above-title {
+  .k-above-title {
     padding-bottom: calc(#{$spacer} / 2);
   }
 
-  .below-title {
+  .k-below-title {
     padding-top: calc(#{$spacer} / 2);
   }
 
   /************* Thumbnail **************/
 
   /* stylelint-disable no-duplicate-selectors */
-  .thumbnail {
+  .k-thumbnail {
     position: relative; /* for absolute positioning of .thumbnail-placeholder  */
   }
   /* stylelint-enable no-duplicate-selectors */
 
-  .thumbnail-placeholder {
+  .k-thumbnail-placeholder {
     position: absolute;
     top: 0;
     right: 0;
@@ -677,86 +683,86 @@
 
   /************* Layout-specific styles *************/
 
-  .vertical-with-large-thumbnail {
-    .upper-card-area {
+  .k-vertical-with-large-thumbnail {
+    .k-upper-card-area {
       display: flex;
       flex-direction: column;
     }
 
-    .thumbnail {
+    .k-thumbnail {
       order: 1;
       height: 180px;
     }
 
-    .around-title {
+    .k-around-title {
       order: 2;
     }
   }
 
-  .vertical-with-small-thumbnail {
+  .k-vertical-with-small-thumbnail {
     /* stylelint-disable scss/at-extend-no-missing-placeholder */
-    @extend .vertical-with-large-thumbnail;
+    @extend .k-vertical-with-large-thumbnail;
     /* stylelint-enable scss/at-extend-no-missing-placeholder */
 
-    .thumbnail {
+    .k-thumbnail {
       height: calc(180px - #{$spacer});
       margin: $spacer $spacer 0;
     }
   }
 
-  .horizontal-with-small-thumbnail {
-    .upper-card-area {
+  .k-horizontal-with-small-thumbnail {
+    .k-upper-card-area {
       display: flex;
       flex-direction: row;
       align-items: flex-start;
     }
 
-    .thumbnail {
+    .k-thumbnail {
       width: 30%;
       margin-top: $spacer;
       margin-bottom: $spacer;
     }
 
-    .around-title {
+    .k-around-title {
       width: 70%;
     }
 
-    &.thumbnail-align-left {
-      .thumbnail {
+    &.k-thumbnail-align-left {
+      .k-thumbnail {
         order: 1;
         margin-left: $spacer;
       }
 
-      .around-title {
+      .k-around-title {
         order: 2;
       }
     }
 
-    &.thumbnail-align-right {
-      .thumbnail {
+    &.k-thumbnail-align-right {
+      .k-thumbnail {
         order: 2;
         margin-right: $spacer;
       }
 
-      .around-title {
+      .k-around-title {
         order: 1;
       }
     }
   }
 
-  .horizontal-with-large-thumbnail {
+  .k-horizontal-with-large-thumbnail {
     // override few styles from .horizontal-with-small-thumbnail
     // to stretch the thumbnail to the full height of the card
 
     /* stylelint-disable scss/at-extend-no-missing-placeholder */
-    @extend .horizontal-with-small-thumbnail;
+    @extend .k-horizontal-with-small-thumbnail;
     /* stylelint-enable scss/at-extend-no-missing-placeholder */
 
-    &.card-area {
+    &.k-card-area {
       position: relative; /* for absolute positioning of .thumbnail  */
     }
 
-    .thumbnail {
+    .k-thumbnail {
       position: absolute;
       width: 40%;
       height: 100%;
@@ -764,31 +770,31 @@
       margin-bottom: 0;
     }
 
-    .around-title,
-    .footer {
+    .k-around-title,
+    .k-footer {
       width: 60%;
     }
 
-    &.thumbnail-align-left {
-      .thumbnail {
+    &.k-thumbnail-align-left {
+      .k-thumbnail {
         left: 0;
         margin-left: 0;
       }
 
-      .around-title,
-      .footer {
+      .k-around-title,
+      .k-footer {
         margin-left: auto;
       }
     }
 
-    &.thumbnail-align-right {
-      .thumbnail {
+    &.k-thumbnail-align-right {
+      .k-thumbnail {
         right: 0;
         margin-right: 0;
       }
 
-      .around-title,
-      .footer {
+      .k-around-title,
+      .k-footer {
         margin-right: auto;
       }
     }

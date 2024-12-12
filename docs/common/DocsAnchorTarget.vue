@@ -14,7 +14,11 @@
       />
     </DocsInternalLink>
     <!-- hidden target to account for variable height of header -->
-    <a :id="anchorId" :href="anchor" class="offset-target">#</a>
+    <a
+      :id="anchorId"
+      :href="anchor"
+      class="offset-target"
+    >#</a>
   </div>
 
 </template>
@@ -30,10 +34,12 @@
         required: true,
         validator(value) {
           if (!value.startsWith('#')) {
+            // eslint-disable-next-line no-console
             console.error(`'anchor' prop value '${value}' must start with a '#'`);
             return false;
           }
           if (!value.match(/^#[\w\-.:]*$/)) {
+            // eslint-disable-next-line no-console
             console.error(`'anchor' prop value '${value}' invalid`);
             return false;
           }

@@ -1,5 +1,5 @@
-const path = require('path');
-const fs = require('fs');
+const path = require('node:path');
+const fs = require('node:fs');
 const consola = require('consola');
 
 /***********************************/
@@ -52,7 +52,7 @@ function writeEnvironment() {
   const outputPath = path.resolve('./docs/environment.js');
   const env = JSON.stringify(environmentInfo, null, 2);
   fs.writeFile(outputPath, gitOutputString + env + ';\n', () =>
-    consola.info(`Wrote environment to ${outputPath}`)
+    consola.info(`Wrote environment to ${outputPath}`),
   );
 }
 

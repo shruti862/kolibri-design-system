@@ -1,6 +1,9 @@
 <template>
 
-  <KFixedGridItem :span="currentSpan" :alignment="currentAlignment">
+  <KFixedGridItem
+    :span="currentSpan"
+    :alignment="currentAlignment"
+  >
     <!-- @slot Contents of the grid item -->
     <slot></slot>
   </KFixedGridItem>
@@ -22,6 +25,7 @@
     const allowed = ['span', 'alignment'];
     for (const key in obj) {
       if (!allowed.includes(key)) {
+        // eslint-disable-next-line no-console
         console.error(`Unexpected layout object property: '${key}'`);
         return false;
       }

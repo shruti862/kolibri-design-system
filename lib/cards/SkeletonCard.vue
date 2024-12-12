@@ -8,7 +8,7 @@
     :headingLevel="2"
     isSkeleton
     aria-hidden="true"
-    class="skeleton-card"
+    class="k-skeleton-card"
     title="_"
     :style="{ height: height }"
     :orientation="orientation"
@@ -17,19 +17,19 @@
   >
     <template #title>
       <span
-        class="title-placeholder"
+        class="k-title-placeholder"
         :style="{ backgroundColor: $themePalette.grey.v_100 }"
       >
       </span>
     </template>
     <template #belowTitle>
       <span
-        class="below-title-placeholder"
+        class="k-below-title-placeholder"
         :style="{ backgroundColor: $themePalette.grey.v_100 }"
       >
       </span>
     </template>
-  </kcard>
+  </KCard>
 
 </template>
 
@@ -91,35 +91,38 @@
     0% {
       transform: translateX(-100%);
     }
+
     100% {
       transform: translateX(100%);
     }
   }
 
-  .title-placeholder,
-  .below-title-placeholder {
+  .k-title-placeholder,
+  .k-below-title-placeholder {
     display: inline-block;
     height: 28px;
     border-radius: 4px;
   }
 
-  .title-placeholder {
+  .k-title-placeholder {
     width: 100%;
   }
 
-  .below-title-placeholder {
+  .k-below-title-placeholder {
     width: 80%;
   }
 
-  .skeleton-card {
+  .k-skeleton-card {
     @extend %dropshadow-2dp; // need to re-apply dropshadow because of `oveflow: hidden`
 
     position: relative;
-    overflow: hidden; // contain animation style within card area
-    border-radius: 0.5em; // prevents sharp corner, should match inner card area border radius in KCard
+    // contain animation style within card area
+    overflow: hidden;
+    // prevents sharp corner, should match inner card area border radius in KCard
+    border-radius: 0.5em;
   }
 
-  .skeleton-card::before {
+  .k-skeleton-card::before {
     position: absolute;
     top: 0;
     left: 0;

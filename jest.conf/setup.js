@@ -3,10 +3,12 @@ import '@testing-library/jest-dom';
 import * as Aphrodite from 'aphrodite';
 import * as AphroditeNoImportant from 'aphrodite/no-important';
 
+// eslint-disable-next-line import/no-unresolved
+import 'mock-match-media/jest-setup';
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueIntl from 'vue-intl';
-import VueCompositionAPI from '@vue/composition-api';
 import KThemePlugin from '../lib/KThemePlugin';
 
 global.beforeEach(() => {
@@ -27,7 +29,6 @@ global.afterEach(() => {
 
 // Register Vue plugins and components
 Vue.use(VueRouter);
-Vue.use(VueCompositionAPI);
 Vue.use(KThemePlugin);
 Vue.use(VueIntl);
 
@@ -46,14 +47,14 @@ process.on('unhandledRejection', (reason, p) => {
 
 // Copied from https://github.com/kentor/flush-promises/blob/f33ac564190c784019f1f689dd544187f4b77eb2/index.js
 global.flushPromises = function flushPromises() {
-  return new Promise(function(resolve) {
+  return new Promise(function (resolve) {
     setImmediate(resolve);
   });
 };
 
 function removeWhitespaceFromHtml(htmlString) {
   // https://stackoverflow.com/a/33108909
-  return htmlString.replace(/>\s+|\s+</g, function(m) {
+  return htmlString.replace(/>\s+|\s+</g, function (m) {
     return m.trim();
   });
 }
@@ -63,7 +64,7 @@ global.expect.extend({
 
   toBeInDom(received) {
     const pass = removeWhitespaceFromHtml(document.body.innerHTML).includes(
-      removeWhitespaceFromHtml(received)
+      removeWhitespaceFromHtml(received),
     );
     if (pass) {
       return {

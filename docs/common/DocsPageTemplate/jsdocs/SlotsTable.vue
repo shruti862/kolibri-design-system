@@ -4,19 +4,23 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th class="stretch">
-          Description
-        </th>
+        <th class="stretch">Description</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(slot, i) in api" :key="i">
+      <tr
+        v-for="(slot, i) in api"
+        :key="i"
+      >
         <td class="first-col">
           <code>{{ slot.name }}</code>
           <DocsAnchorTarget :anchor="`#slot:${slot.name}`" />
         </td>
         <td>
-          <vue-simple-markdown v-if="slot.description" :source="slot.description" />
+          <vue-simple-markdown
+            v-if="slot.description"
+            :source="slot.description"
+          />
           <KEmptyPlaceholder v-else />
         </td>
       </tr>

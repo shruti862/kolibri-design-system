@@ -1,8 +1,10 @@
 <template>
 
   <DocsPageTemplate apiDocs>
-
-    <DocsPageSection title="Overview" anchor="#overview">
+    <DocsPageSection
+      title="Overview"
+      anchor="#overview"
+    >
       <DocsShow>
         <KSwitch
           v-model="exampleData"
@@ -11,17 +13,21 @@
         <p>Value: {{ exampleData }}</p>
       </DocsShow>
       <p>
-        A switch toggle is used to select and execute an action instantly, in real time. A switch is toggled successfully when the switch thumb slides to the other side of the track upon click or press.
+        A switch toggle is used to select and execute an action instantly, in real time. A switch is
+        toggled successfully when the switch thumb slides to the other side of the track upon click
+        or press.
       </p>
       <p>
-        For selections that require a confirmation to execute and are housed in a form, use <DocsLibraryLink component="KCheckbox" /> component instead.
+        For selections that require a confirmation to execute and are housed in a form, use
+        <DocsLibraryLink component="KCheckbox" /> component instead.
       </p>
     </DocsPageSection>
 
-    <DocsPageSection title="Usage" anchor="#usage">
-      <p>
-        Use a switch for the following:
-      </p>
+    <DocsPageSection
+      title="Usage"
+      anchor="#usage"
+    >
+      <p>Use a switch for the following:</p>
       <ul>
         <li>When an instant response is required without final confirmation</li>
         <li>Actions that do not need a formal review</li>
@@ -29,28 +35,50 @@
       </ul>
     </DocsPageSection>
 
-    <DocsPageSection title="Specifications" anchor="#specifications">
+    <DocsPageSection
+      title="Specifications"
+      anchor="#specifications"
+    >
       <ul>
         <li>
           Thumb ON color:
-          <DocsInternalLink code text="brand.primary.v_500" href="/colors#brand-primary-v_500" />
+          <DocsInternalLink
+            code
+            text="brand.primary.v_500"
+            href="/colors#brand-primary-v_500"
+          />
         </li>
         <li>
           Track ON color:
-          <DocsInternalLink code text="brand.primary.v_200" href="/colors#brand-primary-v_200" />
+          <DocsInternalLink
+            code
+            text="brand.primary.v_200"
+            href="/colors#brand-primary-v_200"
+          />
         </li>
         <li>
           Thumb OFF color:
-          <DocsInternalLink code text="palette.grey.v_100" href="/colors#palette-grey-v_100" />
+          <DocsInternalLink
+            code
+            text="palette.grey.v_100"
+            href="/colors#palette-grey-v_100"
+          />
         </li>
         <li>
           Track OFF color:
-          <DocsInternalLink code text="palette.grey.v_300" href="/colors#palette-grey-v_300" />
+          <DocsInternalLink
+            code
+            text="palette.grey.v_300"
+            href="/colors#palette-grey-v_300"
+          />
         </li>
       </ul>
     </DocsPageSection>
 
-    <DocsPageSection title="Guidelines" anchor="#guidelines">
+    <DocsPageSection
+      title="Guidelines"
+      anchor="#guidelines"
+    >
       <ul>
         <li>Align a switch with the container margin</li>
         <li>Align a switch to the right of the text label</li>
@@ -58,7 +86,6 @@
         <li>Switch text labels Labels should concisely describe the action to be executed</li>
       </ul>
     </DocsPageSection>
-
   </DocsPageTemplate>
 
 </template>

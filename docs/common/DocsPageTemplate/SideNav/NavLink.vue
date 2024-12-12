@@ -11,7 +11,7 @@
     v-else
     class="block enabled-link"
     :href="page.path"
-    :class="{ currentPage, code: page.isCode }"
+    :class="{ 'current-page': currentPage, code: page.isCode }"
   >
     {{ page.title }}
   </a>
@@ -74,7 +74,7 @@
     }
   }
 
-  .currentPage {
+  .current-page {
     color: black;
     background-color: $border-color;
 

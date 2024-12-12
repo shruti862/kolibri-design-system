@@ -7,7 +7,7 @@
         :alt="alternativeText"
         :style="imgStyles"
         @error="onError"
-        @load="onLoad" 
+        @load="onLoad"
       >
       <span
         v-if="$slots.placeholder"
@@ -19,7 +19,7 @@
 
       <span
         v-if="$slots.topLeft"
-        :style="{ position: 'absolute', top: '0',left: '0', zIndex: '2' }"
+        :style="{ position: 'absolute', top: '0', left: '0', zIndex: '2' }"
       >
         <!-- @slot Places content on top of an image, to its top left corner. -->
         <slot name="topLeft"></slot>
@@ -32,7 +32,7 @@
         <slot name="topRight"></slot>
       </span>
       <span
-        v-if="$slots.bottomLeft"  
+        v-if="$slots.bottomLeft"
         :style="{ position: 'absolute', bottom: '0', left: '0', zIndex: '2' }"
       >
         <!-- @slot Places content on top of an image, to its bottom left corner. -->
@@ -45,7 +45,6 @@
         <!-- @slot Places content on top of an image, to its bottom right corner. -->
         <slot name="bottomRight"></slot>
       </span>
-
     </span>
   </span>
 
@@ -247,12 +246,18 @@
        * that controls the image ratio
        */
       ratioStyles() {
+        const defaultValue = {
+          outerContainer: {},
+          innerContainer: {},
+          img: {},
+        };
         if (!this.aspectRatio) {
-          return {
-            outerContainer: {},
-            innerContainer: {},
-            img: {},
-          };
+          return defaultValue;
+        }
+        // Avoid accessing unset indices through `this.ratio`
+        if (!isValidAspectRatio(this.aspectRatio)) {
+          this.onError(new Error('Invalid aspect ratio provided: ' + this.aspectRatio));
+          return defaultValue;
         }
         // https://www.sitepoint.com/maintain-image-aspect-ratios-responsive-web-design/
         const paddingTopInPercent = (this.ratio.y / this.ratio.x) * 100;
@@ -307,15 +312,32 @@
     },
     created() {
       if (!this.isDecorative && !this.altText) {
-        throw new Error('Missing required prop - provide altText or indicate isDecorative');
+        this.onError(new Error('Missing required prop - provide altText or indicate isDecorative'));
       }
     },
     methods: {
+      /**
+       * Emitted when => with:
+       * - the image fails to load => the DOM event that triggered the error
+       * - there is no alt text => error obj
+       * - the aspect ratio is invalid => error obj
+       *
+       * @param {UIEvent|Error} event
+       */
       onError(event) {
         /**
          * Emitted when the image fails to load. The DOM event  is available in the payload.
          */
-        this.$emit('error', event);
+        if (this.$listeners && this.$listeners.error) {
+          /**
+           * Emitted when the image fails to load or a misconfiguration error occurs.
+           * Expect either an `Event` or `Error`
+           */
+          this.$emit('error', event);
+        } else {
+          // eslint-disable-next-line no-console
+          console.error(event);
+        }
       },
       onLoad(event) {
         /**
