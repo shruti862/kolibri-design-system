@@ -5,19 +5,31 @@
     class="list-wrapper"
     :style="appearanceOverrides"
   >
+    <!-- Render More Button Before List for 'start' Direction -->
+    <div
+      v-if="overflowDirection === 'start'"
+      ref="moreButtonWrapper"
+      class="more-button-wrapper"
+    >
+      <slot
+        v-if="isMoreButtonVisible"
+        name="more"
+        :overflowItems="overflowItems"
+      ></slot>
+    </div>
+
     <div
       ref="list"
       class="list"
     >
       <template v-for="(item) in items">
-        <!-- @slot Slot for rendering divider items -->
+        <!-- Divider Slot -->
         <slot
           v-if="isDivider(item)"
           name="divider"
           :divider="item"
-        >
-        </slot>
-        <!-- @slot Slot responsible of rendering each item in the visible list -->
+        ></slot>
+        <!-- Item Slot -->
         <slot
           v-else
           name="item"
@@ -25,12 +37,13 @@
         ></slot>
       </template>
     </div>
+
+    <!-- Render More Button After List for 'end' Direction -->
     <div
+      v-if="overflowDirection === 'end'"
       ref="moreButtonWrapper"
       class="more-button-wrapper"
-      :class="{ 'start-button': overflowDirection === 'start' }"
     >
-      <!-- @slot Slot responsible of rendering the "see more" button. This slot receives as prop a list `overflowItems` with items that dont fit into the visible list.-->
       <slot
         v-if="isMoreButtonVisible"
         name="more"
@@ -40,6 +53,7 @@
   </div>
 
 </template>
+
 
 
 <script>
@@ -73,7 +87,7 @@
       },
       overflowDirection: {
         type: String,
-        default: 'end',
+        default: 'start',
         validator(value) {
           return ['start', 'end'].includes(value);
         },
@@ -156,7 +170,6 @@
 
         const itemsSizes = [];
 
-        // Collect the sizes of all items
         for (let i = 0; i < list.children.length; i++) {
           const item = list.children[i];
           const itemSize = this.getSize(item);
@@ -266,7 +279,7 @@
 <style scoped>
   .list-wrapper {
     display: flex;
-    justify-content: space-between; 
+     justify-content:flex-start;
     width: 100%;
   }
 
@@ -274,7 +287,7 @@
     overflow: visible;
     display: flex;
     flex-wrap: wrap;
-    
+    justify-content:flex-start;
     align-items: center;
   }
 
@@ -285,12 +298,11 @@
 
   .more-button-wrapper {
     visibility: visible;
-    order: 0; /* Ensure it remains in its original position for keyboard navigation */
   }
 
   /* When the 'start-button' class is added, position visually at the start */
   .more-button-wrapper.start-button {
-    order: -1; /* Moves visually to the start */
+  order:-1;
     z-index: 1; /* Ensure it's in front if needed */
   }
 

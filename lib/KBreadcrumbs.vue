@@ -1,54 +1,66 @@
 <template>
 
-  <KListWithOverflow
-    overflowDirection="start"
-    :items="preparedCrumbs"
-  >
-    <!-- Render individual breadcrumb items -->
-    <template #item="{ item }">
-      <li>
-        <KRouterLink
-          v-if="item.link"
-          :text="item.text"
-          :to="item.link"
+  <div class="breadcrumbs">
+    <KListWithOverflow
+      overflowDirection="start"
+      :items="preparedCrumbs"
+    >
+      <!-- Render individual breadcrumb items -->
+      <template #item="{ item }">
+        <li>
+          <KRouterLink
+            v-if="item.link"
+            :text="item.text"
+            :to="item.link"
+          >
+
+            <template #text="{ text }">
+              <span class="breadcrumbs-crumb-text">{{ text }}</span>
+            </template>
+          </KRouterLink>
+          <span v-else>{{ item.text }}</span>
+        </li>
+      </template>
+
+
+      <template #divider>
+        <span class="breadcrumbs-divider">›</span>
+      </template>
+
+
+      <template #more="{ overflowItems }">
+        <KIconButton
+          size="small"
+          icon="chevronDown"
+          appearance="raised-button"
         >
-
-          <template #text="{ text }">
-            <span class="breadcrumbs-crumb-text">{{ text }}</span>
+          <template #menu>
+            <KDropdownMenu
+              :options="overflowItems
+                .filter(item => item.type !== 'divider') 
+                .map(item => ({
+                  label: item.text, 
+                  link: item.link ? item.link : null 
+                }))"
+            >
+              <template #option="{ option }">
+                <template v-if="option.link">
+                  <a :href="option.link" class="dropdown-link" target="_blank" rel="noopener noreferrer">
+                    {{ option.label }}
+                  </a>
+                </template>
+                <template v-else>
+                  <span class="dropdown-text">{{ option.label }}</span>
+                </template>
+              </template>
+            </KDropdownMenu>
           </template>
-        </KRouterLink>
-        <span v-else>{{ item.text }}</span>
-      </li>
-    </template>
+        </KIconButton>
 
-    <!-- Render the separator between items -->
-    <!-- issue :: but right now it is not placing separators between items of list -->
-    <template #divider>
-      <span class="breadcrumbs-divider">›</span>
-    </template>
+      </template>
+    </KListWithOverflow>
 
-    <!-- Render the "more" overflow dropdown and its separator -->
-    <template #more="{ overflowItems }">
-      <KIconButton
-        size="small"
-        icon="chevronDown"
-        appearance="raised-button"
-      >
-        <template #menu>
-          <!-- issue :: dropdown menu shows only text of the overflowItems but not the link , I don't know whether i am doing the right way to reference link or not -->
-          <KDropdownMenu
-            :options="overflowItems
-              .filter(item => item.type !== 'separator') // Filter out separators
-              .map(item => ({
-                label: item.text, // Display 'text' in the menu
-                link: item.link ? item.link : null 
-              }))"
-          />
-        </template>
-      </KIconButton>
-      <span class="breadcrumbs-divider">›</span>
-    </template>
-  </KListWithOverflow>
+  </div>
 
 </template>
 
@@ -71,29 +83,76 @@
         if (!this.showSingleItem && crumbs.length <= 1) {
           return [];
         }
-        // Add separators between items
-        return crumbs.flatMap((item, index) =>
-          index > 0 ? [{ type: 'separator' }, item] : [item]
-        );
+        // Add dividers between items
+        return crumbs.flatMap((item, index) => (index > 0 ? [{ type: 'divider' }, item] : [item]));
       },
+    },
+    mounted() {
+      console.log('Prepared Crumbs on Mount:', this.preparedCrumbs);
     },
   };
 
 </script>
 
-<style scoped>
-  .breadcrumbs-divider {
-    margin: 0 10px;
-    color: black; /* Adjust color for the ">" separator */
+<style scoped lang="scss">
+
+  $crumb-max-width: 300px;
+  .breadcrumbs {
+    height: 32px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    overflow: visible;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 32px;
+    white-space: nowrap;
   }
 
   .breadcrumbs-crumb-text {
-    color: #007aff; /* Link color */
-    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    max-width: $crumb-max-width;
+    overflow: hidden;
     font-weight: bold;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+  }
+  .breadcrumbs-divider {
+    margin-right: 8px;
+    margin-left: 8px;
+    color: #000000;
+  }
+
+  .breadcrumbs-crumb-text {
+    font-weight: bold;
+    color: #007aff;
+    text-decoration: none;
   }
 
   li {
+    position: static;
     display: inline;
   }
+  .dropdown-link {
+    display: inline-block;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #4368f5;
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  /* Dropdown text styles (non-clickable items) */
+  .dropdown-text {
+    display: inline-block;
+    padding: 16px;
+    font-size: 16px;
+    color: #000000;
+    background-color: transparent;
+  }
+
 </style>
