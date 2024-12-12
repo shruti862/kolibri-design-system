@@ -186,7 +186,7 @@
             <!-- eslint-enable -->
           </template>
           <template #not>
-            <span>Build cards in such a way<br>that <code>KCard</code> is not a direct child of
+            <span>Build cards in such a way<br >that <code>KCard</code> is not a direct child of
               <code>KCardGrid</code></span>
             <!-- eslint-disable -->
             <DocsShowCode language="html">

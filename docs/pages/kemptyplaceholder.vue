@@ -28,50 +28,28 @@
         <table>
           <thead>
             <tr>
-              <th class="table-text">
-                Username
-              </th>
-              <th class="table-number">
-                Number of exercises
-              </th>
-              <th class="table-number">
-                Average score
-              </th>
+              <th class="table-text">Username</th>
+              <th class="table-number">Number of exercises</th>
+              <th class="table-number">Average score</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="table-text">
-                user_1
-              </td>
-              <td class="table-number">
-                11
-              </td>
-              <td class="table-number">
-                85%
-              </td>
+              <td class="table-text">user_1</td>
+              <td class="table-number">11</td>
+              <td class="table-number">85%</td>
             </tr>
             <tr>
-              <td class="table-text">
-                user_2
-              </td>
-              <td class="table-number">
-                0
-              </td>
+              <td class="table-text">user_2</td>
+              <td class="table-number">0</td>
               <td class="table-number">
                 <KEmptyPlaceholder />
               </td>
             </tr>
             <tr>
-              <td class="table-text">
-                user_3
-              </td>
-              <td class="table-number">
-                5
-              </td>
-              <td class="table-number">
-                100%
-              </td>
+              <td class="table-text">user_3</td>
+              <td class="table-number">5</td>
+              <td class="table-number">100%</td>
             </tr>
           </tbody>
         </table>

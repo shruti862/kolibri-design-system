@@ -156,8 +156,8 @@
             this.styles,
             this.appearanceOverrides,
             this.stylesActive,
-            this.appearanceOverridesActive
-          )
+            this.appearanceOverridesActive,
+          ),
         );
       },
     },

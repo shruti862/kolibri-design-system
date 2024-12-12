@@ -501,7 +501,7 @@
           // Check if matches
           option.startsWith = startswith(
             option[this.keys.label].toLowerCase(),
-            this.quickMatchString.toLowerCase()
+            this.quickMatchString.toLowerCase(),
           );
 
           return option;
@@ -642,28 +642,7 @@
       highlightQuickMatch(event) {
         // https://github.com/ccampbell/mousetrap/blob/master/mousetrap.js#L39
         const specialKeyCodes = [
-          8,
-          9,
-          13,
-          16,
-          17,
-          18,
-          20,
-          27,
-          32,
-          33,
-          34,
-          35,
-          36,
-          37,
-          38,
-          39,
-          40,
-          45,
-          46,
-          91,
-          93,
-          224,
+          8, 9, 13, 16, 17, 18, 20, 27, 32, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 91, 93, 224,
         ];
         const keyCode = event.keyCode;
         if (specialKeyCodes.includes(keyCode)) {
@@ -673,7 +652,7 @@
         const character = event.key.toString();
         this.quickMatchString += character;
         let matchingItems = this.annotatedOptions.filter(
-          option => option.startsWith && !option.disabled
+          option => option.startsWith && !option.disabled,
         );
         if (matchingItems.length !== 0) {
           matchingItems = sortby(matchingItems, [this.keys.label]);
@@ -721,7 +700,7 @@
 
         if (options.autoScroll) {
           const index = this.filteredOptions.findIndex(option =>
-            looseEqual(this.highlightedOption, option)
+            looseEqual(this.highlightedOption, option),
           );
           const optionToScrollTo = this.$refs.options[index];
           if (optionToScrollTo) {
@@ -896,7 +875,7 @@
             this.scrollOptionIntoView(selectedOption);
           } else {
             this.scrollOptionIntoView(
-              this.$refs.optionsList.querySelector('.ui-select-option:not(.is-disabled)')
+              this.$refs.optionsList.querySelector('.ui-select-option:not(.is-disabled)'),
             );
           }
         });
@@ -949,7 +928,7 @@
         const notEnoughSpaceBelow =
           buttonPosition > this.maxDropdownHeight &&
           this.scrollableAncestor.offsetHeight - buttonPosition <
-            buttonHeight + this.maxDropdownHeight;
+          buttonHeight + this.maxDropdownHeight;
 
         this.dropdownButtonBottom = notEnoughSpaceBelow ? buttonHeight + 'px' : 'auto';
       },
@@ -1085,7 +1064,9 @@
     line-height: $ui-input-label-line-height;
     color: $ui-input-label-color;
     cursor: default;
-    transition: color 0.1s ease, transform 0.2s ease;
+    transition:
+      color 0.1s ease,
+      transform 0.2s ease;
     transform-origin: left;
   }
 

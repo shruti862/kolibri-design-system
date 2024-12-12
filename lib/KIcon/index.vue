@@ -78,7 +78,7 @@
       if (KolibriIcons[this.icon].fixedColor && this.color) {
         // eslint-disable-next-line no-console
         console.error(
-          `KIcon: ${this.icon} color property will not be applied because the icon has a fixed color.`
+          `KIcon: ${this.icon} color property will not be applied because the icon has a fixed color.`,
         );
       }
     },

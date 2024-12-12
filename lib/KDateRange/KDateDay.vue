@@ -77,19 +77,19 @@
       inRangeStyle() {
         return this.isInRange
           ? {
-              backgroundColor: this.$themeBrand.primary.v_100,
-              ':hover': {
-                backgroundColor: this.$themePalette.grey.v_300,
-              },
-            }
+            backgroundColor: this.$themeBrand.primary.v_100,
+            ':hover': {
+              backgroundColor: this.$themePalette.grey.v_300,
+            },
+          }
           : {};
       },
       selectedStyle() {
         return this.isSelected
           ? {
-              backgroundColor: this.$themeBrand.primary.v_500,
-              color: this.$themePalette.white + '!important',
-            }
+            backgroundColor: this.$themeBrand.primary.v_500,
+            color: this.$themePalette.white + '!important',
+          }
           : {};
       },
       styleOverrides() {

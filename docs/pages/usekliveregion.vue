@@ -121,9 +121,7 @@
           :value="politeMessageInput"
           @input="updatePoliteMessage"
         />
-        <KButton @click="sendPoliteMessage(politeMessageInput)">
-          Send
-        </KButton>
+        <KButton @click="sendPoliteMessage(politeMessageInput)"> Send </KButton>
       </DocsShow>
 
       <DocsShow language="html">
@@ -132,9 +130,7 @@
           :value="assertiveMessageInput"
           @input="updateAssertiveMessage"
         />
-        <KButton @click="sendAssertiveMessage(assertiveMessageInput)">
-          Send
-        </KButton>
+        <KButton @click="sendAssertiveMessage(assertiveMessageInput)"> Send </KButton>
       </DocsShow>
     </DocsPageSection>
 

@@ -15,7 +15,7 @@
       title="Components"
       anchor="#components"
     >
-      <img src="./page-header.png">
+      <img src="./page-header.png" >
       <p>
         The following components can show up in the page header. Only the page title is required.
       </p>
@@ -57,7 +57,7 @@
         />. If there are tabs in the app bar, the page title should be consistent with the current
         tab, although a word or two can be added on to the page title for clarity.
       </p>
-      <img src="./page-header2.png">
+      <img src="./page-header2.png" >
       <p>
         Write any verbs that appear in page titles in the imperative form. Do not use verbs that end
         in "-ing"; doing so may give users the impression that a task is in progress when it is not.

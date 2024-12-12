@@ -100,7 +100,7 @@
         },
         {
           immediate: true,
-        }
+        },
       );
 
       // provide to `KCard`

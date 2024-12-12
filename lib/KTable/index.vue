@@ -185,7 +185,7 @@
         () => props.rows,
         newRows => {
           rows.value = newRows;
-        }
+        },
       );
 
       const handleSort = index => {
@@ -231,7 +231,7 @@
       headers: {
         type: Array,
         required: true,
-        validator: function(value) {
+        validator: function (value) {
           const uniqueColumnIds = new Set(value.map(h => h.columnId));
 
           return (
@@ -240,7 +240,7 @@
               header =>
                 ['label', 'dataType', 'columnId'].every(key => key in header) &&
                 ['string', 'number', 'date', 'undefined'].includes(header.dataType) &&
-                ['string', 'number'].includes(typeof header.columnId)
+                ['string', 'number'].includes(typeof header.columnId),
             )
           );
         },
@@ -293,7 +293,7 @@
         type: Object,
         required: false,
         default: () => ({}),
-        validator: function(value) {
+        validator: function (value) {
           if (Object.keys(value).length === 0) {
             return true;
           }
@@ -378,7 +378,7 @@
             if (!allHeaderColumnIds.includes(this.defaultSort.columnId)) {
               // eslint-disable-next-line no-console
               console.error(
-                `The columnId used for default sorting is ${this.defaultSort.columnId}, but the same was not found to be defined in any headers.`
+                `The columnId used for default sorting is ${this.defaultSort.columnId}, but the same was not found to be defined in any headers.`,
               );
             }
           }

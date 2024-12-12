@@ -4,9 +4,7 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th class="stretch">
-          Description
-        </th>
+        <th class="stretch">Description</th>
         <th>Type</th>
         <th>Default</th>
         <th>Required</th>

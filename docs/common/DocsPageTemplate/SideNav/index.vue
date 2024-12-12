@@ -67,7 +67,7 @@
           // otherwise, check for matching pages by title and keywords
           else {
             const matchingPages = section.pages.filter(page =>
-              matches(this.terms, page.title + page.keywords.join(' '))
+              matches(this.terms, page.title + page.keywords.join(' ')),
             );
             if (matchingPages.length) {
               toc.push(section.clone({ pages: matchingPages }));

@@ -224,7 +224,7 @@
         firstAllowedDate: this.firstAllowedDate,
       };
       this.validationMachine = interpret(
-        validationMachine.withContext({ ...initialContext, ...currentContext })
+        validationMachine.withContext({ ...initialContext, ...currentContext }),
       );
       this.validationMachine.start();
 

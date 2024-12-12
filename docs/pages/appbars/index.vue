@@ -101,16 +101,12 @@
 
     <DocsDoNot>
       <template #do>
-        <img src="./do-1.png">
-        <p class="do-dont">
-          Use general titles in top bars
-        </p>
+        <img src="./do-1.png" >
+        <p class="do-dont">Use general titles in top bars</p>
       </template>
       <template #not>
-        <img src="./dont-1.png">
-        <p class="do-dont">
-          Use user-generated text in top bars
-        </p>
+        <img src="./dont-1.png" >
+        <p class="do-dont">Use user-generated text in top bars</p>
       </template>
     </DocsDoNot>
 
@@ -123,7 +119,7 @@
 
     <DocsDoNot style="display: inline-block">
       <template #do>
-        <img src="./exception-1.png">
+        <img src="./exception-1.png" >
         <p class="do-dont">
           Change top app bar color to white if visual contrast is needed between the background and
           action buttons
@@ -133,19 +129,15 @@
 
     <DocsDoNot style="display: inline-block">
       <template #do>
-        <img src="./exception-2.png">
-        <p class="do-dont">
-          Place learning aids in top bars
-        </p>
+        <img src="./exception-2.png" >
+        <p class="do-dont">Place learning aids in top bars</p>
       </template>
     </DocsDoNot>
 
     <DocsDoNot style="display: inline-block">
       <template #do>
-        <img src="./exception-3.png">
-        <p class="do-dont">
-          Place custom search fields in top bars
-        </p>
+        <img src="./exception-3.png" >
+        <p class="do-dont">Place custom search fields in top bars</p>
       </template>
     </DocsDoNot>
 

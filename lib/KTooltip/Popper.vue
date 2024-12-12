@@ -247,7 +247,7 @@
               this.popperOptions.modifiers = Object.assign({}, this.popperOptions.modifiers);
               this.popperOptions.modifiers.preventOverflow = Object.assign(
                 {},
-                this.popperOptions.modifiers.preventOverflow
+                this.popperOptions.modifiers.preventOverflow,
               );
               this.popperOptions.modifiers.preventOverflow.boundariesElement = boundariesElement;
             }

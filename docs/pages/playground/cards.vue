@@ -1,9 +1,7 @@
 <template>
 
   <div style="padding: 80px">
-    <h1 id="link-target">
-      Cards QA page
-    </h1>
+    <h1 id="link-target">Cards QA page</h1>
     <p>
       Also preview live examples on <code>KCardGrid</code> and <code>KCard</code> documentation
       pages.

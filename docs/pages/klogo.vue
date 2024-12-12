@@ -25,9 +25,7 @@
           :size="150"
         />
         <div style="display: none; width: 100%; text-align: center">
-          <KButton @click="saveSVG('defaultLogoNoBackground')">
-            Save SVG
-          </KButton>
+          <KButton @click="saveSVG('defaultLogoNoBackground')"> Save SVG </KButton>
         </div>
       </DocsShow>
       <DocsShowCode language="html">
@@ -48,9 +46,7 @@
           :size="150"
         />
         <div style="display: none; width: 100%; text-align: center">
-          <KButton @click="saveSVG('defaultLogoWithBackground')">
-            Save SVG
-          </KButton>
+          <KButton @click="saveSVG('defaultLogoWithBackground')"> Save SVG </KButton>
         </div>
       </DocsShow>
       <DocsShowCode language="html">
@@ -72,9 +68,7 @@
           :size="150"
         />
         <div style="display: none; width: 100%; text-align: center">
-          <KButton @click="saveSVG('defaultLogoWithRectBackground')">
-            Save SVG
-          </KButton>
+          <KButton @click="saveSVG('defaultLogoWithRectBackground')"> Save SVG </KButton>
         </div>
       </DocsShow>
       <DocsShowCode language="html">
@@ -121,9 +115,7 @@
             'blackGrey',
           ]"
         >
-          <p :key="`text${colorScheme}`">
-            Color scheme: {{ colorScheme }}
-          </p>
+          <p :key="`text${colorScheme}`">Color scheme: {{ colorScheme }}</p>
           <KLogo
             :ref="`${colorScheme}LogoWithBackground`"
             :key="colorScheme"
@@ -137,9 +129,7 @@
             :key="`button${colorScheme}`"
             style="display: none; width: 100%; text-align: center"
           >
-            <KButton @click="saveSVG(`${colorScheme}LogoWithBackground`)">
-              Save SVG
-            </KButton>
+            <KButton @click="saveSVG(`${colorScheme}LogoWithBackground`)"> Save SVG </KButton>
           </div>
         </template>
       </DocsShow>

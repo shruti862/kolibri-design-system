@@ -63,15 +63,9 @@
           tabsId="coachReportsTabs"
           :activeTabId="activeTabId"
         >
-          <template #tabLessons>
-            Lessons tab content
-          </template>
-          <template #tabLearners>
-            Learners tab content
-          </template>
-          <template #tabGroups>
-            Groups tab content
-          </template>
+          <template #tabLessons> Lessons tab content </template>
+          <template #tabLearners> Learners tab content </template>
+          <template #tabGroups> Groups tab content </template>
         </KTabsPanel>
       </DocsShowCode>
 

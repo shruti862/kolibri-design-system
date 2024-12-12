@@ -22,9 +22,7 @@
           image itself.</em>
         If you need to apply dimensions, aspect ratio, etc. directly to the image, you can use
         <code>'fitXY'</code>
-        <DocsInternalLink href="/kimg#prop:scaleType">
-          scale type
-        </DocsInternalLink>.
+        <DocsInternalLink href="/kimg#prop:scaleType"> scale type </DocsInternalLink>.
       </p>
 
       <p>
@@ -72,9 +70,7 @@
       <p>
         When rendered within a block element, the image container fills the parent block element and
         the image scales with the <code>'centerInside'</code>
-        <DocsInternalLink href="/kimg#prop:scaleType">
-          scale type
-        </DocsInternalLink> by default.
+        <DocsInternalLink href="/kimg#prop:scaleType"> scale type </DocsInternalLink> by default.
       </p>
 
       <DocsShowCode language="html">
@@ -129,14 +125,10 @@
         />
       </DocsShowCode>
 
-      <h3 id="scaling">
-        Scaling
-      </h3>
+      <h3 id="scaling">Scaling</h3>
 
       <p>
-        The <DocsInternalLink href="/kimg#prop:scaleType">
-          scale type
-        </DocsInternalLink> determines
+        The <DocsInternalLink href="/kimg#prop:scaleType"> scale type </DocsInternalLink> determines
         how an image scales within the image container.
       </p>
 

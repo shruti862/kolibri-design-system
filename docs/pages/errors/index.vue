@@ -50,9 +50,7 @@
       </p>
       <DocsDoNot>
         <template #do>
-          <p class="do-dont">
-            “Sorry, something went wrong. <u>Refresh page</u>"
-          </p>
+          <p class="do-dont">“Sorry, something went wrong. <u>Refresh page</u>"</p>
         </template>
         <template #not>
           <p class="do-dont">
@@ -70,14 +68,10 @@
       </p>
       <DocsDoNot>
         <template #do>
-          <p class="do-dont">
-            “Please enter a valid email”
-          </p>
+          <p class="do-dont">“Please enter a valid email”</p>
         </template>
         <template #not>
-          <p class="do-dont">
-            “WARNING!! You didn’t fill this out”
-          </p>
+          <p class="do-dont">“WARNING!! You didn’t fill this out”</p>
         </template>
       </DocsDoNot>
       <p>
@@ -86,14 +80,10 @@
       </p>
       <DocsDoNot>
         <template #do>
-          <p class="do-dont">
-            “Storage limit reached”
-          </p>
+          <p class="do-dont">“Storage limit reached”</p>
         </template>
         <template #not>
-          <p class="do-dont">
-            “Whoops! Looks like the tank is too full &#x1f60e;"
-          </p>
+          <p class="do-dont">“Whoops! Looks like the tank is too full &#x1f60e;"</p>
         </template>
       </DocsDoNot>
     </DocsPageSection>
@@ -112,27 +102,27 @@
         Banners are appended to the app bar and notify the user about global system errors and/or
         notifications that affect the whole app experience.
       </p>
-      <img src="./banner.png">
+      <img src="./banner.png" >
       <h3>Error summary</h3>
       <p>
         Error summaries should appear at the top of the page and use an alert component. Use them in
         forms or for page-level errors that are not associated with a specific component or location
         on the page.
       </p>
-      <img src="./alert.png">
+      <img src="./alert.png" >
       <h3>Inline error messages</h3>
       <p>
         Place inline error messages in close proximity to where the error occurred. This can be an
         icon only, or icon and text. When paired with text, use <code>KLabeledIcon</code>
       </p>
-      <img src="./inline-error.png">
+      <img src="./inline-error.png" >
       <h3>Page error</h3>
       <p>
         Sometimes pages do not load because of 404 or 500 errors, unsupported browsers, and
         restricted permissions. Users should see a brief explanation of what went wrong and an
         action that might help address the problem.
       </p>
-      <img src="./page.png">
+      <img src="./page.png" >
     </DocsPageSection>
 
     <DocsPageSection
@@ -151,7 +141,7 @@
         the user with context as to what is possible. It should be clear to the user what they need
         to do for the action to become possible.
       </p>
-      <img src="./disable.png">
+      <img src="./disable.png" >
       <p>
         However, forms that create or update data generally should not have a disabled submit button
         and follow our form validation patterns instead.
@@ -166,14 +156,14 @@
         with <code>palette.orange.v_200</code> and informative language of the consequences under
         the current condition.
       </p>
-      <img src="./warning.png">
+      <img src="./warning.png" >
       <h3>Undo</h3>
       <p>
         Modals are helpful for preventing errors but should not be overused since they can disrupt
         user flow. For operations with relatively significant but not critical consequences, provide
         the option to undo an action.
       </p>
-      <img src="./undo.png">
+      <img src="./undo.png" >
       <h3>Good defaults</h3>
       <p>
         Especially for repetitive, common actions, setting configurations to
