@@ -83,6 +83,7 @@
               class="breadcrumbs-crumb-text"
               :style="{ maxWidth: lastBreadcrumbMaxWidth }"
               dir="auto"
+               :title="crumb.text"
             >
               {{ crumb.text }}
             </span>
