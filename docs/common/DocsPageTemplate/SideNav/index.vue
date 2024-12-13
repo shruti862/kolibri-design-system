@@ -139,6 +139,7 @@
           });
         });
       });
+
       //  Don't show the nav until the state is set
       this.loaded = true;
     },
