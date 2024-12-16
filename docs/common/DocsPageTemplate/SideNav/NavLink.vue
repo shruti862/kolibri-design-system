@@ -9,7 +9,7 @@
   </div>
   <router-link
     v-else
-     :to="computedLink"
+    :to="computedLink"
     class="block enabled-link"
     :href="page.path"
     :class="{ 'current-page': currentPage, code: page.isCode }"
@@ -40,13 +40,13 @@
       currentPage() {
         return this.page.path === this.$route.path;
       },
-       computedLink() {
-      // Preserve query parameters in the link
-      return {
-        path: this.page.path,
-        query: { ...this.$route.query },
-      };
-    },
+      computedLink() {
+        // Preserve query parameters in the link
+        return {
+          path: this.page.path,
+          query: { ...this.$route.query },
+        };
+      },
     },
   };
 
