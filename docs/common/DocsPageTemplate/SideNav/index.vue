@@ -126,19 +126,19 @@
         }, 2000); // 2-second debounce delay
       }
 
-      // Modify navigation links to preserve the filter query
-      this.$nextTick(() => {
-        this.$refs.links.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', event => {
-            event.preventDefault();
-            const href = new URL(link.href);
-            this.$router.push({
-              path: href.pathname,
-              query: { ...this.$route.query }, // Add existing query params to the new path
-            });
-          });
-        });
-      });
+      // // Modify navigation links to preserve the filter query
+      // this.$nextTick(() => {
+      //   this.$refs.links.querySelectorAll('a').forEach(link => {
+      //     link.addEventListener('click', event => {
+      //       event.preventDefault();
+      //       const href = new URL(link.href);
+      //       this.$router.push({
+      //         path: href.pathname,
+      //         query: { ...this.$route.query }, // Add existing query params to the new path
+      //       });
+      //     });
+      //   });
+      // });
       //  Don't show the nav until the state is set
       this.loaded = true;
     },
