@@ -24,7 +24,7 @@
         </button>
       </DocsShowCode>
       <p>
-       The <code>ref</code> attribute creates a reference to the
+        The <code>ref</code> attribute creates a reference to the
         <code>myButton</code> element, and the <code>reference</code> prop associates the
         tooltip with this reference.
       </p>
@@ -70,7 +70,7 @@
         </button>
       </DocsShowCode>
       <p>
-       The <code>placement</code> prop can be used to specify the placement of the tooltip.
+        The <code>placement</code> prop can be used to specify the placement of the tooltip.
       </p>
 
       <h3>Maximum width</h3>
