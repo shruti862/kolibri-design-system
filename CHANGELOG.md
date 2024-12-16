@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#874]
+  - **Description:** Removes `pull_request_review` event from the community contributions spreadsheet action. When triggered by this event, secrets are not available. This fixes the action failure when pull request reviewed.
+  - **Products impact:** none
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#874]: https://github.com/learningequality/kolibri-design-system/pull/874
+
+
+
 - [#854]
   - **Description:** Makes KTable sorting case-insensitive and internationalized
   - **Products impact:** bugfix
