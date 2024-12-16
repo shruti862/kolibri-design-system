@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#854]
+  - **Description:** Makes KTable sorting case-insensitive and internationalized
+  - **Products impact:** bugfix
+  - **Addresses:** https://github.com/learningequality/kolibri-design-system/issues/852
+  - **Components:** KTable
+  - **Breaking:** No
+  - **Impacts a11y:** No
+  - **Guidance:** NA
+
+[#854]: https://github.com/learningequality/kolibri-design-system/pull/854
+
+
+
 - [#859]
   - **Description:** Add documentation to the `KTooltip` page
   - **Products impact:** none
