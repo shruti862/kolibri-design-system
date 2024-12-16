@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#859]
+  - **Description:** Add documentation to the `KTooltip` page
+  - **Products impact:** none
+  - **Addresses:** https://github.com/learningequality/kolibri-design-system/issues/694
+  - **Components:** `KTooltip`
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#859]: https://github.com/learningequality/kolibri-design-system/pull/859
+
+
+
 - [#872]
   - **Description:** Adds the global title attribute to `KBreadcrumbs` so that the truncated text can be seen fully when a breadcrumb item is hovered.
   - **Products impact:** UX/UI update
