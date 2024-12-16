@@ -9,7 +9,10 @@
       />
     </div>
     <div class="alias code">
-      <div v-for="(aliasItem, index) in aliasList" :key="index">
+      <div
+        v-for="(aliasItem, index) in aliasList"
+        :key="index"
+      >
         <code>{{ aliasItem }}</code>
         <DocsAnchorTarget
           :verticalOffset="2"

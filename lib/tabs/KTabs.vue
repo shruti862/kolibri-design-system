@@ -3,7 +3,19 @@
   <div>
     <KTabsList
       v-model="activeTabId"
-      v-bind="{ tabsId, tabs, ariaLabel, ariaLabelledBy, color, colorActive, backgroundColor, hoverBackgroundColor, appearanceOverrides, appearanceOverridesActive, enablePrint }"
+      v-bind="{
+        tabsId,
+        tabs,
+        ariaLabel,
+        ariaLabelledBy,
+        color,
+        colorActive,
+        backgroundColor,
+        hoverBackgroundColor,
+        appearanceOverrides,
+        appearanceOverridesActive,
+        enablePrint,
+      }"
     >
       <!-- provide the same `tab` slot and send its properties further up from `KTabsList` -->
       <template #tab="{ tab, isActive }">
@@ -25,7 +37,10 @@
       <!-- send the default slot and named slots to `KTabsPanel` which will then process them -->
       <!-- @slot An alternative to using slots named by tabs' IDs. -->
       <slot></slot>
-      <template v-for="(_, slot) in $slots" #[slot]>
+      <template
+        v-for="(_, slot) in $slots"
+        #[slot]
+      >
         <slot :name="slot"></slot>
       </template>
     </KTabsPanel>
@@ -63,7 +78,8 @@
     },
     mounted() {
       // automatically set the first tab as active when not using router
-      // (if a router is used, 'activeTabId' is set by `KTabList` to correspond to the current route)
+      // (if a router is used, 'activeTabId' is set by `KTabList`
+      // to correspond to the current route)
       if (!this.useRouter && this.tabs && this.tabs.length) {
         this.activeTabId = this.tabs[0].id;
       }

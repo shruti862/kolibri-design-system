@@ -12,11 +12,15 @@
     <div
       dir="auto"
       class="k-tooltip"
-      :style="{ backgroundColor: $themeTokens.text, color: $themeTokens.textInverted, maxWidth: maxWidth ? maxWidth : 'calc(100vw - 10px)', }"
+      :style="{
+        backgroundColor: $themeTokens.text,
+        color: $themeTokens.textInverted,
+        maxWidth: maxWidth ? maxWidth : 'calc(100vw - 10px)',
+      }"
     >
       <!-- If text prop is provided, display the text -->
-      <template v-if="text"> 
-        {{ text }} 
+      <template v-if="text">
+        {{ text }}
       </template>
       <!-- @slot Slot alternative to `text` prop -->
       <slot v-else></slot>
@@ -98,7 +102,6 @@
        * Whether or not the tooltip should be moved
        * to the overlay container element `#k-overlay`
        */
-      // eslint-disable-next-line kolibri/vue-no-unused-properties
       appendToOverlay: {
         type: Boolean,
         default: false,

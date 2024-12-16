@@ -1,18 +1,20 @@
 <template>
 
   <div>
-    <div v-if="$slots.do" class="show">
-      <div class="header">
-        <span class="do mark">✔</span> Do
-      </div>
+    <div
+      v-if="$slots.do"
+      class="show"
+    >
+      <div class="header"><span class="do mark">✔</span> Do</div>
       <div class="content">
         <slot name="do"></slot>
       </div>
     </div>
-    <div v-if="$slots.not" class="show">
-      <div class="header">
-        <span class="mark not">✘</span> Don't
-      </div>
+    <div
+      v-if="$slots.not"
+      class="show"
+    >
+      <div class="header"><span class="mark not">✘</span> Don't</div>
       <div class="content">
         <slot name="not"></slot>
       </div>

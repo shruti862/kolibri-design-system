@@ -1,0 +1,5 @@
+# Run this command to always ignore formatting commits in `git blame`
+# git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# Applied updated linting for kolibri-format to codebase
+cf75a89979022d1f30666613d1a324e9a8da189a

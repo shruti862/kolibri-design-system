@@ -1,13 +1,25 @@
 <template>
 
   <DocsPageTemplate apiDocs>
-    <DocsPageSection title="Overview" anchor="#overview">
-      <p>A radio button is used to make a single selection from a group of options. Radio buttons should be used instead of checkboxes if only one option can be selected.</p>
+    <DocsPageSection
+      title="Overview"
+      anchor="#overview"
+    >
+      <p>
+        A radio button is used to make a single selection from a group of options. Radio buttons
+        should be used instead of checkboxes if only one option can be selected.
+      </p>
 
-      <p><code>KRadioButton</code>'s are always be wrapped in <DocsLibraryLink component="KRadioButtonGroup" />.</p>
+      <p>
+        <code>KRadioButton</code>'s are always be wrapped in
+        <DocsLibraryLink component="KRadioButtonGroup" />.
+      </p>
     </DocsPageSection>
 
-    <DocsPageSection title="Usage" anchor="#usage">
+    <DocsPageSection
+      title="Usage"
+      anchor="#usage"
+    >
       <DocsShow>
         <KRadioButtonGroup>
           <KRadioButton
@@ -33,9 +45,7 @@
             truncateLabel
           />
         </KRadioButtonGroup>
-        <p>
-          Current value: {{ exampleValue }}
-        </p>
+        <p>Current value: {{ exampleValue }}</p>
       </DocsShow>
 
       <DocsShowCode language="html">
@@ -67,10 +77,13 @@
 
       <h3>With grid layout</h3>
 
-      <p>It is possible to use radio buttons together with grid layout components such as <DocsLibraryLink component="KGrid" /> or <DocsLibraryLink component="KFixedGrid" />. For example: </p>
+      <p>
+        It is possible to use radio buttons together with grid layout components such as
+        <DocsLibraryLink component="KGrid" /> or <DocsLibraryLink component="KFixedGrid" />. For
+        example:
+      </p>
 
       <DocsShow>
-
         <KRadioButtonGroup>
           <KFixedGrid :numCols="2">
             <KFixedGridItem :span="1">
@@ -102,9 +115,7 @@
           </KFixedGrid>
         </KRadioButtonGroup>
 
-        <p>
-          Current value: {{ exampleValue }}
-        </p>
+        <p>Current value: {{ exampleValue }}</p>
       </DocsShow>
 
       <DocsShowCode language="html">
@@ -141,36 +152,53 @@
       </DocsShowCode>
     </DocsPageSection>
 
-    <DocsPageSection title="Layout" anchor="#layout">
+    <DocsPageSection
+      title="Layout"
+      anchor="#layout"
+    >
       <ul>
         <li>Align with container margin</li>
         <li>Stack vertically in lists</li>
-        <li>
-          Avoid nesting radio buttons
-        </li>
+        <li>Avoid nesting radio buttons</li>
       </ul>
     </DocsPageSection>
 
-    <DocsPageSection title="Label" anchor="#label">
+    <DocsPageSection
+      title="Label"
+      anchor="#label"
+    >
       <ul>
         <li>Labels should be short and concise</li>
         <li>Labels should be positioned above the radio button group</li>
       </ul>
     </DocsPageSection>
 
-    <DocsPageSection title="Guidelines" anchor="#guidelines">
+    <DocsPageSection
+      title="Guidelines"
+      anchor="#guidelines"
+    >
       <ul>
-        <li>Always wrap <code>KRadioButton</code> group in <DocsLibraryLink component="KRadioButtonGroup" /></li>
+        <li>
+          Always wrap <code>KRadioButton</code> group in
+          <DocsLibraryLink component="KRadioButtonGroup" />
+        </li>
         <li>There must always be exactly one radio button selected within a group</li>
         <li>If the user is allowed to not select any of the options, provide a "None" option</li>
-        <li>By default, the first radio option is selected, but may be configured to have any option preselected</li>
+        <li>
+          By default, the first radio option is selected, but may be configured to have any option
+          preselected
+        </li>
       </ul>
     </DocsPageSection>
 
-    <DocsPageSection title="Related" anchor="#related">
+    <DocsPageSection
+      title="Related"
+      anchor="#related"
+    >
       <ul>
         <li>
-          <DocsLibraryLink component="KRadioButtonGroup" /> ensures <code>KRadioButton</code> groups are accessible in all supported browsers.
+          <DocsLibraryLink component="KRadioButtonGroup" /> ensures <code>KRadioButton</code> groups
+          are accessible in all supported browsers.
         </li>
       </ul>
     </DocsPageSection>

@@ -4,19 +4,23 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th class="stretch">
-          Description
-        </th>
+        <th class="stretch">Description</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(method, i) in api" :key="i">
+      <tr
+        v-for="(method, i) in api"
+        :key="i"
+      >
         <td class="first-col">
           <code>{{ method.name }}</code>
           <DocsAnchorTarget :anchor="`#method:${method.name}`" />
         </td>
         <td>
-          <vue-simple-markdown v-if="method.description" :source="method.description" />
+          <vue-simple-markdown
+            v-if="method.description"
+            :source="method.description"
+          />
           <KEmptyPlaceholder v-else />
         </td>
       </tr>

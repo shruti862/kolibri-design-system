@@ -4,7 +4,11 @@
     v-show="showSingleItem || crumbs.length > 1"
     :class="{ 'breadcrumbs-collapsed': collapsedCrumbs.length }"
   >
-    <nav class="breadcrumbs" v-bind="$attrs" :aria-label="$attrs.ariaLabel">
+    <nav
+      class="breadcrumbs"
+      v-bind="$attrs"
+      :aria-label="$attrs.ariaLabel"
+    >
       <div
         v-show="collapsedCrumbs.length"
         class="breadcrumbs-dropdown-wrapper"
@@ -33,10 +37,16 @@
                 :to="crumb.link"
               >
                 <template #text="{ text }">
-                  <span class="breadcrumbs-crumb-text" dir="auto">{{ text }}</span>
+                  <span
+                    class="breadcrumbs-crumb-text"
+                    dir="auto"
+                  >{{ text }}</span>
                 </template>
               </KRouterLink>
-              <span v-else dir="auto">{{ crumb.text }}</span>
+              <span
+                v-else
+                dir="auto"
+              >{{ crumb.text }}</span>
             </li>
           </ol>
         </div>
@@ -55,12 +65,19 @@
               :text="crumb.text"
               :to="crumb.link"
               dir="auto"
+              :title="crumb.text"
             >
               <template #text="{ text }">
-                <span class="breadcrumbs-crumb-text">{{ text }}</span>
+                <span
+                  class="breadcrumbs-crumb-text"
+                  :title="text"
+                >{{ text }}</span>
               </template>
             </KRouterLink>
-            <span v-else>{{ crumb.text }}</span>
+            <span
+              v-else
+              :title="crumb.text"
+            >{{ crumb.text }}</span>
           </li>
 
           <li
@@ -72,6 +89,7 @@
               class="breadcrumbs-crumb-text"
               :style="{ maxWidth: lastBreadcrumbMaxWidth }"
               dir="auto"
+              :title="crumb.text"
             >
               {{ crumb.text }}
             </span>
@@ -80,9 +98,11 @@
       </ol>
     </nav>
 
-
     <!-- This is a duplicate of breacrumbs-visible-items to help to reference sizes. -->
-    <div class="breadcrumbs breadcrumbs-offscreen" aria-hidden="true">
+    <div
+      class="breadcrumbs breadcrumbs-offscreen"
+      aria-hidden="true"
+    >
       <ol class="breadcrumbs-visible-items">
         <template v-for="(crumb, index) in crumbs">
           <li
@@ -91,7 +111,12 @@
             :key="index"
             class="breadcrumbs-visible-item breadcrumbs-visible-item-notlast"
           >
-            <KRouterLink v-if="crumb.link" :text="crumb.text" :to="crumb.link" tabindex="-1">
+            <KRouterLink
+              v-if="crumb.link"
+              :text="crumb.text"
+              :to="crumb.link"
+              tabindex="-1"
+            >
               <template #text="{ text }">
                 <span class="breadcrumbs-crumb-text">{{ text }}</span>
               </template>
@@ -107,7 +132,7 @@
           >
             <span
               class="breadcrumbs-crumb-text"
-              :style="{ maxWidth: lastBreadcrumbMaxWidth }"  
+              :style="{ maxWidth: lastBreadcrumbMaxWidth }"
             >
               {{ crumb.text }}
             </span>
@@ -250,7 +275,7 @@
               }
 
               lastCrumbWidth = Math.ceil(
-                tempCrumbs[tempCrumbs.length - 1].ref[0].getBoundingClientRect().width
+                tempCrumbs[tempCrumbs.length - 1].ref[0].getBoundingClientRect().width,
               );
 
               if (lastCrumbWidth > remainingWidth) {
@@ -273,8 +298,9 @@
             // Fixes https://github.com/learningequality/kolibri-design-system/issues/198
             // and https://github.com/learningequality/kolibri/issues/6918
             if (remainingWidth > 0) {
-              this.lastBreadcrumbMaxWidth = `${DEFAULT_LAST_BREADCRUMB_MAX_WIDTH +
-                remainingWidth}px`;
+              this.lastBreadcrumbMaxWidth = `${
+                DEFAULT_LAST_BREADCRUMB_MAX_WIDTH + remainingWidth
+              }px`;
             }
           });
         }

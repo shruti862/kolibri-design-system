@@ -6,7 +6,6 @@
     @click="toggleCheck"
   >
     <div class="tr">
-
       <div class="k-checkbox">
         <input
           :id="id"
@@ -31,24 +30,23 @@
         />
         <KIcon
           v-else-if="!indeterminate && checked"
-          :style="[ notBlank, activeOutline ]"
+          :style="[notBlank, activeOutline]"
           class="checkbox-icon"
           icon="checked"
         />
         <KIcon
           v-else
-          :style="[ blank, activeOutline ]"
+          :style="[blank, activeOutline]"
           class="checkbox-icon"
           icon="unchecked"
         />
-
       </div>
 
       <label
         :dir="labelDir"
         class="k-checkbox-label"
         :for="id"
-        :class="{ 'visuallyhidden': !showLabel }"
+        :class="{ visuallyhidden: !showLabel }"
         :style="labelStyle"
         @click.prevent
       >
@@ -59,7 +57,10 @@
         <template v-else>
           {{ label }}
         </template>
-        <div v-if="description" class="description">
+        <div
+          v-if="description"
+          class="description"
+        >
           {{ description }}
         </div>
       </label>

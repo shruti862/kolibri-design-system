@@ -10,14 +10,15 @@
 
    BELOW: KModal targets KeenUiSelect by using div.ui-select selector
   -->
-  <div class="ui-select" :class="classes">
+  <div
+    class="ui-select"
+    :class="classes"
+  >
     <input
       v-if="name"
       class="ui-select-hidden-input"
-
       type="hidden"
       :name="name"
-
       :value="submittedValue"
     >
 
@@ -27,7 +28,6 @@
         class="ui-select-label"
         :class="$computedClass({ ':focus': $coreOutline })"
         :tabindex="disabled ? null : '0'"
-
         @click="toggleDropdown"
         @focus="onFocus"
         @keydown.enter.prevent="openDropdown"
@@ -47,20 +47,38 @@
           <slot>{{ label }}</slot>
         </div>
 
-        <div class="ui-select-display" :style="activeBorderStyle">
+        <div
+          class="ui-select-display"
+          :style="activeBorderStyle"
+        >
           <div
             class="ui-select-display-value"
             :class="{ 'is-placeholder': !hasDisplayText }"
           >
             <!-- @slot Optional slot to override the display of the selected value -->
             <slot name="display">
-              {{ hasDisplayText ? displayText : (
-                hasFloatingLabel && isLabelInline) ? null : placeholder }}
+              {{
+                hasDisplayText
+                  ? displayText
+                  : hasFloatingLabel && isLabelInline
+                    ? null
+                    : placeholder
+              }}
             </slot>
           </div>
 
-          <UiIcon v-if="!clearableState" class="ui-select-dropdown-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.984 9.984h10.03L12 15z" /></svg>
+          <UiIcon
+            v-if="!clearableState"
+            class="ui-select-dropdown-button"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path d="M6.984 9.984h10.03L12 15z" />
+            </svg>
           </UiIcon>
           <KIconButton
             v-else
@@ -78,7 +96,11 @@
             v-show="showDropdown"
             ref="dropdown"
             class="ui-select-dropdown"
-            :style="{ color: $themeTokens.primary, backgroundColor: $themeTokens.surface, bottom: dropdownButtonBottom }"
+            :style="{
+              color: $themeTokens.primary,
+              backgroundColor: $themeTokens.surface,
+              bottom: dropdownButtonBottom,
+            }"
             tabindex="-1"
             @keydown.enter.prevent.stop="selectHighlighted"
             @keydown.space.prevent.stop="selectHighlighted"
@@ -102,16 +124,14 @@
                 :multiple="multiple"
                 :option="option"
                 :selected="isOptionSelected(option)"
-
                 type="basic"
                 @click.native.stop="selectOption(option)"
-
                 @mouseover.native.stop="onMouseover(option)"
               >
-                <!-- @slot Optional slot to override the display of the option in the options dropdown -->
+                <!-- @slot Optional slot to override the display of
+                 the option in the options dropdown -->
                 <slot
                   name="option"
-
                   :highlighted="isOptionHighlighted(option)"
                   :index="index"
                   :option="option"
@@ -119,7 +139,10 @@
                 ></slot>
               </KSelectOption>
 
-              <div v-show="hasNoResults" class="ui-select-no-results">
+              <div
+                v-show="hasNoResults"
+                class="ui-select-no-results"
+              >
                 <!-- @slot Optional slot as alternative to `noResultsText` prop -->
                 <slot name="no-results">
                   {{ noResultsText }}
@@ -130,15 +153,24 @@
         </transition>
       </div>
 
-      <div v-if="hasFeedback" class="ui-select-feedback">
-        <div v-if="showError" class="ui-select-feedback-text">
+      <div
+        v-if="hasFeedback"
+        class="ui-select-feedback"
+      >
+        <div
+          v-if="showError"
+          class="ui-select-feedback-text"
+        >
           <!-- @slot Optional slot as alternative to `invalidText` prop -->
           <slot name="error">
             {{ invalidText }}
           </slot>
         </div>
 
-        <div v-else-if="showHelp" class="ui-select-feedback-text">
+        <div
+          v-else-if="showHelp"
+          class="ui-select-feedback-text"
+        >
           <!-- @slot Optional slot as alternative to `help` prop -->
           <slot name="help">
             {{ help }}
@@ -469,7 +501,7 @@
           // Check if matches
           option.startsWith = startswith(
             option[this.keys.label].toLowerCase(),
-            this.quickMatchString.toLowerCase()
+            this.quickMatchString.toLowerCase(),
           );
 
           return option;
@@ -610,28 +642,7 @@
       highlightQuickMatch(event) {
         // https://github.com/ccampbell/mousetrap/blob/master/mousetrap.js#L39
         const specialKeyCodes = [
-          8,
-          9,
-          13,
-          16,
-          17,
-          18,
-          20,
-          27,
-          32,
-          33,
-          34,
-          35,
-          36,
-          37,
-          38,
-          39,
-          40,
-          45,
-          46,
-          91,
-          93,
-          224,
+          8, 9, 13, 16, 17, 18, 20, 27, 32, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 91, 93, 224,
         ];
         const keyCode = event.keyCode;
         if (specialKeyCodes.includes(keyCode)) {
@@ -641,7 +652,7 @@
         const character = event.key.toString();
         this.quickMatchString += character;
         let matchingItems = this.annotatedOptions.filter(
-          option => option.startsWith && !option.disabled
+          option => option.startsWith && !option.disabled,
         );
         if (matchingItems.length !== 0) {
           matchingItems = sortby(matchingItems, [this.keys.label]);
@@ -689,7 +700,7 @@
 
         if (options.autoScroll) {
           const index = this.filteredOptions.findIndex(option =>
-            looseEqual(this.highlightedOption, option)
+            looseEqual(this.highlightedOption, option),
           );
           const optionToScrollTo = this.$refs.options[index];
           if (optionToScrollTo) {
@@ -783,9 +794,11 @@
       },
 
       toggleDropdown() {
-        // if called on dropdown inside modal, dropdown will generally render above input/placeholder when opened,
-        // rather than below it: we want to render dropdown above input only in cases where there isn't enough
-        // space available beneath input, but when dropdown extends outside a modal the func doesn't work as intended
+        // if called on dropdown inside modal,
+        // dropdown will generally render above input/placeholder when opened, rather than below it.
+        // We want to render dropdown above input only in cases where there isn't enough space
+        // available beneath input, but when dropdown extends outside a modal
+        // the func doesn't work as intended
         if (!this.isInsideModal) this.calculateSpaceBelow();
 
         this[this.showDropdown ? 'closeDropdown' : 'openDropdown']();
@@ -862,7 +875,7 @@
             this.scrollOptionIntoView(selectedOption);
           } else {
             this.scrollOptionIntoView(
-              this.$refs.optionsList.querySelector('.ui-select-option:not(.is-disabled)')
+              this.$refs.optionsList.querySelector('.ui-select-option:not(.is-disabled)'),
             );
           }
         });
@@ -915,7 +928,7 @@
         const notEnoughSpaceBelow =
           buttonPosition > this.maxDropdownHeight &&
           this.scrollableAncestor.offsetHeight - buttonPosition <
-            buttonHeight + this.maxDropdownHeight;
+          buttonHeight + this.maxDropdownHeight;
 
         this.dropdownButtonBottom = notEnoughSpaceBelow ? buttonHeight + 'px' : 'auto';
       },
@@ -960,6 +973,7 @@
 
     &.is-active:not(.is-disabled) {
       border-bottom-color: $ui-input-border-color--active;
+
       .ui-icon {
         color: $ui-input-icon-color--active;
       }
@@ -1050,7 +1064,9 @@
     line-height: $ui-input-label-line-height;
     color: $ui-input-label-color;
     cursor: default;
-    transition: color 0.1s ease, transform 0.2s ease;
+    transition:
+      color 0.1s ease,
+      transform 0.2s ease;
     transform-origin: left;
   }
 
@@ -1163,10 +1179,6 @@
     vertical-align: bottom;
   }
 
-  .ui-select-disabled /deep/ .ui-select__label-text.is-inline {
-    cursor: default;
-  }
-
   /* stylelint-disable csstree/validator */
 
   .ui-select-disabled {
@@ -1176,9 +1188,5 @@
   }
 
   /* stylelint-enable */
-
-  /deep/ .ui-select__display-value {
-    line-height: 1.3;
-  }
 
 </style>

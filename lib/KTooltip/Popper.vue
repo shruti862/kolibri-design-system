@@ -11,7 +11,6 @@
        'appendToBody' prop changedto 'appendToEl' and related changes.
   -->
 
-
   <span>
     <transition
       :name="transition"
@@ -248,7 +247,7 @@
               this.popperOptions.modifiers = Object.assign({}, this.popperOptions.modifiers);
               this.popperOptions.modifiers.preventOverflow = Object.assign(
                 {},
-                this.popperOptions.modifiers.preventOverflow
+                this.popperOptions.modifiers.preventOverflow,
               );
               this.popperOptions.modifiers.preventOverflow.boundariesElement = boundariesElement;
             }
@@ -345,83 +344,79 @@
 <style>
 
   .popper {
-    width: auto;
-    background-color: #fafafa;
-    color: #212121;
-    text-align: center;
-    padding: 2px;
-    display: inline-block;
-    border-radius: 3px;
     position: absolute;
+    z-index: 200000;
+    display: inline-block;
+    width: auto;
+    padding: 2px;
     font-size: 14px;
     font-weight: normal;
+    color: #212121;
+    text-align: center;
+    background-color: #fafafa;
     border: 1px #ebebeb solid;
-    z-index: 200000;
-    -moz-box-shadow: rgb(58, 58, 58) 0 0 6px 0;
-    -webkit-box-shadow: rgb(58, 58, 58) 0 0 6px 0;
+    border-radius: 3px;
     box-shadow: rgb(58, 58, 58) 0 0 6px 0;
   }
 
   .popper .popper-arrow {
+    position: absolute;
     width: 0;
     height: 0;
-    border-style: solid;
-    position: absolute;
     margin: 5px;
+    border-style: solid;
   }
 
-  .popper[x-placement^="top"] {
+  .popper[x-placement^='top'] {
     margin-bottom: 5px;
   }
 
-  .popper[x-placement^="top"] .popper-arrow {
-    border-width: 5px 5px 0 5px;
-    border-color: #fafafa transparent transparent transparent;
+  .popper[x-placement^='top'] .popper-arrow {
     bottom: -5px;
     left: calc(50% - 5px);
     margin-top: 0;
     margin-bottom: 0;
+    border-color: #fafafa transparent transparent;
+    border-width: 5px 5px 0;
   }
 
-  .popper[x-placement^="bottom"] {
+  .popper[x-placement^='bottom'] {
     margin-top: 5px;
   }
 
-  .popper[x-placement^="bottom"] .popper-arrow {
-    border-width: 0 5px 5px 5px;
-    border-color: transparent transparent #fafafa transparent;
+  .popper[x-placement^='bottom'] .popper-arrow {
     top: -5px;
     left: calc(50% - 5px);
     margin-top: 0;
     margin-bottom: 0;
+    border-color: transparent transparent #fafafa;
+    border-width: 0 5px 5px;
   }
 
-  .popper[x-placement^="right"] {
+  .popper[x-placement^='right'] {
     margin-left: 5px;
   }
 
-  .popper[x-placement^="right"] .popper-arrow {
-    border-width: 5px 5px 5px 0;
-    border-color: transparent #fafafa transparent transparent;
-    left: -5px;
+  .popper[x-placement^='right'] .popper-arrow {
     top: calc(50% - 5px);
-    margin-left: 0;
+    left: -5px;
     margin-right: 0;
+    margin-left: 0;
+    border-color: transparent #fafafa transparent transparent;
+    border-width: 5px 5px 5px 0;
   }
 
-  .popper[x-placement^="left"] {
+  .popper[x-placement^='left'] {
     margin-right: 5px;
   }
 
-  .popper[x-placement^="left"] .popper-arrow {
-    border-width: 5px 0 5px 5px;
-    border-color: transparent transparent transparent #fafafa;
-    right: -5px;
+  .popper[x-placement^='left'] .popper-arrow {
     top: calc(50% - 5px);
-    margin-left: 0;
+    right: -5px;
     margin-right: 0;
+    margin-left: 0;
+    border-color: transparent transparent transparent #fafafa;
+    border-width: 5px 0 5px 5px;
   }
 
 </style>
-
-

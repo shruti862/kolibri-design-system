@@ -1,15 +1,29 @@
 <template>
 
-  <span class="labeled-icon-wrapper" v-on="$listeners">
+  <span
+    class="labeled-icon-wrapper"
+    v-on="$listeners"
+  >
     <span class="icon">
       <!-- @slot Optional slot as alternative to `icon` prop -->
       <slot name="icon">
-        <KIcon v-if="icon" :icon="icon" :color="color || $themeTokens.text" style="top: 2px;" />
+        <KIcon
+          v-if="icon"
+          :icon="icon"
+          :color="color || $themeTokens.text"
+          style="top: 2px"
+        />
       </slot>
     </span>
-    <span class="label" :style="labelStyle">
+    <span
+      class="label"
+      :style="labelStyle"
+    >
       <!-- nest slot inside span to get alignment and flow correct for mixed RLT/LTR -->
-      <span dir="auto" class="debug-warning">
+      <span
+        dir="auto"
+        class="debug-warning"
+      >
         <!-- @slot Optional slot as alternative to `label` prop -->
         <slot>
           <span v-if="!labelEmpty">{{ label }}</span>
@@ -21,7 +35,12 @@
     <span class="icon-after">
       <!-- @slot Optional slot as alternative to `iconAfter` prop -->
       <slot name="iconAfter">
-        <KIcon v-if="iconAfter" :icon="iconAfter" :color="color || $themeTokens.text" style="top: 2px;" />
+        <KIcon
+          v-if="iconAfter"
+          :icon="iconAfter"
+          :color="color || $themeTokens.text"
+          style="top: 2px"
+        />
       </slot>
     </span>
   </span>
@@ -47,14 +66,16 @@
         default: null,
       },
       /**
-       * An icon that will be prepended to the label. Uses the same icon names as the `KIcon` component
+       * An icon that will be prepended to the label.
+       * Uses the same icon names as the `KIcon` component
        */
       icon: {
         type: String,
         default: null,
       },
       /**
-       * An icon that will be appended to the label. Uses the same icon names as the `KIcon` component
+       * An icon that will be appended to the label.
+       * Uses the same icon names as the `KIcon` component
        */
       iconAfter: {
         type: String,
@@ -93,10 +114,10 @@
         );
       },
       labelStyle() {
-        let styles = {};
+        const styles = {};
         let margins = 0;
-        let leftLtr = this.isRtl ? 'marginRight' : 'marginLeft';
-        let rightLtr = this.isRtl ? 'marginLeft' : 'marginRight';
+        const leftLtr = this.isRtl ? 'marginRight' : 'marginLeft';
+        const rightLtr = this.isRtl ? 'marginLeft' : 'marginRight';
         // Margin for icons - use em to match parent font size
         if (this.iconAfter || this.$slots['iconAfter']) {
           styles[rightLtr] = '1.975em'; // scale with parent font size

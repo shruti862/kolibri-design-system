@@ -6,48 +6,80 @@
     :orientation="orientation"
     :thumbnailDisplay="thumbnailDisplay"
     :thumbnailAlign="thumbnailAlign"
-    :thumbnailSrc="thumbnailSrc === null ? null : require('../assets/hummingbird-large-cc-by-sa-4.jpg')"
+    :thumbnailSrc="
+      thumbnailSrc === null ? null : require('../assets/hummingbird-large-cc-by-sa-4.jpg')
+    "
     :title="cardTitle"
   >
-
-    <template v-if="$slots.thumbnailPlaceholder" #thumbnailPlaceholder>
+    <template
+      v-if="$slots.thumbnailPlaceholder"
+      #thumbnailPlaceholder
+    >
       <slot name="thumbnailPlaceholder"></slot>
     </template>
-    <template v-else #thumbnailPlaceholder>
+    <template
+      v-else
+      #thumbnailPlaceholder
+    >
       <KIcon
         :style="{ fontSize: '48px' }"
         icon="readSolid"
       />
     </template>
 
-    <template v-if="$slots.aboveTitle" #aboveTitle>
+    <template
+      v-if="$slots.aboveTitle"
+      #aboveTitle
+    >
       <slot name="aboveTitle"></slot>
     </template>
 
-    <template v-if="$scopedSlots.title" #title="{ titleText }">
-      <slot name="title" :titleText="titleText"></slot>
+    <template
+      v-if="$scopedSlots.title"
+      #title="{ titleText }"
+    >
+      <slot
+        name="title"
+        :titleText="titleText"
+      ></slot>
     </template>
 
-    <template v-if="$slots.belowTitle" #belowTitle>
+    <template
+      v-if="$slots.belowTitle"
+      #belowTitle
+    >
       <slot name="belowTitle"></slot>
     </template>
-    <template v-else #belowTitle>
+    <template
+      v-else
+      #belowTitle
+    >
       <KTextTruncator
         text="Discover how hummingbirds play a big role in nature despite their small size. Find out more about their beauty, how they help plants grow, and where they live."
         :maxLines="5"
       />
     </template>
 
-    <template v-if="$slots.footer && !hideFooter" #footer>
+    <template
+      v-if="$slots.footer && !hideFooter"
+      #footer
+    >
       <slot name="footer"></slot>
     </template>
-    <template v-else-if="!hideFooter" #footer>
+    <template
+      v-else-if="!hideFooter"
+      #footer
+    >
       <div class="footer-wrapper">
-        <div class="pills" :style="{ 'color': $themeTokens.annotation }">
-          <span
-            :style="{ 'background-color': $themePalette.grey.v_100 }"
-          >
-            <KIcon icon="readSolid" :style="{ fontSize: '13px', position: 'relative', top: '3px' }" />
+        <div
+          class="pills"
+          :style="{ color: $themeTokens.annotation }"
+        >
+          <span :style="{ 'background-color': $themePalette.grey.v_100 }">
+            <KIcon
+              icon="readSolid"
+              :style="{ fontSize: '13px', position: 'relative', top: '3px' }"
+            />
             Read
           </span>
           <span
@@ -68,20 +100,32 @@
         :style="{ marginTop: '8px' }"
       >
         <KFixedGrid :numCols="4">
-          <KFixedGridItem :span="3" :style="{ paddingTop: '8px' }">
+          <KFixedGridItem
+            :span="3"
+            :style="{ paddingTop: '8px' }"
+          >
             <KLinearLoader
               type="determinate"
               :progress="20"
             />
           </KFixedGridItem>
-          <KFixedGridItem :span="1" alignment="right">
-            <KIcon icon="schedule" :style="{ fontSize: '18px' }" />
+          <KFixedGridItem
+            :span="1"
+            alignment="right"
+          >
+            <KIcon
+              icon="schedule"
+              :style="{ fontSize: '18px' }"
+            />
           </KFixedGridItem>
         </KFixedGrid>
       </div>
     </template>
 
-    <template v-if="$slots.select" #select>
+    <template
+      v-if="$slots.select"
+      #select
+    >
       <slot name="select"></slot>
     </template>
   </KCard>

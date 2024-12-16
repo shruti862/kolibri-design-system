@@ -16,12 +16,10 @@
       <div
         v-if="type === 'determinate'"
         class="is-determinate ui-progress-linear-progress-bar"
-
         role="progressbar"
         :aria-valuemax="100"
         :aria-valuemin="0"
         :aria-valuenow="moderatedProgress"
-
         :style="{
           transform: `scaleX(${moderatedProgress / 100})`,
           backgroundColor: $themeTokens.loading,
@@ -31,11 +29,9 @@
       <div
         v-else
         class="is-indeterminate ui-progress-linear-progress-bar"
-
         role="progressbar"
         :aria-valuemax="100"
         :aria-valuemin="0"
-
         :style="{ backgroundColor: $themeTokens.loading }"
       ></div>
     </div>
@@ -53,7 +49,9 @@
     name: 'KLinearLoader',
     props: {
       /**
-       * One of `'determinate'` or `'indeterminate'`. Determinate loaders represent a known completion percentage, while indeterminate loaders simply show that activity is currently happening.
+       * One of `'determinate'` or `'indeterminate'`.
+       * Determinate loaders represent a known completion percentage.
+       * Indeterminate loaders simply show that activity is currently happening.
        */
       type: {
         type: String,
@@ -70,7 +68,8 @@
         default: 0,
       },
       /**
-       * Whether there should be a delay before the loader displays. Useful if the action often takes less than a second or two.
+       * Whether there should be a delay before the loader displays.
+       * Useful if the action often takes less than a second or two.
        */
       delay: {
         type: Boolean,
@@ -109,10 +108,11 @@
     animation-delay: 1s;
   }
 
-  @keyframes fadeIn {
+  @keyframes fade-in {
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -130,7 +130,7 @@
     transition-timing-function: ease;
     transition-duration: 0.3s;
     transition-property: height, opacity;
-    animation: fadeIn;
+    animation: fade-in;
     animation-duration: 0s;
     animation-fill-mode: backwards;
   }

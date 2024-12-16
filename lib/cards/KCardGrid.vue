@@ -4,7 +4,11 @@
     v-if="showGrid"
     class="k-card-grid"
   >
-    <transition name="fade" mode="out-in" appear>
+    <transition
+      name="fade"
+      mode="out-in"
+      appear
+    >
       <ul
         v-if="isLoading"
         key="loading"
@@ -43,7 +47,7 @@
 
 <script>
 
-  import { watch, ref, provide } from '@vue/composition-api';
+  import { watch, ref, provide } from 'vue';
 
   import { LAYOUT_1_1_1, LAYOUT_1_2_2, LAYOUT_1_2_3 } from './gridBaseLayouts';
   import useGridLayout from './useGridLayout';
@@ -87,14 +91,16 @@
             'row-gap': rowGap,
           };
           gridItemStyle.value = {
-            // remove all column gaps widths from the available width and then divide by the number of cards per row to get a single card width
-            // do not use `flex-basis` to avoid rounding errors causing incorrect display on some screen sizes
+            // remove all column gaps widths from the available width and
+            // then divide by the number of cards per row to get a single card width
+            // do not use `flex-basis` to avoid rounding errors
+            // causing incorrect display on some screen sizes
             width: `calc((100% - ${cardsPerRow - 1} * ${columnGap}) / ${cardsPerRow})`,
           };
         },
         {
           immediate: true,
-        }
+        },
       );
 
       // provide to `KCard`
@@ -118,7 +124,7 @@
        * Sets the base grid layout.
        * Options: `'1-1-1'`, `'1-2-2'`, and `'1-2-3'`.
        */
-      // eslint-disable-next-line kolibri/vue-no-unused-properties
+      // eslint-disable-next-line vue/no-unused-properties
       layout: {
         required: false,
         type: String,
@@ -127,37 +133,33 @@
           return [LAYOUT_1_1_1, LAYOUT_1_2_2, LAYOUT_1_2_3].includes(value);
         },
       },
-      // eslint-enable-next-line kolibri/vue-no-unused-properties
       /**
        * Overrides the base grid `layout` for chosen breakpoints levels
        */
-      // eslint-disable-next-line kolibri/vue-no-unused-properties
+      // eslint-disable-next-line vue/no-unused-properties
       layoutOverride: {
         type: Array,
         required: false,
         default: null,
       },
-      // eslint-enable-next-line kolibri/vue-no-unused-properties
       /**
        * Set to `true` as long as data for cards
        * are being loaded to display loading skeletons
        */
-      // eslint-disable-next-line kolibri/vue-no-unused-properties
+      // eslint-disable-next-line vue/no-unused-properties
       loading: {
         type: Boolean,
         default: false,
       },
-      // eslint-enable-next-line kolibri/vue-no-unused-properties
       /**
        * Configures loading skeletons
        */
-      // eslint-disable-next-line kolibri/vue-no-unused-properties
+      // eslint-disable-next-line vue/no-unused-properties
       skeletonsConfig: {
         type: Array,
         required: false,
         default: null,
       },
-      // eslint-enable kolibri/vue-no-unused-properties
       /**
        * Use for development only. Shows information in
        * the grid's corner that is useful for configuring
