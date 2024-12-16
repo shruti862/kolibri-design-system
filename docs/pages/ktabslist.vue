@@ -72,8 +72,16 @@
       <!-- eslint-disable -->
       <!-- prettier-ignore -->
       <DocsShowCode language="javascript">
-        data() { return { activeTabId: 'tabLessons', tabs: [ { id: 'tabLessons', label: 'Lessons' },
-        { id: 'tabLearners', label: 'Learners' }, { id: 'tabGroups', label: 'Groups' }, ], }; },
+        data() {
+          return {
+            activeTabId: 'tabLessons',
+            tabs: [
+              { id: 'tabLessons', label: 'Lessons' },
+              { id: 'tabLearners', label: 'Learners' },
+              { id: 'tabGroups', label: 'Groups' },
+            ],
+          };
+        },
       </DocsShowCode>
       <!-- eslint-enable -->
     </DocsPageSection>
@@ -96,9 +104,15 @@
       <!-- eslint-disable -->
       <!-- prettier-ignore -->
       <DocsShowCode language="javascript">
-        data() { return { tabs: [ { id: 'tabLessons', label: 'Lessons', to: { path: '/lessons' } },
-        { id: 'tabLearners', label: 'Learners', to: { path: '/learners' } }, { id: 'tabGroups',
-        label: 'Groups', to: { path: '/groups' } }, ], }; },
+        data() {
+          return {
+            tabs: [
+              { id: 'tabLessons', label: 'Lessons', to: { path: '/lessons' } },
+              { id: 'tabLearners', label: 'Learners', to: { path: '/learners' } },
+              { id: 'tabGroups', label: 'Groups', to: { path: '/groups' } },
+            ],
+          };
+        },
       </DocsShowCode>
       <!-- eslint-enable -->
 
@@ -343,7 +357,11 @@
       <!-- eslint-disable -->
       <!-- prettier-ignore -->
       <DocsShowCode language="javascript">
-        icons: { tabLessons: 'lesson', tabLearners: 'person', tabGroups: 'people', },
+        icons: {
+          tabLessons: 'lesson',
+          tabLearners: 'person',
+          tabGroups: 'people',
+        },
       </DocsShowCode>
       <!-- eslint-enable -->
     </DocsPageSection>

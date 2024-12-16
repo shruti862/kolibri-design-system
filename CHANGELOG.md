@@ -7,6 +7,84 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#868]
+  - **Description:** Revert regression in KLogo display
+  - **Products impact:** bugfix
+  - **Addresses:** -
+  - **Components:** KLogo
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** -
+
+[#868]: https://github.com/learningequality/kolibri-design-system/pull/868
+
+
+
+- [#849]
+  - **Description:** A Reusable action is added to .github repo. This PR makes use of it.
+  - **Products impact:** none
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#849]: https://github.com/learningequality/kolibri-design-system/pull/849
+
+
+
+- [#866]
+  - **Description:** Bump vue-docgen-api from 4.78.0 to 4.79.2
+  - **Products impact:** Dev Dependency upgrade
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#866]: https://github.com/learningequality/kolibri-design-system/pull/866
+
+
+
+- [#864]
+  - **Description:** Bump nanoid from 3.3.7 to 3.3.8
+  - **Products impact:** Dev Dependency upgrade
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#864]: https://github.com/learningequality/kolibri-design-system/pull/864
+
+
+
+- [#863]
+  - **Description:** Updates KDS version to 5.0.0-rc11
+  - **Products impact:** -.
+  - **Addresses:** -.
+  - **Components:** -.
+  - **Breaking:** -
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#863]: https://github.com/learningequality/kolibri-design-system/pull/863
+
+
+
+- [#504]
+  - **Description:** Remove use of /deep/ in favour of ::v-deep
+  - **Products impact:** none
+  - **Addresses:** -
+  - **Components:** -
+  - **Breaking:** no
+  - **Impacts a11y:** -
+  - **Guidance:** -
+
+[#504]: https://github.com/learningequality/kolibri-design-system/pull/504
+
+
+
 - [#645]
   - **Description:** Upgrades Node.js to v18, along with Kolibri-Tools to v0.16, Jest to v29 and Nuxt to v2.15
   - **Products impact:** none
