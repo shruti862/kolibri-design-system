@@ -38,7 +38,6 @@
 <script>
 
   import throttle from 'lodash/throttle';
-  import debounce from 'lodash/debounce';
   import NavSectionList from './NavSectionList';
   import { termList, matches } from '~/common/DocsFilter/utils';
   import tableOfContents from '~/tableOfContents.js';
@@ -85,7 +84,7 @@
         if (window) {
           //Clear the filter query when filtertext is empty
           if (!newValue) {
-            this.$router.replace({ path: this.$route.path, query: {} });
+            this.$router.push({ path: this.$route.path, query: {} });
           } else {
             //else ,update the filter query param
             this.$router.push({
@@ -93,7 +92,6 @@
               query: { ...this.$route.query, filter: newValue },
             });
           }
-          this.debouncedUpdateQuery(newValue);
         }
       },
     },
@@ -113,17 +111,6 @@
             this.filterText = ''; // Reset if no filterText is in state
           }
         });
-        // Create debounced function for updating the query
-        this.debouncedUpdateQuery = debounce(newValue => {
-          if (newValue) {
-            this.$router.push({
-              path: this.$route.path,
-              query: { ...this.$route.query, filter: newValue },
-            });
-          } else {
-            this.$router.push({ path: this.$route.path, query: {} });
-          }
-        }, 2000); // 2-second debounce delay
       }
 
       //  Don't show the nav until the state is set
