@@ -51,7 +51,6 @@
       return {
         filterText: '',
         loaded: false,
-        debounceUpdateQuery: null,
       };
     },
     computed: {
