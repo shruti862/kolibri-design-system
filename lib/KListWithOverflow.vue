@@ -29,7 +29,7 @@
           name="divider"
           :divider="item"
         ></slot>
-        <!-- Item Slot -->
+        <!-- @slot Slot responsible of rendering each item in the visible list -->
         <slot
           v-else
           name="item"
@@ -89,7 +89,7 @@
       },
       overflowDirection: {
         type: String,
-        default: 'end',
+        default: 'start',
         validator(value) {
           return ['start', 'end'].includes(value);
         },
@@ -144,7 +144,15 @@
         if (!element) {
           return { width: 0, height: 0 };
         }
-        const { width, height } = element.getBoundingClientRect();
+        let { width, height } = element.getBoundingClientRect();
+
+        const style = element.currentStyle || window.getComputedStyle(element);
+        const marginX = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+        const marginY = parseFloat(style.marginTop) + parseFloat(style.marginBottom);
+
+        width += marginX;
+        height += marginY;
+
         return { width, height };
       },
       /**
@@ -154,7 +162,6 @@
       setOverflowItems() {
         const { list, listWrapper, moreButtonWrapper } = this.$refs;
 
-        // Exit early if necessary refs are not available
         if (!this.mounted || !listWrapper || !list) {
           this.overflowItems = [];
           return;
@@ -210,6 +217,7 @@
             const idx = overflowItemsIdx.pop();
             const item = list.children[idx];
             item.style.visibility = 'visible';
+            item.style.position = 'unset';
             maxWidth += itemsSizes[idx].width;
           }
         }
@@ -240,16 +248,42 @@
         }
 
         const { list } = this.$refs;
-        const [firstOverflowedIdx] = overflowItemsIdx;
-        if (this.isDivider(this.items[firstOverflowedIdx])) {
-          overflowItemsIdx.shift();
-        }
 
-        const lastVisibleIdx = firstOverflowedIdx - 1;
-        if (this.isDivider(this.items[lastVisibleIdx])) {
-          const dividerNode = list.children[lastVisibleIdx];
-          dividerNode.style.visibility = 'hidden';
-          return itemsSizes[lastVisibleIdx].width;
+        if (this.overflowDirection === 'start') {
+          // Handle reversed direction
+          const [lastOverflowedIdx] = overflowItemsIdx.slice(-1); // Last item in overflow for 'start'
+          const firstVisibleIdx = lastOverflowedIdx + 1; // First visible item after overflow
+
+          // Move a divider from the start of the visible list to overflow, if necessary
+          if (this.isDivider(this.items[firstVisibleIdx])) {
+            overflowItemsIdx.push(firstVisibleIdx);
+            const dividerNode = list.children[firstVisibleIdx];
+            dividerNode.style.visibility = 'hidden';
+            dividerNode.style.position = 'absolute';
+            return itemsSizes[firstVisibleIdx].width;
+          }
+
+          // Ensure no divider remains as the last item in overflow
+          if (this.isDivider(this.items[lastOverflowedIdx])) {
+            overflowItemsIdx.pop();
+          }
+        } else {
+          // Original 'end' direction logic
+          const [firstOverflowedIdx] = overflowItemsIdx;
+
+          // Remove divider at the start of the overflow list
+          if (this.isDivider(this.items[firstOverflowedIdx])) {
+            overflowItemsIdx.shift();
+          }
+
+          const lastVisibleIdx = firstOverflowedIdx - 1;
+
+          // Remove divider at the end of the visible list
+          if (this.isDivider(this.items[lastVisibleIdx])) {
+            const dividerNode = list.children[lastVisibleIdx];
+            dividerNode.style.visibility = 'hidden';
+            return itemsSizes[lastVisibleIdx].width;
+          }
         }
       },
       /**
@@ -279,9 +313,10 @@
 
 
 <style scoped>
+
   .list-wrapper {
     display: flex;
-     justify-content:flex-start;
+    justify-content: flex-start;
     width: 100%;
   }
 
@@ -302,11 +337,4 @@
     visibility: visible;
   }
 
-  /* When the 'start-button' class is added, position visually at the start */
-  .more-button-wrapper.start-button {
-  order:-1;
-    z-index: 1; /* Ensure it's in front if needed */
-  }
-
 </style>
-

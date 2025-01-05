@@ -7,26 +7,34 @@
     >
       <!-- Render individual breadcrumb items -->
       <template #item="{ item }">
-        <li>
+        <li >
           <KRouterLink
             v-if="item.link"
             :text="item.text"
             :to="item.link"
+            dir="auto"
+            :title="crumb.text"
           >
-
-            <template #text="{ text }">
-              <span class="breadcrumbs-crumb-text">{{ text }}</span>
+            <template #default="{ text }">
+              <span
+                class="breadcrumbs-crumb-text"
+                :title="text"
+              >{{ text }}</span>
             </template>
           </KRouterLink>
-          <span v-else>{{ item.text }}</span>
+          <span v-else
+                :title="item.text"
+          >{{ item.text }}</span>
         </li>
       </template>
 
-
       <template #divider>
-        <span class="breadcrumbs-divider">›</span>
+        <span
+          :style="{ color: $themeTokens.text }"
+          class="breadcrumbs-divider"
+        >›
+        </span>
       </template>
-
 
       <template #more="{ overflowItems }">
         <KIconButton
@@ -36,30 +44,39 @@
         >
           <template #menu>
             <KDropdownMenu
-              :options="overflowItems
-                .filter(item => item.type !== 'divider') 
-                .map(item => ({
-                  label: item.text, 
-                  link: item.link ? item.link : null 
-                }))"
+              :options="
+                overflowItems
+                  .filter(item => item.type !== 'divider')
+                  .map(item => ({
+                    label: item.text,
+                    link: item.link ? item.link : null,
+                  }))
+              "
             >
               <template #option="{ option }">
                 <template v-if="option.link">
-                  <a :href="option.link" class="dropdown-link" target="_blank" rel="noopener noreferrer">
+                  <a
+                    :href="option.link"
+                    :style="{ color: $themeTokens.primary }"
+                    class="dropdown-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {{ option.label }}
                   </a>
                 </template>
                 <template v-else>
-                  <span class="dropdown-text">{{ option.label }}</span>
+                  <span
+                    :style="{ color: $themeTokens.text }"
+                    class="dropdown-text"
+                  >{{ option.label }}</span>
                 </template>
               </template>
             </KDropdownMenu>
           </template>
         </KIconButton>
-
       </template>
     </KListWithOverflow>
-
   </div>
 
 </template>
@@ -78,7 +95,10 @@
         default: false,
       },
     },
+   
+
     computed: {
+     
       preparedCrumbs() {
         const crumbs = [...this.items];
         if (!this.showSingleItem && crumbs.length <= 1) {
@@ -88,9 +108,7 @@
         return crumbs.flatMap((item, index) => (index > 0 ? [{ type: 'divider' }, item] : [item]));
       },
     },
-    mounted() {
-      console.log('Prepared Crumbs on Mount:', this.preparedCrumbs);
-    },
+   
   };
 
 </script>
@@ -98,7 +116,9 @@
 
 <style scoped lang="scss">
 
+  @import './styles/definitions';
   $crumb-max-width: 300px;
+
   .breadcrumbs {
     height: 32px;
     margin-top: 8px;
@@ -121,22 +141,24 @@
     white-space: nowrap;
     vertical-align: bottom;
   }
+
   .breadcrumbs-divider {
     margin-right: 8px;
     margin-left: 8px;
-    color: #000000;
   }
 
   li {
     position: static;
     display: inline;
+    max-width: inherit;
+    overflow: hidden;
   }
+
   .dropdown-link {
     display: inline-block;
     padding: 16px;
     font-size: 16px;
     font-weight: bold;
-    color: #4368f5;
     text-decoration: underline;
     cursor: pointer;
     background-color: transparent;
@@ -146,7 +168,6 @@
     display: inline-block;
     padding: 16px;
     font-size: 16px;
-    color: #000000;
     background-color: transparent;
   }
 
