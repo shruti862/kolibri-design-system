@@ -6,8 +6,8 @@
       :items="preparedCrumbs"
     >
       <!-- Render individual breadcrumb items -->
-      <template #item="{ item }">
-        <li >
+      <template #item="{ item,index }">
+        <li>
           <KRouterLink
             v-if="item.link"
             :text="item.text"
@@ -18,14 +18,21 @@
             <template #default="{ text }">
               <span
                 class="breadcrumbs-crumb-text"
+                :style="{ maxWidth: index === items.length - 1 ? lastBreadcrumbMaxWidth : 'none' }"
+                dir="auto"
                 :title="text"
               >{{ text }}</span>
             </template>
           </KRouterLink>
-          <span v-else
-                :title="item.text"
+          <span
+            v-else
+            class="breadcrumbs-crumb-text"
+            :style="{ maxWidth: index === items.length - 1 ? lastBreadcrumbMaxWidth : 'none' }"
+            dir="auto"
+            :title="item.text"
           >{{ item.text }}</span>
         </li>
+        
       </template>
 
       <template #divider>
@@ -84,6 +91,8 @@
 
 <script>
 
+  const DEFAULT_LAST_BREADCRUMB_MAX_WIDTH = 300;
+  const DROPDOWN_BTN_WIDTH = 55;
   export default {
     props: {
       items: {
@@ -95,10 +104,13 @@
         default: false,
       },
     },
-   
+    data() {
+      return {
+        lastBreadcrumbMaxWidth: `${DEFAULT_LAST_BREADCRUMB_MAX_WIDTH}px`,
+      };
+    },
 
     computed: {
-     
       preparedCrumbs() {
         const crumbs = [...this.items];
         if (!this.showSingleItem && crumbs.length <= 1) {
@@ -108,7 +120,24 @@
         return crumbs.flatMap((item, index) => (index > 0 ? [{ type: 'divider' }, item] : [item]));
       },
     },
-   
+    mounted() {
+      this.updateLastBreadcrumbWidth();
+      this.$watch('items', () => {
+        this.updateLastBreadcrumbWidth();
+      });
+    },
+    methods: {
+      updateLastBreadcrumbWidth() {
+        this.$nextTick(() => {
+          const lastBreadcrumb = this.$refs.lastBreadcrumb;
+          if (lastBreadcrumb) {
+            const lastBreadcrumbWidth = lastBreadcrumb.getBoundingClientRect().width;
+            const availableWidth = this.$el.offsetWidth - DROPDOWN_BTN_WIDTH; 
+            this.lastBreadcrumbMaxWidth = `${Math.min(lastBreadcrumbWidth, availableWidth)}px`;
+          }
+        });
+      }
+    }
   };
 
 </script>
@@ -116,7 +145,6 @@
 
 <style scoped lang="scss">
 
-  @import './styles/definitions';
   $crumb-max-width: 300px;
 
   .breadcrumbs {
@@ -135,8 +163,6 @@
     width: 100%;
     max-width: $crumb-max-width;
     overflow: hidden;
-    font-weight: bold;
-    text-decoration: none;
     text-overflow: ellipsis;
     white-space: nowrap;
     vertical-align: bottom;

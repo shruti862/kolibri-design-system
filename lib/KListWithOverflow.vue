@@ -248,37 +248,19 @@
         }
 
         const { list } = this.$refs;
-
         if (this.overflowDirection === 'start') {
-          // Handle reversed direction
-          const [lastOverflowedIdx] = overflowItemsIdx.slice(-1); // Last item in overflow for 'start'
-          const firstVisibleIdx = lastOverflowedIdx + 1; // First visible item after overflow
-
-          // Move a divider from the start of the visible list to overflow, if necessary
-          if (this.isDivider(this.items[firstVisibleIdx])) {
-            overflowItemsIdx.push(firstVisibleIdx);
-            const dividerNode = list.children[firstVisibleIdx];
-            dividerNode.style.visibility = 'hidden';
-            dividerNode.style.position = 'absolute';
-            return itemsSizes[firstVisibleIdx].width;
-          }
-
-          // Ensure no divider remains as the last item in overflow
-          if (this.isDivider(this.items[lastOverflowedIdx])) {
-            overflowItemsIdx.pop();
+          const [firstOverflowedIdx] = overflowItemsIdx;
+          const OverflowedIdx = list.children.length - 1 - firstOverflowedIdx;
+          if (this.isDivider(this.items[OverflowedIdx])) {
+            overflowItemsIdx.shift();
           }
         } else {
-          // Original 'end' direction logic
           const [firstOverflowedIdx] = overflowItemsIdx;
-
-          // Remove divider at the start of the overflow list
           if (this.isDivider(this.items[firstOverflowedIdx])) {
             overflowItemsIdx.shift();
           }
 
           const lastVisibleIdx = firstOverflowedIdx - 1;
-
-          // Remove divider at the end of the visible list
           if (this.isDivider(this.items[lastVisibleIdx])) {
             const dividerNode = list.children[lastVisibleIdx];
             dividerNode.style.visibility = 'hidden';
@@ -323,13 +305,14 @@
   .list {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .list > * {
     flex-shrink: 0;
+    min-width: 0;
     visibility: hidden;
   }
 
