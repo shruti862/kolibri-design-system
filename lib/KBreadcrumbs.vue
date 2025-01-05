@@ -13,7 +13,7 @@
             :text="item.text"
             :to="item.link"
             dir="auto"
-            :title="crumb.text"
+            :title="item.text"
           >
             <template #default="{ text }">
               <span
