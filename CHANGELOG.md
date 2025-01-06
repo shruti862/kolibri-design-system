@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#847]
+  - **Description:** Improvement of the Table of Contents filter to work properly with browsers' command.
+  - **Products impact:** Updated API
+  - **Addresses:** Issue#213
+  - **Components:** no
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:** Improves KDS.
+
+[#847]: https://github.com/learningequality/kolibri-design-system/pull/847
+
+
+
 - [#874]
   - **Description:** Removes `pull_request_review` event from the community contributions spreadsheet action. When triggered by this event, secrets are not available. This fixes the action failure when pull request reviewed.
   - **Products impact:** none
