@@ -1,10 +1,11 @@
 <template>
 
   <div style="padding: 80px">
-    <h1 id="link-target">
-      Cards QA page
-    </h1>
-    <p>Also preview live examples on <code>KCardGrid</code> and <code>KCard</code> documentation pages.</p>
+    <h1 id="link-target">Cards QA page</h1>
+    <p>
+      Also preview live examples on <code>KCardGrid</code> and <code>KCard</code> documentation
+      pages.
+    </p>
 
     <section>
       <h2>Horizontal cards with large amount of content</h2>
@@ -21,7 +22,10 @@
           :title="`With thumbnail display: '${display}' and thumbnail align: '${align}'`"
         >
           <template #aboveTitle>
-            <KLabeledIcon icon="readSolid" label="Read" />
+            <KLabeledIcon
+              icon="readSolid"
+              label="Read"
+            />
           </template>
           <template #belowTitle>
             <KTextTruncator
@@ -31,11 +35,15 @@
           </template>
           <template #footer>
             <div class="footer-wrapper">
-              <div class="pills" :style="{ 'color': $themeTokens.annotation }">
-                <span
-                  :style="{ 'background-color': $themePalette.grey.v_100 }"
-                >
-                  <KIcon icon="readSolid" :style="{ fontSize: '13px', position: 'relative', top: '3px' }" />
+              <div
+                class="pills"
+                :style="{ color: $themeTokens.annotation }"
+              >
+                <span :style="{ 'background-color': $themePalette.grey.v_100 }">
+                  <KIcon
+                    icon="readSolid"
+                    :style="{ fontSize: '13px', position: 'relative', top: '3px' }"
+                  />
                   Read
                 </span>
                 <span :style="{ 'background-color': $themePalette.grey.v_100 }">
@@ -45,14 +53,23 @@
             </div>
             <div :style="{ marginTop: '8px' }">
               <KFixedGrid :numCols="4">
-                <KFixedGridItem :span="3" :style="{ paddingTop: '8px' }">
+                <KFixedGridItem
+                  :span="3"
+                  :style="{ paddingTop: '8px' }"
+                >
                   <KLinearLoader
                     type="determinate"
                     :progress="20"
                   />
                 </KFixedGridItem>
-                <KFixedGridItem :span="1" alignment="right">
-                  <KIcon icon="schedule" :style="{ fontSize: '18px' }" />
+                <KFixedGridItem
+                  :span="1"
+                  alignment="right"
+                >
+                  <KIcon
+                    icon="schedule"
+                    :style="{ fontSize: '18px' }"
+                  />
                 </KFixedGridItem>
               </KFixedGrid>
             </div>
@@ -98,7 +115,10 @@
           :title="`With thumbnail display: '${display}'`"
         >
           <template #aboveTitle>
-            <KLabeledIcon icon="readSolid" label="Read" />
+            <KLabeledIcon
+              icon="readSolid"
+              label="Read"
+            />
           </template>
           <template #belowTitle>
             <KTextTruncator
@@ -108,11 +128,15 @@
           </template>
           <template #footer>
             <div class="footer-wrapper">
-              <div class="pills" :style="{ 'color': $themeTokens.annotation }">
-                <span
-                  :style="{ 'background-color': $themePalette.grey.v_100 }"
-                >
-                  <KIcon icon="readSolid" :style="{ fontSize: '13px', position: 'relative', top: '3px' }" />
+              <div
+                class="pills"
+                :style="{ color: $themeTokens.annotation }"
+              >
+                <span :style="{ 'background-color': $themePalette.grey.v_100 }">
+                  <KIcon
+                    icon="readSolid"
+                    :style="{ fontSize: '13px', position: 'relative', top: '3px' }"
+                  />
                   Read
                 </span>
                 <span :style="{ 'background-color': $themePalette.grey.v_100 }">
@@ -122,14 +146,23 @@
             </div>
             <div :style="{ marginTop: '8px' }">
               <KFixedGrid :numCols="4">
-                <KFixedGridItem :span="3" :style="{ paddingTop: '8px' }">
+                <KFixedGridItem
+                  :span="3"
+                  :style="{ paddingTop: '8px' }"
+                >
                   <KLinearLoader
                     type="determinate"
                     :progress="20"
                   />
                 </KFixedGridItem>
-                <KFixedGridItem :span="1" alignment="right">
-                  <KIcon icon="schedule" :style="{ fontSize: '18px' }" />
+                <KFixedGridItem
+                  :span="1"
+                  alignment="right"
+                >
+                  <KIcon
+                    icon="schedule"
+                    :style="{ fontSize: '18px' }"
+                  />
                 </KFixedGridItem>
               </KFixedGrid>
             </div>

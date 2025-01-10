@@ -1,13 +1,25 @@
 <template>
 
-  <div ref="tableWrapper" class="k-table-wrapper">
+  <div
+    ref="tableWrapper"
+    class="k-table-wrapper"
+  >
     <template v-if="dataLoading">
       <p><KCircularLoader /></p>
     </template>
     <template v-else>
-      <table v-if="!isTableEmpty" class="k-table" role="grid">
-        <caption v-if="caption" class="visuallyhidden">
-          {{ caption }}
+      <table
+        v-if="!isTableEmpty"
+        class="k-table"
+        role="grid"
+      >
+        <caption
+          v-if="caption"
+          class="visuallyhidden"
+        >
+          {{
+            caption
+          }}
         </caption>
         <thead>
           <tr ref="stickyHeader">
@@ -23,25 +35,54 @@
                 'sticky-header': true,
                 'sticky-column': index === 0,
               }"
-              :style="[getHeaderStyle(header),
-                       isColumnSortActive(index) ? { color: $themeBrand.primary.v_500 } : { color: $themePalette.grey.v_800 },
-                       { backgroundColor: $themePalette.white } ,
-                       isColumnFocused(index) ? { backgroundColor: $themePalette.grey.v_100 } : {},
-                       { textAlign: getTextAlign(header.dataType) }]"
+              :style="[
+                getHeaderStyle(header),
+                isColumnSortActive(index)
+                  ? { color: $themeBrand.primary.v_500 }
+                  : { color: $themePalette.grey.v_800 },
+                { backgroundColor: $themePalette.white },
+                isColumnFocused(index) ? { backgroundColor: $themePalette.grey.v_100 } : {},
+                { textAlign: getTextAlign(header.dataType) },
+              ]"
               role="columnheader"
               data-focus="true"
               :aria-colindex="index + 1"
               @click="sortable ? handleSort(index) : null"
               @keydown="handleKeydown($event, -1, index)"
             >
-              <!--@slot Scoped slot for customizing the content of each header cell. Provides a header object `header` and its column index `colIndex`.-->
-              <slot name="header" :header="header" :colIndex="index">
+              <!--@slot Scoped slot for customizing the content of each header cell.
+               Provides a header object `header` and its column index `colIndex`.-->
+              <slot
+                name="header"
+                :header="header"
+                :colIndex="index"
+              >
                 {{ header.label }}
               </slot>
-              <span v-if="isColumnSortable(index)" class="sort-icon">
-                <span v-if="isColumnSortActive(index) && sortOrder === SORT_ORDER_ASC"><KIcon icon="dropup" :color="isColumnSortActive(index) ? $themeBrand.primary.v_600 : $themePalette.grey.v_800 " /></span>
-                <span v-else-if="isColumnSortActive(index) && sortOrder === SORT_ORDER_DESC"><KIcon icon="dropdown" :color="isColumnSortActive(index) ? $themeBrand.primary.v_600 : $themePalette.grey.v_800 " /></span>
-                <span v-else><KIcon icon="sortColumn" :color="$themePalette.grey.v_800" /></span>
+              <span
+                v-if="isColumnSortable(index)"
+                class="sort-icon"
+              >
+                <span v-if="isColumnSortActive(index) && sortOrder === SORT_ORDER_ASC"><KIcon
+                  icon="dropup"
+                  :color="
+                    isColumnSortActive(index)
+                      ? $themeBrand.primary.v_600
+                      : $themePalette.grey.v_800
+                  "
+                /></span>
+                <span v-else-if="isColumnSortActive(index) && sortOrder === SORT_ORDER_DESC"><KIcon
+                  icon="dropdown"
+                  :color="
+                    isColumnSortActive(index)
+                      ? $themeBrand.primary.v_600
+                      : $themePalette.grey.v_800
+                  "
+                /></span>
+                <span v-else><KIcon
+                  icon="sortColumn"
+                  :color="$themePalette.grey.v_800"
+                /></span>
               </span>
             </th>
           </tr>
@@ -75,8 +116,16 @@
               @keydown="handleKeydown($event, rowIndex, colIndex)"
             >
               <template #default="slotProps">
-                <!--@slot Scoped slot for customizing the content of each data cell. Provides the content of a data cell `content`, its row index `rowIndex`, its column index `colIndex`, and the corresponding whole row object `row`.-->
-                <slot name="cell" :content="slotProps.content" :rowIndex="rowIndex" :colIndex="colIndex" :row="row">
+                <!--@slot Scoped slot for customizing the content of each data cell.
+                 Provides the content of a data cell `content`, its row index `rowIndex`,
+                 its column index `colIndex`, and the corresponding whole row object `row`.-->
+                <slot
+                  name="cell"
+                  :content="slotProps.content"
+                  :rowIndex="rowIndex"
+                  :colIndex="colIndex"
+                  :row="row"
+                >
                   {{ slotProps.content }}
                 </slot>
               </template>
@@ -84,7 +133,10 @@
           </tr>
         </tbody>
       </table>
-      <div v-else class="empty-message">
+      <div
+        v-else
+        class="empty-message"
+      >
         {{ emptyMessage }}
       </div>
     </template>
@@ -95,7 +147,7 @@
 
 <script>
 
-  import { ref, computed, watch } from '@vue/composition-api';
+  import { ref, computed, watch } from 'vue';
   import useSorting, {
     SORT_ORDER_ASC,
     SORT_ORDER_DESC,
@@ -133,7 +185,7 @@
         () => props.rows,
         newRows => {
           rows.value = newRows;
-        }
+        },
       );
 
       const handleSort = index => {
@@ -167,15 +219,19 @@
         isTableEmpty,
       };
     },
-    /* eslint-disable kolibri/vue-no-unused-properties */
     props: {
       /**
-       * An array of objects `{ label, dataType, minWidth, width, columnId }`representing the headers of the table. The `dataType` can be one of `'string'`, `'number'`, `'date'`, or `'undefined'`. `label` and `dataType` are required. `minWidth` and `width` are optional. `columnId` is an unique identifier for the column, and can be a `number` or a `string`.
+       * An array of objects:
+       * `{ label, dataType, minWidth, width, columnId }`
+       * representing the headers of the table.
+       * The `dataType` can be one of `'string'`, `'number'`, `'date'`, or `'undefined'`.
+       * `label` and `dataType` are required. `minWidth` and `width` are optional.
+       * `columnId` is an unique identifier for the column, and can be a `number` or a `string`.
        */
       headers: {
         type: Array,
         required: true,
-        validator: function(value) {
+        validator: function (value) {
           const uniqueColumnIds = new Set(value.map(h => h.columnId));
 
           return (
@@ -184,13 +240,14 @@
               header =>
                 ['label', 'dataType', 'columnId'].every(key => key in header) &&
                 ['string', 'number', 'date', 'undefined'].includes(header.dataType) &&
-                ['string', 'number'].includes(typeof header.columnId)
+                ['string', 'number'].includes(typeof header.columnId),
             )
           );
         },
       },
       /**
-       * An array of arrays representing the rows of the table. Each row should have the same number of elements as the headers array.
+       * An array of arrays representing the rows of the table.
+       * Each row should have the same number of elements as the headers array.
        */
       rows: {
         type: Array,
@@ -225,13 +282,18 @@
         default: false,
       },
       /**
-       * Indicates whether the table is to be sorted by default by any header or not. By default it is an empty object which means no default sorting is to be used. It accepts a configuration object `{ columnId, direction }`. `columnId` references a `columnId` defined for a header in `headers`. This specifies a column by which the table should be sorted when initially loaded. `direction` can be `'asc'` for ascending or `'desc'` for descending sort direction.
+       * Indicates whether the table is to be sorted by default by any header or not.
+       * By default it is an empty object which means no default sorting is to be used.
+       * It accepts a configuration object `{ columnId, direction }`.
+       * `columnId` references a `columnId` defined for a header in `headers`.
+       * This specifies a column by which the table should be sorted when initially loaded.
+       * `direction` can be `'asc'` for ascending or `'desc'` for descending sort direction.
        */
       defaultSort: {
         type: Object,
         required: false,
         default: () => ({}),
-        validator: function(value) {
+        validator: function (value) {
           if (Object.keys(value).length === 0) {
             return true;
           }
@@ -244,7 +306,9 @@
         },
       },
       /**
-       * Disables built-in sort function. This is useful when you want to define your own sorting logic. Refer to the examples above for more details.
+       * Disables built-in sort function.
+       * This is useful when you want to define your own sorting logic.
+       * Refer to the examples above for more details.
        */
       disableBuiltinSorting: {
         type: Boolean,
@@ -312,8 +376,9 @@
           if (this.defaultSort.columnId) {
             const allHeaderColumnIds = this.headers.map(h => h.columnId);
             if (!allHeaderColumnIds.includes(this.defaultSort.columnId)) {
+              // eslint-disable-next-line no-console
               console.error(
-                `The columnId used for default sorting is ${this.defaultSort.columnId}, but the same was not found to be defined in any headers.`
+                `The columnId used for default sorting is ${this.defaultSort.columnId}, but the same was not found to be defined in any headers.`,
               );
             }
           }
@@ -562,43 +627,44 @@
 
 
 <style scoped>
-.k-table-wrapper {
-  overflow: auto;
-  position: relative;
-  height:auto;
-}
 
-.k-table {
-  border-collapse: collapse;
-  width: 100%;
-  
-}
+  .k-table-wrapper {
+    position: relative;
+    height: auto;
+    overflow: auto;
+  }
 
-th,
-td {
-  padding: 8px;
-  position: relative;
-  z-index: auto;
-}
+  .k-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-.sticky-header {
-  position: sticky;
-  top: 0;
-  z-index: 2; 
-}
+  th,
+  td {
+    position: relative;
+    z-index: auto;
+    padding: 8px;
+  }
 
-.sticky-column {
-  position: sticky;
-  left: 0;
-  z-index: 1; 
-}
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
 
-th.sticky-header.sticky-column,
-td.sticky-header.sticky-column {
-  z-index: 3; 
-}
-.sortable {
-  cursor: pointer;
-}
+  .sticky-column {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+
+  th.sticky-header.sticky-column,
+  td.sticky-header.sticky-column {
+    z-index: 3;
+  }
+
+  .sortable {
+    cursor: pointer;
+  }
 
 </style>

@@ -8,7 +8,11 @@
     >
       <template if="loaded">
         <h1 class="header">
-          <KLogo altText="Design System" size="60" :showBackground="true" />
+          <KLogo
+            altText="Design System"
+            size="60"
+            :showBackground="true"
+          />
           <span class="header-text">Design System</span>
         </h1>
 
@@ -22,7 +26,6 @@
           />
         </div>
       </template>
-
     </nav>
 
     <!-- used to help indicate that there is more to see if one scrolls down -->
@@ -55,7 +58,7 @@
         return termList(this.filterText);
       },
       visibleTableOfContents() {
-        let toc = [];
+        const toc = [];
         for (const section of tableOfContents) {
           // if the section title matches, add the entire thing
           if (matches(this.terms, section.title)) {
@@ -64,7 +67,7 @@
           // otherwise, check for matching pages by title and keywords
           else {
             const matchingPages = section.pages.filter(page =>
-              matches(this.terms, page.title + page.keywords.join(' '))
+              matches(this.terms, page.title + page.keywords.join(' ')),
             );
             if (matchingPages.length) {
               toc.push(section.clone({ pages: matchingPages }));
@@ -74,22 +77,42 @@
         return toc;
       },
     },
+
     watch: {
       filterText(newValue) {
         if (window) {
-          window.sessionStorage.setItem('nav-filter', newValue);
+          //Clear the filter query when filtertext is empty
+          if (!newValue) {
+            this.$router.push({ path: this.$route.path, query: {} });
+          } else {
+            //else ,update the filter query param
+            this.$router.push({
+              path: this.$route.path,
+              query: { ...this.$route.query, filter: newValue },
+            });
+          }
         }
       },
     },
     mounted() {
       if (window) {
-        const filterText = window.sessionStorage.getItem('nav-filter');
-        if (filterText) {
-          this.filterText = filterText;
+        const { filter } = this.$route.query;
+        // Set filterText from the query parameter if it exists
+        if (filter) {
+          this.filterText = filter;
         }
         this.$refs.links.scrollTop = window.sessionStorage.getItem('nav-scroll');
+        // Restoring filter state when a user navigates back
+        window.addEventListener('popstate', event => {
+          if (event.state && 'filterText' in event.state) {
+            this.filterText = event.state.filterText;
+          } else {
+            this.filterText = ''; // Reset if no filterText is in state
+          }
+        });
       }
-      // don't show the nav until the state is set
+
+      //  Don't show the nav until the state is set
       this.loaded = true;
     },
     methods: {

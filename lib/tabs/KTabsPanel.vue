@@ -9,7 +9,8 @@
   >
     <!-- @slot An alternative to using slots named by tabs' IDs. -->
     <slot></slot>
-    <!-- @slot Slots named by tab's IDs. Only content corresponding to the active tab is displayed. -->
+    <!-- @slot Slots named by tab's IDs.
+     Only content corresponding to the active tab is displayed. -->
     <slot :name="[activeTabId]"></slot>
   </div>
 

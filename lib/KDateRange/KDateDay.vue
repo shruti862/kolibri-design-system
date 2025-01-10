@@ -8,18 +8,26 @@
     :style="[inRangeStyle, selectedStyle]"
     :disabled="isDisabled"
     :aria-hidden="isDisabled"
-    :class="[{
-      'calendar-days-selected': isSelected,
-      'calendar-days-in-range': isInRange,
-      'end-of-week': isEndOfWeek,
-      'start-of-week': isStartOfWeek,
-      'first-day': isFirstDay,
-      'last-day': isLastDay,
-    }]"
+    :class="[
+      {
+        'calendar-days-selected': isSelected,
+        'calendar-days-in-range': isInRange,
+        'end-of-week': isEndOfWeek,
+        'start-of-week': isStartOfWeek,
+        'first-day': isFirstDay,
+        'last-day': isLastDay,
+      },
+    ]"
   >
     {{ day }}
-    <span aria-hidden="true" class="k-date-vhidden">{{ day }}</span>
-    <span :aria-hidden="isDisabled" class="k-date-vhidden">{{ toMonthName(activeMonth) }}</span>
+    <span
+      aria-hidden="true"
+      class="k-date-vhidden"
+    >{{ day }}</span>
+    <span
+      :aria-hidden="isDisabled"
+      class="k-date-vhidden"
+    >{{ toMonthName(activeMonth) }}</span>
   </KButton>
 
 </template>
@@ -69,19 +77,19 @@
       inRangeStyle() {
         return this.isInRange
           ? {
-              backgroundColor: this.$themeBrand.primary.v_100,
-              ':hover': {
-                backgroundColor: this.$themePalette.grey.v_300,
-              },
-            }
+            backgroundColor: this.$themeBrand.primary.v_100,
+            ':hover': {
+              backgroundColor: this.$themePalette.grey.v_300,
+            },
+          }
           : {};
       },
       selectedStyle() {
         return this.isSelected
           ? {
-              backgroundColor: this.$themeBrand.primary.v_500,
-              color: this.$themePalette.white + '!important',
-            }
+            backgroundColor: this.$themeBrand.primary.v_500,
+            color: this.$themePalette.white + '!important',
+          }
           : {};
       },
       styleOverrides() {

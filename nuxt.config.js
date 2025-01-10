@@ -10,15 +10,13 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/kolibri.ico' },
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:wght@400&display=swap&subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,latin-ext,vietnamese',
+        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Source+Code+Pro:wght@400&display=swap&subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,latin-ext,vietnamese',
       },
     ],
   },
-  rootDir: './',
   srcDir: './docs/',
   plugins: ['~/plugins/load-common-components.js', '~/plugins/load-lib-components.js'],
-  css: ['normalize.css/normalize.css', '~/assets/main.scss'],
+  css: ['normalize.css/normalize.css', '~/assets/main'],
   modulesDir: ['node_modules', 'docs'], // allow custom DocsShowCode loader to be found
   build: {
     extractCSS: true,

@@ -1,7 +1,10 @@
 <template>
 
   <!-- Vendored from  UI UISwitch component https://josephuspaye.github.io/Keen-UI/#/ui-switch -->
-  <label class="k-switch" :class="classes">
+  <label
+    class="k-switch"
+    :class="classes"
+  >
     <div :style="isActive ? $coreOutline : {}">
       <div class="k-switch-input-wrapper">
         <input
@@ -9,14 +12,12 @@
           class="k-switch-input"
           type="checkbox"
           dir="auto"
-
           :aria-labelledby="ariaLabelledBy"
           :checked.prop="isChecked"
           :disabled="disabled"
           :name="name"
           :tabindex="tabindex"
           :value="submittedValue"
-
           @blur="onBlur"
           @click="onClick"
           @focus="onFocus"
@@ -27,7 +28,10 @@
       </div>
     </div>
 
-    <div v-if="label || $slots.default" class="k-switch-label-text">
+    <div
+      v-if="label || $slots.default"
+      class="k-switch-label-text"
+    >
       <slot>{{ label }}</slot>
     </div>
   </label>
@@ -44,7 +48,8 @@
     props: {
       /*
        * Specifies the ID of an element that labels this switch component.
-       * Useful for accessibility to provide a label through an external element when `label` is empty
+       * Useful for accessibility to provide a label through an external element
+       * when `label` is empty
        */
       ariaLabelledBy: {
         type: String,
@@ -236,6 +241,7 @@
         cursor: default;
       }
     }
+
     &.is-rtl {
       direction: rtl;
     }
@@ -276,6 +282,7 @@
     transition-duration: 0.2s;
     transition-property: background-color, transform;
   }
+
   .k-switch-label-text {
     margin-left: 16px;
     font-size: 15px;
@@ -301,6 +308,7 @@
       .k-switch-track {
         background-color: #b4c3fb;
       }
+
       .k-switch-thumb {
         background-color: #4368f5;
       }

@@ -15,14 +15,53 @@
     :aria-label="altText"
   >
     <title>{{ altText }}</title>
-    <use v-if="showBackground" :href="backgroundHref" :fill="blobColor" :mask="applyMask ? 'url(#cutout-mask)' : null" />
-    <use v-if="!applyMask" href="#body" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#right-wing-inner" class="wing-inner" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#right-wing-middle" class="wing-middle" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#right-wing-outer" class="wing-outer" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#left-wing-inner" class="wing-inner" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#left-wing-middle" class="wing-middle" :stroke="strokeColor" />
-    <use v-if="!applyMask" href="#left-wing-outer" class="wing-outer" :stroke="strokeColor" />
+    <use
+      v-if="showBackground"
+      :href="backgroundHref"
+      :fill="blobColor"
+      :mask="applyMask ? 'url(#cutout-mask)' : null"
+    />
+    <use
+      v-if="!applyMask"
+      href="#body"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#right-wing-inner"
+      class="wing-inner"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#right-wing-middle"
+      class="wing-middle"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#right-wing-outer"
+      class="wing-outer"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#left-wing-inner"
+      class="wing-inner"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#left-wing-middle"
+      class="wing-middle"
+      :stroke="strokeColor"
+    />
+    <use
+      v-if="!applyMask"
+      href="#left-wing-outer"
+      class="wing-outer"
+      :stroke="strokeColor"
+    />
     <defs>
       <g id="blob-background">
         <path
@@ -34,9 +73,16 @@
         />
       </g>
       <g id="rect-background">
-        <rect width="200" height="200" rx="20" ry="20" />
+        <rect
+          width="200"
+          height="200"
+          rx="20"
+          ry="20"
+        />
       </g>
       <g id="body">
+        <!-- eslint-disable max-len -->
+        <!-- eslint-disable vue/max-len -->
         <path
           d="M105 133.5C106.125 135.248 111.046 140.575 113.5 145.5C115.084 148.678 116.043
           151.879 115.5 154.5C114.566 159.01 110.376 162.409 106.255 159.3C104.108 157.681
@@ -53,6 +99,7 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         />
+        <!-- eslint-enable -->
       </g>
       <g id="right-wing-inner">
         <path
@@ -110,15 +157,48 @@
       </g>
       <mask id="cutout-mask">
         <!-- Start with a white rectangle as the base of the mask -->
-        <rect x="0" y="0" width="200" height="200" fill="white" />
+        <rect
+          x="0"
+          y="0"
+          width="200"
+          height="200"
+          fill="white"
+        />
         <!-- Cut out the shapes that make up the logo from the mask -->
-        <use href="#body" stroke="black" />
-        <use href="#right-wing-inner" class="wing-inner" stroke="black" />
-        <use href="#right-wing-middle" class="wing-middle" stroke="black" />
-        <use href="#right-wing-outer" class="wing-outer" stroke="black" />
-        <use href="#left-wing-inner" class="wing-inner" stroke="black" />
-        <use href="#left-wing-middle" class="wing-middle" stroke="black" />
-        <use href="#left-wing-outer" class="wing-outer" stroke="black" />
+        <use
+          href="#body"
+          stroke="black"
+        />
+        <use
+          href="#right-wing-inner"
+          class="wing-inner"
+          stroke="black"
+        />
+        <use
+          href="#right-wing-middle"
+          class="wing-middle"
+          stroke="black"
+        />
+        <use
+          href="#right-wing-outer"
+          class="wing-outer"
+          stroke="black"
+        />
+        <use
+          href="#left-wing-inner"
+          class="wing-inner"
+          stroke="black"
+        />
+        <use
+          href="#left-wing-middle"
+          class="wing-middle"
+          stroke="black"
+        />
+        <use
+          href="#left-wing-outer"
+          class="wing-outer"
+          stroke="black"
+        />
       </mask>
     </defs>
   </svg>
@@ -211,7 +291,8 @@
         validator: value => backgroundStyles.includes(value),
       },
       /**
-       * The color scheme for the logo: default, monoBlack, monoWhite, monoPrimary, monoSecondary, whiteGrey, blackGrey
+       * The color scheme for the logo:
+       * default, monoBlack, monoWhite, monoPrimary, monoSecondary, whiteGrey, blackGrey
        */
       colorScheme: {
         type: String,
@@ -257,66 +338,66 @@
 <style>
 
   .animate .wing-inner {
-    animation: flapInner 2s 1.2s both infinite;
+    animation: flap-inner 2s 1.2s both infinite;
   }
 
   .animate .wing-middle {
-    animation: flapMiddle 2s 1.2s both infinite;
+    animation: flap-middle 2s 1.2s both infinite;
   }
 
   .animate .wing-outer {
-    animation: flapOuter 2s 1.2s both infinite;
+    animation: flap-outer 2s 1.2s both infinite;
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes flapInner {
+  @keyframes flap-inner {
     0% {
       opacity: 0;
     }
+
     10% {
       opacity: 1;
     }
+
     30% {
       opacity: 1;
     }
+
     100% {
       opacity: 0;
     }
   }
 
-  @keyframes flapMiddle {
+  @keyframes flap-middle {
     0% {
       opacity: 0;
     }
+
     20% {
       opacity: 0;
     }
+
     40% {
       opacity: 1;
     }
+
     100% {
       opacity: 0;
     }
   }
 
-  @keyframes flapOuter {
+  @keyframes flap-outer {
     0% {
       opacity: 0;
     }
+
     40% {
       opacity: 0;
     }
+
     50% {
       opacity: 1;
     }
+
     100% {
       opacity: 0;
     }

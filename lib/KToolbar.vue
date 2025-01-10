@@ -1,22 +1,29 @@
 <template>
 
-  <div class="k-toolbar" :class="classes">
+  <div
+    class="k-toolbar"
+    :class="classes"
+  >
     <div class="k-toolbar-left">
-      <div v-if="!removeNavIcon" class="k-toolbar-nav-icon">
+      <div
+        v-if="!removeNavIcon"
+        class="k-toolbar-nav-icon"
+      >
         <slot name="icon">
           <UiIconButton
             size="large"
             type="secondary"
-
             :color="textColor"
             :icon="navIcon"
-
             @click="navIconClick"
           />
         </slot>
       </div>
 
-      <div v-if="brand || $slots.brand" class="k-toolbar-brand">
+      <div
+        v-if="brand || $slots.brand"
+        class="k-toolbar-brand"
+      >
         <slot name="brand">
           <div class="k-toolbar-brand-text">
             {{ brand }}
@@ -24,14 +31,18 @@
         </slot>
       </div>
       <slot>
-        <div v-if="title" class="k-toolbar-title">
+        <div
+          v-if="title"
+          class="k-toolbar-title"
+        >
           {{ title }}
         </div>
       </slot>
-      <slot name="navigation" class="k-toolbar-nav"></slot>
+      <slot
+        name="navigation"
+        class="k-toolbar-nav"
+      ></slot>
     </div>
-
-
 
     <div class="k-toolbar-right">
       <slot name="actions"></slot>

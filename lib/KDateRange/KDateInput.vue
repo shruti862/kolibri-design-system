@@ -1,12 +1,17 @@
 <template>
 
   <div>
-    <fieldset :aria-label="legendText" class="date-input-fieldset" :aria-describedby="inputId" aria-live="polite">
+    <fieldset
+      :aria-label="legendText"
+      class="date-input-fieldset"
+      :aria-describedby="inputId"
+      aria-live="polite"
+    >
       <KTextBox
         :ref="inputRef"
         :value="value"
         type="date"
-        pattern="\d{4}-\d{2}-\d{2}" 
+        pattern="\d{4}-\d{2}-\d{2}"
         :label="legendText"
         autoComplete="off"
         :invalid="Boolean(errorMessage)"
@@ -14,9 +19,12 @@
         :invalidText="errorMessage"
         :floatingLabel="false"
         @input="handleInput"
-      />  
+      />
       <span class="k-date-vhidden">
-        <span v-if="value" :id="inputId">
+        <span
+          v-if="value"
+          :id="inputId"
+        >
           {{ dateDescription }}
         </span>
       </span>
@@ -28,8 +36,9 @@
 
 <script>
 
-  import { v4 as uuidv4 } from 'uuid';
   import KTextBox from '../KTextbox';
+
+  let uuid = 0;
 
   export default {
     name: 'KDateInput',
@@ -54,6 +63,11 @@
         default: null,
       },
     },
+    data() {
+      return {
+        uuid: 0,
+      };
+    },
     computed: {
       dateDescription() {
         if (this.value) {
@@ -74,12 +88,13 @@
       },
       inputId() {
         if (this.value) {
-          return `DateDesc_${uuidv4()
-            .split('-')
-            .pop()}`;
+          return `DateDesc_${this.uuid}`;
         }
         return '';
       },
+    },
+    beforeCreate() {
+      this.uuid = String(uuid++);
     },
     mounted() {
       this.$nextTick(() => {
@@ -126,7 +141,7 @@
   }
 
   /* HIDES BROWSER NATIVE DATEPICKER */
-  /deep/ input[type='date'] {
+  ::v-deep input[type='date'] {
     width: 150px;
     text-align: left;
     text-transform: uppercase !important;
