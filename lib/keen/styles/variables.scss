@@ -7,7 +7,7 @@ $font-stack: inherit;
 $base-font-size: 100% !default; // typically 16px in most browsers
 
 // Brand colors
-$brand-primary-color: $md-blue !default;
+
 $brand-accent-color: $md-purple-a400 !default;
 
 // Primary text color
@@ -33,9 +33,8 @@ $ui-input-height: rem(32px) !default;
 $ui-input-margin-bottom: rem(16px) !default;
 
 // Input label
-$ui-input-label-color: $secondary-text-color !default;
+
 $ui-input-label-color--hover: black !default;
-$ui-input-label-color--active: $brand-primary-color !default;
 $ui-input-label-color--invalid: $md-red-800 !default;
 $ui-input-label-font-size: rem(15px) !default;
 $ui-input-label-line-height: normal !default;
@@ -49,9 +48,7 @@ $ui-input-text-color--disabled: $disabled-text-color !default;
 $ui-input-text-color--invalid: $md-red !default;
 
 // Input border
-$ui-input-border-color: $secondary-text-color !default;
 $ui-input-border-color--hover: black !default;
-$ui-input-border-color--active: $brand-primary-color !default;
 $ui-input-border-color--invalid: $md-red !default;
 $ui-input-border-width: 1px !default;
 $ui-input-border-width--active: 1.5px !default;
@@ -59,7 +56,6 @@ $ui-input-border-style--disabled: dotted !default;
 
 // Input icons
 $ui-input-icon-color: $secondary-text-color !default;
-$ui-input-icon-color--active: $brand-primary-color !default;
 $ui-input-icon-opacity--disabled: 0.6 !default;
 $ui-input-icon-margin-right: rem(12px) !default;
 $ui-input-icon-margin-top: rem(4px) !default;
