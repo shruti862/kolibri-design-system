@@ -11,19 +11,26 @@
   <div class="ui-textbox" :class="classes">
 
     <div v-if="icon || $slots.icon" class="ui-textbox-icon-wrapper">
-      <slot name="icon">
-        <UiIcon :icon="icon" />
+      <slot name="icon" >
+        <UiIcon 
+          :icon="icon" 
+          :iconStyle="{ color: $themePalette.grey.v_700 }"
+        />
       </slot>
     </div>
 
     <div class="ui-textbox-content">
-      <label class="ui-textbox-label">
+      <label class="ui-textbox-label"
+             :style="{ borderBottomColor: isActive ? 
+               $themeBrand.primary.v_600 : $themePalette.grey.v_700 }"
+      >
         <div :class="['ui-input-content', inputContentClasses]">
           <input
             v-if="!multiLine"
             ref="input"
             v-autofocus="autofocus"
             class="ui-textbox-input"
+            :style="{ color: $themeBrand.primary.v_600 }"
             :autocapitalize="autocapitalize ? autocapitalize : null"
             :autocomplete="autocomplete ? autocomplete : null"
             :disabled="disabled"
@@ -53,6 +60,9 @@
             v-autofocus="autofocus"
             :value="value"
             class="ui-textbox-textarea"
+            :style="{ color: $themeBrand.primary.v_600 ,
+                      borderBottomColor: isActive ? $themeBrand.primary.v_600 : ''
+            }"
             :autocpitalize="autocapitalize ? autocapitalize : null"
             :autocomplete="autocomplete ? autocomplete : null"
             :disabled="disabled"
@@ -86,6 +96,7 @@
           v-if="label || $slots.default"
           class="ui-textbox-label-text"
           :class="labelClasses"
+          :style="labelStyles"
         >
           <slot>{{ label }}</slot>
         </div>
@@ -267,7 +278,12 @@
           'is-floating': this.hasFloatingLabel && !this.isLabelInline,
         };
       },
-
+      labelStyles() {
+        return {
+          color: this.isActive && !this.isDisabled
+            ? this.$themePalette.primary.v_600 : this.$themePalette.grey.v_700
+        };
+      },
       hasLabel() {
         return Boolean(this.label) || Boolean(this.$slots.default);
       },
@@ -440,16 +456,7 @@
       }
     }
 
-    &.is-active:not(.is-disabled) {
-      .ui-textbox-label-text {
-        color: $ui-input-border-color--active;
-      }
-
-      .ui-textbox-label,
-      .ui-textbox-textarea {
-        border-bottom-color: $ui-input-border-color--active;
-      }
-    }
+   
 
     .ui-input-content {
       display: grid;
@@ -485,7 +492,7 @@
         width: fit-content;
 
         &.is-inline {
-          color: $ui-input-label-color; // So the hover styles don't override it
+          color: inherit; // So the hover styles don't override it
           cursor: text;
           // 1em here is custom to keep text centered
           transform: translateY(1em) scale(1.1);
@@ -554,7 +561,6 @@
     margin: 0;
     background: $md-grey-100;
     border-radius: 4px 4px 0 0;
-    border-bottom-color: $ui-input-border-color;
     border-bottom-style: solid;
     border-bottom-width: $ui-input-border-width;
   }
@@ -564,9 +570,7 @@
     padding-top: $ui-input-icon-margin-top;
     margin-right: rem(12px);
 
-    .ui-icon {
-      color: $ui-input-icon-color;
-    }
+   
   }
 
   .ui-textbox-content {
@@ -577,7 +581,6 @@
     margin: 0 8px 0;
     font-size: $ui-input-label-font-size;
     line-height: $ui-input-label-line-height;
-    color: $ui-input-label-color;
     cursor: default;
     transition: color 0.1s ease, transform 0.2s ease;
     transform-origin: left;
@@ -591,7 +594,6 @@
     margin: 0;
     font-size: $ui-input-text-font-size;
     font-weight: normal;
-    color: $ui-input-text-color;
     cursor: auto;
     background: none;
     border: none;
