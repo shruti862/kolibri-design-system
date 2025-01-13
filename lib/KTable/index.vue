@@ -1,5 +1,4 @@
 <template>
-
   <div
     ref="tableWrapper"
     class="k-table-wrapper"
@@ -63,25 +62,28 @@
                 v-if="isColumnSortable(index)"
                 class="sort-icon"
               >
-                <span v-if="isColumnSortActive(index) && sortOrder === SORT_ORDER_ASC"><KIcon
-                  icon="dropup"
-                  :color="
-                    isColumnSortActive(index)
-                      ? $themeBrand.primary.v_600
-                      : $themePalette.grey.v_800
-                  "
+                <span v-if="isColumnSortActive(index) && sortOrder === SORT_ORDER_ASC"
+                  ><KIcon
+                    icon="dropup"
+                    :color="
+                      isColumnSortActive(index)
+                        ? $themeBrand.primary.v_600
+                        : $themePalette.grey.v_800
+                    "
                 /></span>
-                <span v-else-if="isColumnSortActive(index) && sortOrder === SORT_ORDER_DESC"><KIcon
-                  icon="dropdown"
-                  :color="
-                    isColumnSortActive(index)
-                      ? $themeBrand.primary.v_600
-                      : $themePalette.grey.v_800
-                  "
+                <span v-else-if="isColumnSortActive(index) && sortOrder === SORT_ORDER_DESC"
+                  ><KIcon
+                    icon="dropdown"
+                    :color="
+                      isColumnSortActive(index)
+                        ? $themeBrand.primary.v_600
+                        : $themePalette.grey.v_800
+                    "
                 /></span>
-                <span v-else><KIcon
-                  icon="sortColumn"
-                  :color="$themePalette.grey.v_800"
+                <span v-else
+                  ><KIcon
+                    icon="sortColumn"
+                    :color="$themePalette.grey.v_800"
                 /></span>
               </span>
             </th>
@@ -141,12 +143,9 @@
       </div>
     </template>
   </div>
-
 </template>
 
-
 <script>
-
   import { ref, computed, watch } from 'vue';
   import useSorting, {
     SORT_ORDER_ASC,
@@ -622,12 +621,9 @@
       },
     },
   };
-
 </script>
 
-
 <style scoped>
-
   .k-table-wrapper {
     position: relative;
     height: auto;
@@ -667,4 +663,8 @@
     cursor: pointer;
   }
 
+  .empty-message {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
 </style>
