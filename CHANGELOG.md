@@ -7,6 +7,19 @@ Changelog is rather internal in nature. See release notes for the public overvie
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
 
 
+- [#887]
+  - **Description:** Added `margin-top: 16px` and `margin-bottom: 16px` to the empty table message to ensure consistent spacing with the table header and data rows.
+  - **Products impact:** bugfix
+  - **Addresses:** -  #881
+  - **Components:** KTable
+  - **Breaking:** no
+  - **Impacts a11y:** no
+  - **Guidance:**
+
+[#887]: https://github.com/learningequality/kolibri-design-system/pull/887
+
+
+
 - [#847]
   - **Description:** Improvement of the Table of Contents filter to work properly with browsers' command.
   - **Products impact:** Updated API
