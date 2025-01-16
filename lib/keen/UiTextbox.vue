@@ -21,7 +21,7 @@
 
     <div class="ui-textbox-content">
       <label class="ui-textbox-label"
-             :style="{ borderBottomColor: isActive ? 
+             :style="{ 'border-bottom-color': isActive ? 
                $themeBrand.primary.v_600 : $themePalette.grey.v_700 }"
       >
         <div :class="['ui-input-content', inputContentClasses]">
@@ -61,7 +61,7 @@
             :value="value"
             class="ui-textbox-textarea"
             :style="{ color: $themeBrand.primary.v_600 ,
-                      borderBottomColor: isActive ? $themeBrand.primary.v_600 : ''
+                      'border-bottom-color': isActive ? $themeBrand.primary.v_600 : ''
             }"
             :autocpitalize="autocapitalize ? autocapitalize : null"
             :autocomplete="autocomplete ? autocomplete : null"

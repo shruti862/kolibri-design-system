@@ -38,7 +38,7 @@
           autocomplete="off"
           class="ui-autocomplete__input"
           :style="{ color: $themeBrand.primary.v_600 ,
-                    borderBottomColor: isActive ?
+                    'border-bottom-color': isActive ?
                       $themeBrand.primary.v_600 : $themePalette.grey.v_700
           }"
           :disabled="disabled"
