@@ -13,6 +13,10 @@
   <div
     class="ui-select"
     :class="classes"
+    :style="{
+      'border-bottom-color':
+        isActive && !disabled ? $themeBrand.primary.v_600 : $themePalette.grey.v_700,
+    }"
   >
     <input
       v-if="name"
@@ -41,7 +45,7 @@
           v-if="label || $slots.default"
           class="ui-select-label-text"
           :class="labelClasses"
-          :style="activeColorStyle"
+          :style="{ ...activeColorStyle, color: $themePalette.grey.v_700 }"
         >
           <!-- @slot Optional slot as alternative to `label` prop -->
           <slot>{{ label }}</slot>
@@ -953,7 +957,6 @@
     align-items: flex-start;
     margin-bottom: $ui-input-margin-bottom;
     background: $md-grey-100;
-    border-bottom-color: $ui-input-border-color;
     border-bottom-style: solid;
     border-bottom-width: $ui-input-border-width;
     border-radius: 2px 2px 0 0;
@@ -972,7 +975,7 @@
     }
 
     &.is-active:not(.is-disabled) {
-      border-bottom-color: $ui-input-border-color--active;
+      border-bottom-color: inherit;
 
       .ui-icon {
         color: $ui-input-icon-color--active;
@@ -986,7 +989,7 @@
         display: table;
 
         &.is-inline {
-          color: $ui-input-label-color; // So the hover styles don't override it
+          color: inherit; // So the hover styles don't override it
           cursor: pointer;
           transform: translateY($ui-input-label-top--inline) scale(1.1);
         }
@@ -1062,7 +1065,6 @@
     margin-bottom: $ui-input-label-margin-bottom;
     font-size: $ui-input-label-font-size;
     line-height: $ui-input-label-line-height;
-    color: $ui-input-label-color;
     cursor: default;
     transition:
       color 0.1s ease,

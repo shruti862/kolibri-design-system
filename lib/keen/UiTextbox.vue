@@ -30,7 +30,10 @@
             ref="input"
             v-autofocus="autofocus"
             class="ui-textbox-input"
-            :style="{ color: $themeBrand.primary.v_600 }"
+            :style="{
+              color: $themeBrand.primary.v_600,
+              ...(isActive ? { borderBottomColor: $themeTokens.primaryDark } : {})
+            }"
             :autocapitalize="autocapitalize ? autocapitalize : null"
             :autocomplete="autocomplete ? autocomplete : null"
             :disabled="disabled"
@@ -43,7 +46,6 @@
             :placeholder="hasFloatingLabel ? null : placeholder"
             :readonly="readonly" :required="required"
             :step="stepValue"
-            :style="isActive ? { borderBottomColor: $themeTokens.primaryDark } : {}"
             :tabindex="tabindex"
             :type="type"
             :value="value"
@@ -60,8 +62,9 @@
             v-autofocus="autofocus"
             :value="value"
             class="ui-textbox-textarea"
-            :style="{ color: $themeBrand.primary.v_600 ,
-                      'border-bottom-color': isActive ? $themeBrand.primary.v_600 : ''
+            :style="{
+              color: $themeBrand.primary.v_600,
+              ...(isActive ? { borderBottomColor: $themeTokens.primaryDark } : {})
             }"
             :autocpitalize="autocapitalize ? autocapitalize : null"
             :autocomplete="autocomplete ? autocomplete : null"
@@ -73,7 +76,6 @@
             :readonly="readonly"
             :required="required"
             :rows="rows"
-            :style="isActive ? { borderBottomColor: $themeTokens.primaryDark } : {}"
             :tabindex="tabindex"
             @blur="onBlur"
             @change="onChange"
