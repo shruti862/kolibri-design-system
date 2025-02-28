@@ -28,7 +28,13 @@
     <slot v-if="$slots.default"></slot>
 
     <template>
-      <span class="link-text" :style="textStyle">{{ text }}</span>
+      <span
+        class="link-text"
+        :class="[truncate ? 'link-box' : '']"
+        :style="[textStyle, truncate ? truncatedStyle : {}]"
+      >
+        {{ text }}
+      </span>
     </template>
 
     <!-- @slot Slot alternative to the `iconAfter` prop -->
@@ -110,6 +116,10 @@
         type: String,
         default: null,
       },
+      truncate:{
+type: Boolean,
+default: false,
+}
     },
     data() {
       return {
@@ -197,5 +207,10 @@
   .prop-icon {
     top: 4px;
   }
+  .link-box {
+display: flex; 
+max-width: 300px; 
+overflow: hidden;
+}
 
 </style>
