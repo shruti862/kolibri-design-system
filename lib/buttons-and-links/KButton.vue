@@ -165,6 +165,14 @@ default: false,
         }
         return { ...styles };
       },
+      truncatedStyle(){
+        return{
+          'white-space': nowrap,
+  overflow: hidden,
+  'text-overflow': ellipsis,
+          
+        }
+      }
     },
     methods: {
       handleClick(event) {
@@ -209,7 +217,7 @@ default: false,
   }
   .link-box {
 display: flex; 
-max-width: 300px; 
+max-width:300px; 
 overflow: hidden;
 }
 
