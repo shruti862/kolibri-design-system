@@ -5,6 +5,7 @@
     ref="button"
     dir="auto"
     :class="buttonClasses"
+    :style="[truncate ? computedStyle : {}]"
     :type="type"
     :disabled="disabled"
     tabindex="0"
@@ -30,7 +31,6 @@
     <template>
       <span
         class="link-text"
-        :class="[truncate ? 'link-box' : '']"
         :style="[textStyle, truncate ? truncatedStyle : {}]"
       >
         {{ text }}
@@ -140,6 +140,11 @@ default: false,
           fill: this.iconColor,
         };
       },
+      computedStyle(){
+        return {
+          display:'block'
+        }
+      },
       textStyle() {
         let styles = {};
         if (this.icon) {
@@ -167,10 +172,10 @@ default: false,
       },
       truncatedStyle(){
         return{
-          'white-space': nowrap,
-  overflow: hidden,
-  'text-overflow': ellipsis,
-          
+          'white-space': 'nowrap',
+           overflow: 'hidden',
+          'text-overflow': 'ellipsis',
+          'max-width': '100%', 
         }
       }
     },
@@ -215,10 +220,4 @@ default: false,
   .prop-icon {
     top: 4px;
   }
-  .link-box {
-display: flex; 
-max-width:300px; 
-overflow: hidden;
-}
-
 </style>
